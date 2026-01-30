@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://b1j1eqqqmb35"]
+
+[ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="1_u8cu3"]
+
+[node name="Battle" type="Node2D" unique_id=335685263]
+
+[node name="Warbrand Slots" type="Node2D" parent="." unique_id=811250000]
+position = Vector2(48, 296)
+
+[node name="1" parent="Warbrand Slots" unique_id=500551847 instance=ExtResource("1_u8cu3")]
+position = Vector2(60, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="4" parent="Warbrand Slots" unique_id=1856514870 instance=ExtResource("1_u8cu3")]
+position = Vector2(360, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="6" parent="Warbrand Slots" unique_id=704999145 instance=ExtResource("1_u8cu3")]
+position = Vector2(560, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="5" parent="Warbrand Slots" unique_id=1901698616 instance=ExtResource("1_u8cu3")]
+position = Vector2(460, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="2" parent="Warbrand Slots" unique_id=1933329254 instance=ExtResource("1_u8cu3")]
+position = Vector2(160, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="7" parent="Warbrand Slots" unique_id=488228988 instance=ExtResource("1_u8cu3")]
+position = Vector2(660, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="3" parent="Warbrand Slots" unique_id=1989232732 instance=ExtResource("1_u8cu3")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="Enemy Slots" type="Node2D" parent="." unique_id=2017147162]
+position = Vector2(48, 128)
+
+[node name="CardHolder" parent="Enemy Slots" unique_id=609084599 instance=ExtResource("1_u8cu3")]
+position = Vector2(60, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder4" parent="Enemy Slots" unique_id=979452003 instance=ExtResource("1_u8cu3")]
+position = Vector2(360, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder6" parent="Enemy Slots" unique_id=843675490 instance=ExtResource("1_u8cu3")]
+position = Vector2(560, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder5" parent="Enemy Slots" unique_id=56081768 instance=ExtResource("1_u8cu3")]
+position = Vector2(460, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder2" parent="Enemy Slots" unique_id=794948171 instance=ExtResource("1_u8cu3")]
+position = Vector2(160, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder7" parent="Enemy Slots" unique_id=2035908191 instance=ExtResource("1_u8cu3")]
+position = Vector2(660, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="CardHolder3" parent="Enemy Slots" unique_id=1592008186 instance=ExtResource("1_u8cu3")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true

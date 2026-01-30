@@ -1,0 +1,9 @@
+So, let's start making a concrete plan
+
+The ability to play a card.
+Effect stack
+Resource counter, or an overseer card, that looks over all of the game values. 
+It could work, but i think i better make a whole new object for that. 
+Perhaps something in the game variable. 
+
+Today, i need to make it so that there is a battle phase, where cards can attack other cards. 

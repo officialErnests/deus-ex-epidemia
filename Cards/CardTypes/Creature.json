@@ -1,0 +1,93 @@
+{
+	"ID":1,
+	"Name":"Creature",
+	"Required Variables":{
+		"Cost":3,
+		"Health":1,
+		"Attack":1,
+		"Name":"MISSING NAME",
+		"Description":"MISSING DESCRIPTION",
+		"Playable":1,
+		"Pool":"NONE"
+	},
+	"Required Triggers":[],
+	"Default Triggers":[{
+			"Trigger":"On Sell",
+			"Effect List":[
+				{
+					"Type":"Modify Variable",
+					"Target":"Global",
+					"Variable Name":"Money",
+					"Operation":"+",
+					"Value":1	
+				}
+			]
+		}],
+	"DT DEV COMMENT":"Most Default triggers should not exist, as i am planning on hardcoding the attacking process, as it is a seperate game stage from the shop itself",
+	"Displays":[
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":0,
+				"Y":-95
+			},
+			"Size":{
+				"X":120,
+				"Y":30
+			},
+			"Text Color":"#000000",
+			"Display Variable":"Name"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":0,
+				"Y":-75
+			},
+			"Size":{
+				"X":120,
+				"Y":100
+			},
+			"Display Variable":"Description"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":100,
+				"Y":-95
+			},
+			"Size":{
+				"X":30,
+				"Y":30
+			},
+			"Display Variable":"Cost"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":-20,
+				"Y":85
+			},
+			"Size":{
+				"X":60,
+				"Y":30
+			},
+			"Display Variable":"Attack"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":80,
+				"Y":85
+			},
+			"Size":{
+				"X":60,
+				"Y":30
+			},
+			"Display Variable":"Health"
+		}
+		
+
+	],
+	"Default Card Sprite":"Cards/default_card.png"
+}

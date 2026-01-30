@@ -1,0 +1,28 @@
+{
+	"Type":0,
+	"Name":"Test",
+	"Description":"Choose a creature, give it +1 attack.",
+	"Mana":1,
+	"Effects":[
+		{
+			"Trigger":"ETB",
+			"Effect List":[
+				{
+					"Type":"Target",
+					"Assign Variable":"Target",
+					"Global":0,
+					"Target Filter":{
+						"Location":"On Field"
+					}
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Attack",
+					"Operation":"+",
+					"Value":1	
+				}
+			]
+		}
+	]
+}

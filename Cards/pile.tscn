@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lir46y366vjr"]
+
+[ext_resource type="Script" uid="uid://cvf65m7jiynlw" path="res://Cards/pile.gd" id="1_f5ori"]
+[ext_resource type="PackedScene" uid="uid://bmb7mohedvfk" path="res://Cards/card.tscn" id="2_erfk3"]
+
+[node name="Pile" type="Node2D"]
+script = ExtResource("1_f5ori")
+
+[node name="Card" parent="." instance=ExtResource("2_erfk3")]
+visible = false

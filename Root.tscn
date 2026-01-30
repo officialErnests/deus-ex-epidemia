@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://3llxunafx0gl"]
+
+[ext_resource type="Script" uid="uid://cwkaotmo5thtt" path="res://root.gd" id="1_cwqeq"]
+[ext_resource type="PackedScene" uid="uid://lir46y366vjr" path="res://Cards/pile.tscn" id="1_gxo8o"]
+[ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
+[ext_resource type="Script" uid="uid://b288d65klme20" path="res://shop.gd" id="2_170dk"]
+
+[node name="Root" type="Node2D" unique_id=1545327209]
+script = ExtResource("1_cwqeq")
+
+[node name="Runtime" type="Node2D" parent="." unique_id=1429351299]
+
+[node name="Cards" type="Node2D" parent="Runtime" unique_id=1070801391]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=259659905]
+anchor_mode = 0
+editor_draw_limits = true
+
+[node name="Hand" parent="." unique_id=1261054207 instance=ExtResource("1_gxo8o")]
+position = Vector2(572, 648)
+location = &"Hand"
+
+[node name="Deck" parent="." unique_id=82659815 instance=ExtResource("1_gxo8o")]
+position = Vector2(13, 615)
+location = &"Deck"
+
+[node name="Graveyard" parent="." unique_id=1667176252 instance=ExtResource("1_gxo8o")]
+position = Vector2(1123, 633)
+location = &"Graveyard"
+
+[node name="Shop" type="Node2D" parent="." unique_id=1264223513]
+z_index = -1
+script = ExtResource("2_170dk")
+
+[node name="Shop Slots" type="Node2D" parent="Shop" unique_id=126177195]
+position = Vector2(29, 29)
+
+[node name="CardHolder" parent="Shop/Shop Slots" unique_id=1255141651 instance=ExtResource("2_24d08")]
+position = Vector2(60, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder4" parent="Shop/Shop Slots" unique_id=1915013123 instance=ExtResource("2_24d08")]
+position = Vector2(360, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder6" parent="Shop/Shop Slots" unique_id=1361567445 instance=ExtResource("2_24d08")]
+position = Vector2(560, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder5" parent="Shop/Shop Slots" unique_id=671066194 instance=ExtResource("2_24d08")]
+position = Vector2(460, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder2" parent="Shop/Shop Slots" unique_id=132309266 instance=ExtResource("2_24d08")]
+position = Vector2(160, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder7" parent="Shop/Shop Slots" unique_id=1438768047 instance=ExtResource("2_24d08")]
+position = Vector2(660, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="CardHolder3" parent="Shop/Shop Slots" unique_id=679280830 instance=ExtResource("2_24d08")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+
+[node name="Warbrand Slots" type="Node2D" parent="Shop" unique_id=1880644447]
+position = Vector2(30, 245)
+
+[node name="1" parent="Shop/Warbrand Slots" unique_id=902384034 instance=ExtResource("2_24d08")]
+position = Vector2(60, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="2" parent="Shop/Warbrand Slots" unique_id=589269211 instance=ExtResource("2_24d08")]
+position = Vector2(160.00002, 85)
+scale = Vector2(0.6999999, 0.6999999)
+_type = "ShopSlot"
+placeable = true
+
+[node name="3" parent="Shop/Warbrand Slots" unique_id=38210265 instance=ExtResource("2_24d08")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="4" parent="Shop/Warbrand Slots" unique_id=1852592246 instance=ExtResource("2_24d08")]
+position = Vector2(360, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="5" parent="Shop/Warbrand Slots" unique_id=2062268048 instance=ExtResource("2_24d08")]
+position = Vector2(460, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="6" parent="Shop/Warbrand Slots" unique_id=1709627685 instance=ExtResource("2_24d08")]
+position = Vector2(560, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="7" parent="Shop/Warbrand Slots" unique_id=911352576 instance=ExtResource("2_24d08")]
+position = Vector2(660, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="Enter Battle Button" type="Button" parent="Shop" unique_id=277183112]
+offset_left = 1030.0
+offset_top = 253.0
+offset_right = 1132.0
+offset_bottom = 284.0
+text = "Begin Battle"
+
+[connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]

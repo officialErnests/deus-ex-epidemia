@@ -1,0 +1,14 @@
+{
+	"Type":1,
+	"Name":"Perseus",
+	"Description":"Immune While Attacking",
+	"Cost":3,
+	"Attack":3,
+	"Health":2,
+	"Pool":"Greek Heroes",
+	"Effects":[],
+	"Properties":[
+        "Immune While Attacking"
+	],
+	"Dev Comment":"immune while attacking"
+}

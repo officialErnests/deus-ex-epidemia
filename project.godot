@@ -11,8 +11,18 @@ config_version=5
 [application]
 
 config/name="deus-ex-epidemia"
+run/main_scene="uid://3llxunafx0gl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*uid://dx2nbat0ba5cf"
+debug_c="*uid://dkl5y3gj7bb1g"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [physics]
 

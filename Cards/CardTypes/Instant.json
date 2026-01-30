@@ -1,0 +1,67 @@
+{
+	"ID":0,
+	"Name":"Instant",
+	"Required Variables":{
+		"Mana":0,
+		"Name":"MISSING NAME",
+		"Description":"MISSING DESCRIPTION",
+		"Playable":1
+	},
+	"Required Triggers":[
+        "ETB"
+	],
+	"Play On Drag":{},
+	"Default Triggers":[
+		{
+			"Trigger":"On End",
+			"Effect List":[
+				{
+					"Type":"Move Card To",
+					"Card":"$self",
+					"Card Pile ID":"Graveyard"
+				}
+			]
+		}
+	],
+	"Displays":[
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":0,
+				"Y":-95
+			},
+			"Size":{
+				"X":120,
+				"Y":30
+			},
+			"Text Color":"#000000",
+			"Display Variable":"Name"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":0,
+				"Y":-75
+			},
+			"Size":{
+				"X":120,
+				"Y":100
+			},
+			"Display Variable":"Description"
+		},
+		{
+			"Type":"Text Display",
+			"Position":{
+				"X":100,
+				"Y":-95
+			},
+			"Size":{
+				"X":30,
+				"Y":30
+			},
+			"Display Variable":"Mana"
+		}
+
+	],
+	"Default Card Sprite":"Cards/default_card.png"
+}

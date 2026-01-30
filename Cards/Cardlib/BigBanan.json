@@ -1,0 +1,36 @@
+{
+    "Type":0,
+    "Name":"Banana",
+    "Description":"Choose a creature, give it +2/+2",
+	"Mana":1,
+	"Effects":[
+		{
+			"Trigger":"ETB",
+			"Effect List":[
+				{
+					"Type":"Target",
+					"Assign Variable":"Target",
+					"Global":0,
+					"Target Filter":{
+						"Location":"On Field"
+					}
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Attack",
+					"Operation":"+",
+					"Value":2	
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Health",
+					"Operation":"+",
+					"Value":2	
+				}
+
+			]
+		}
+	]
+}
