@@ -1,7 +1,7 @@
 {
-    "Type":0,
-    "Name":"Banana",
-    "Description":"Choose a creature, give it +2/+2",
+	"Type":0,
+	"Name":"Banana",
+	"Description":"Choose a creature, give it +2/+2",
 	"Mana":1,
 	"Effects":[
 		{

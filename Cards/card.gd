@@ -7,6 +7,7 @@ var activated_on_triggers={}
 var card_type=null
 var linked_display_variable={}
 var belongs_to_pile=null
+var holder=null
 var immovable=true
 var location="Void"
 func setup(data):
@@ -44,7 +45,7 @@ func update_visually():
 			linked_display_variable[i].update(variable[i])
 func deload_card():
 	var deloaded_data=variable
-	print(deloaded_data)
+	#print(deloaded_data)
 	return deloaded_data
 	
 #Card logic
@@ -108,6 +109,8 @@ func _input(event):
 						selected=false #Then and only then this card is selected
 						Game.selected_card_nullify_trig=true
 						if Game.a_card_is_being_placed_on_a_holder:
+							if variable["Type"]==0:
+								return
 							Game.card_piles[belongs_to_pile].card_pile.erase(self)
 							immovable=true
 							belongs_to_pile=null

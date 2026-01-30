@@ -1,6 +1,7 @@
 extends Node
 
 var root=null
+var battle=null
 
 var existing_cards=[]
 var effect_stack=[]
@@ -8,6 +9,7 @@ var card_index={}
 var card_types={}
 var card_piles={}
 
+@onready var card_scene=preload("res://Cards/card.tscn")
 #Debug functions:
 
 var log_index=0
@@ -65,7 +67,7 @@ func process_stack():
 		return
 	var processed_effect=effect_stack[0]
 	chl("Processing Effect: "+str(processed_effect),debug_c.PROCESS_STACK)
-	
+	#print(existing_cards)
 	#Effects that affect cards
 	if processed_effect["Type"]=="Target": #The game begins the sequence where a card is being targeted. 
 		#If no card can be targeted, game skips this and all further effects
@@ -75,7 +77,6 @@ func process_stack():
 			targeted_cards=filter_cards(processed_effect["Target Filter"])
 		process_on_hold=true
 		UI={
-
 			"Type":"Targeting",
 			"Targeted Card":null,
 			"Possible Targets":targeted_cards,
@@ -113,21 +114,25 @@ func process_stack():
 	
 	#Game based effects
 	if processed_effect["Type"]=="Begin Battle Phase":
-		get_tree().change_scene_to_file("res://Battle.tscn")
+		
 		UI={
 			"Type":"Battle",
 			"Action":{
 				"Type":"Wait",
 				"Time Left":2, #counted in seconds	
 			},
-			"Flags":{
-				"Battle Begun":0
-			},
+			"Team":randi_range(0,1),
+			"Friendly Index":-1,
+			"Enemy Index":-1,
+			"Queued Actions":[],
 			"Party Friendly":deload_party_data()
 		}
+		#print(existing_cards)
 		for card in existing_cards:
 			card.queue_free()
-		existing_cards=[]
+		existing_cards.clear()
+		print(UI["Party Friendly"])
+		get_tree().change_scene_to_file("res://Battle.tscn")
 	effect_stack.pop_at(0)
 func ilina(x): #In List If Not Already: Places the item into a list if it isn't in one already
 	if x is Array:
@@ -142,7 +147,7 @@ func get_value(x):
 	if x is float:
 		return x
 func filter_cards(filter_data={}):
-	var all_cards=existing_cards
+	var all_cards=existing_cards.duplicate()
 	var removed_cards=[]
 	if "Location" in filter_data:
 		for i in all_cards:
@@ -152,7 +157,7 @@ func filter_cards(filter_data={}):
 		if i in all_cards:
 			all_cards.erase(i)
 	return all_cards
-@onready var card_scene=preload("res://Cards/card.tscn")
+
 func create_new_card(card_name,is_in_index=true):
 	var new_card=card_scene.instantiate()
 	add_child(new_card)
@@ -161,7 +166,12 @@ func create_new_card(card_name,is_in_index=true):
 	new_card.global_position=Vector2(400,200)
 	existing_cards.append(new_card)
 	return new_card
-
+func raw_create_card(card_data):
+	var new_card=card_scene.instantiate()
+	add_child(new_card)
+	new_card.setup(card_data)
+	existing_cards.append(new_card)
+	return new_card
 @onready var card_pile=preload("res://Cards/pile.tscn")
 func create_new_card_pile(card_pile_id):
 	var new_card_pile=card_pile.instantiate()
@@ -203,12 +213,11 @@ func resetUI():
 	"Type":"Shop"
 }
 func deload_party_data():
-	var card_data=[]
-	for card in root.get_warbrand():
-		print(card)
-		var deloaded_card=card.deload_card()
-		card_data.append(deloaded_card)
-		print(deloaded_card)
+	var card_data={}
+	var warbrand=root.get_warbrand()
+	for card_index in warbrand:
+		var deloaded_card=warbrand[card_index].deload_card()
+		card_data[card_index+1]=deloaded_card
 	return card_data
 var card_holder_where_a_card_is_placed=null
 func _process(delta: float) -> void:
@@ -223,7 +232,7 @@ func _process(delta: float) -> void:
 	frame+=1
 	if frame==1:
 		var card_deck=[]
-		card_deck.append("Banana")	
+		card_deck.append("Banana")
 		for i in range(4):
 			card_deck.append(["Hercules","Perseus","Psyche"][randi_range(0,2)])
 		card_piles["Deck"].load_cards(card_deck)
@@ -242,3 +251,67 @@ func _process(delta: float) -> void:
 		UI["Animation Q"]=ease(UI["Animation Time"]/UI["Max Animation Time"],-2.0)
 		UI["Focusing On Card"].scale=Vector2(1+1.5*UI["Animation Q"],1+1.5*UI["Animation Q"])
 		UI["Focusing On Card"].position=(1-UI["Animation Q"])*UI["Start Position"]+UI["Animation Q"]*Vector2(937,322)
+	if UI["Type"]=="Battle":
+		if UI["Action"]["Type"]=="Wait":
+			UI["Action"]["Time Left"]-=delta
+			if UI["Action"]["Time Left"]<0:
+				var Ui=UI["Action"]
+				var defenders=[]
+				var attacker=null
+				if UI["Team"]==0:
+					var attackers=battle.friendly_team
+					defenders=battle.enemy_team
+					for i in range(7):
+						UI["Friendly Index"]+=1
+						if UI["Friendly Index"]>=len(attackers):
+							UI["Friendly Index"]=0
+						if attackers[UI["Friendly Index"]].variable["Attack"]>0:
+							attacker=attackers[UI["Friendly Index"]]
+				else:
+					var attackers=battle.enemy_team
+					defenders=battle.friendly_team
+					for i in range(7):
+						UI["Enemy Index"]+=1
+						if UI["Enemy Index"]>=len(attackers):
+							UI["Enemy Index"]=0
+						if attackers[UI["Enemy Index"]].variable["Attack"]>0:
+							attacker=attackers[UI["Enemy Index"]]
+				var possible_defenders=[]
+				var max_taunt=0
+				for iter_defender in defenders:
+					var taunt_level=0
+					if "Taunt" in iter_defender.variable:
+						if iter_defender.variable["Taunt"]>max_taunt:
+							max_taunt=iter_defender.variable["Taunt"]
+							possible_defenders=[]
+						taunt_level=iter_defender.variable["Taunt"]
+					if taunt_level==max_taunt:
+						possible_defenders.append(iter_defender)
+				var defender=possible_defenders.pick_random()
+				UI["Team"]=1-UI["Team"]
+				UI["Action"]={
+					"Type":"Attack",
+					"Time":0,
+					"Attacker":attacker,
+					"Defender":defender,
+					"Alpha Pos":attacker.holder.global_position,
+					"Beta Pos":defender.holder.global_position,
+				}
+		elif UI["Action"]["Type"]=="Attack":
+			var Ui=UI["Action"]
+			Ui["Time"]+=delta
+			#So, we have 4 stages in the attack stage, which will be reduced to three, after which the waiting is called again.
+			if Ui["Time"]>0.25 and Ui["Time"]<0.5:
+				var movement_q=(Ui["Time"]-0.25)/0.25
+				movement_q=pow(movement_q,2)
+				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(1-movement_q)+Ui["Beta Pos"]*movement_q
+				#print(Ui["Attacker"].global_position)
+			elif 0.5<Ui["Time"] and Ui["Time"]<0.75:
+				var movement_q=(Ui["Time"]-0.5)/0.25
+				movement_q=pow(movement_q,0.5)
+				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(movement_q)+Ui["Beta Pos"]*(1-movement_q)
+			elif Ui["Time"]>0.75:
+				UI["Action"]={
+					"Type":"Wait",
+					"Time Left":0.25
+				}
