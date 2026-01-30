@@ -220,6 +220,7 @@ func deload_party_data():
 		card_data[card_index+1]=deloaded_card
 	return card_data
 var card_holder_where_a_card_is_placed=null
+var apex_card_battle_flag=false
 func _process(delta: float) -> void:
 	if not i_can_turn_off_a_card_is_being_placed_on_a_holder:
 		a_card_is_being_placed_on_a_holder=false
@@ -267,6 +268,7 @@ func _process(delta: float) -> void:
 							UI["Friendly Index"]=0
 						if attackers[UI["Friendly Index"]].variable["Attack"]>0:
 							attacker=attackers[UI["Friendly Index"]]
+							break
 				else:
 					var attackers=battle.enemy_team
 					defenders=battle.friendly_team
@@ -276,6 +278,7 @@ func _process(delta: float) -> void:
 							UI["Enemy Index"]=0
 						if attackers[UI["Enemy Index"]].variable["Attack"]>0:
 							attacker=attackers[UI["Enemy Index"]]
+							break
 				var possible_defenders=[]
 				var max_taunt=0
 				for iter_defender in defenders:
@@ -306,11 +309,16 @@ func _process(delta: float) -> void:
 				movement_q=pow(movement_q,2)
 				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(1-movement_q)+Ui["Beta Pos"]*movement_q
 				#print(Ui["Attacker"].global_position)
+				apex_card_battle_flag=false
 			elif 0.5<Ui["Time"] and Ui["Time"]<0.75:
+				if not apex_card_battle_flag:
+					apex_card_battle_flag=true
+					Ui["Attacker"].attack(Ui["Defender"])
 				var movement_q=(Ui["Time"]-0.5)/0.25
 				movement_q=pow(movement_q,0.5)
 				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(movement_q)+Ui["Beta Pos"]*(1-movement_q)
 			elif Ui["Time"]>0.75:
+				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]
 				UI["Action"]={
 					"Type":"Wait",
 					"Time Left":0.25

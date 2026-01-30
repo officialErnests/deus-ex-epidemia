@@ -21,9 +21,10 @@ func _process(delta: float) -> void:
 		card_held.z_index-=1
 		card_held.location=location
 	if hovered_over:
-		Game.a_card_is_being_placed_on_a_holder=true
-		Game.i_can_turn_off_a_card_is_being_placed_on_a_holder=true
-		Game.card_holder_where_a_card_is_placed=self
+		if placeable:
+			Game.a_card_is_being_placed_on_a_holder=true
+			Game.i_can_turn_off_a_card_is_being_placed_on_a_holder=true
+			Game.card_holder_where_a_card_is_placed=self
 func _on_area_2d_mouse_entered() -> void:
 	hovered_over=true
 
