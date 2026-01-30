@@ -86,7 +86,8 @@ func _on_area_2d_mouse_exited() -> void:
 	hovered_over=false
 	
 var selection_color_fade=0
-
+func attack(card):
+	pass
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -115,6 +116,7 @@ func _input(event):
 							immovable=true
 							belongs_to_pile=null
 							Game.card_holder_where_a_card_is_placed.card_held=self
+							Game.card_holder_where_a_card_is_placed.placeable=false
 							play()
 							changed_card_pile()
 						else:

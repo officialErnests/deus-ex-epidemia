@@ -15,14 +15,20 @@ scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="4" parent="Warbrand Slots" unique_id=1856514870 instance=ExtResource("1_u8cu3")]
-position = Vector2(360, 85)
+[node name="2" parent="Warbrand Slots" unique_id=1933329254 instance=ExtResource("1_u8cu3")]
+position = Vector2(160, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="6" parent="Warbrand Slots" unique_id=704999145 instance=ExtResource("1_u8cu3")]
-position = Vector2(560, 85)
+[node name="3" parent="Warbrand Slots" unique_id=1989232732 instance=ExtResource("1_u8cu3")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="4" parent="Warbrand Slots" unique_id=1856514870 instance=ExtResource("1_u8cu3")]
+position = Vector2(360, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
@@ -33,20 +39,14 @@ scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="2" parent="Warbrand Slots" unique_id=1933329254 instance=ExtResource("1_u8cu3")]
-position = Vector2(160, 85)
+[node name="6" parent="Warbrand Slots" unique_id=704999145 instance=ExtResource("1_u8cu3")]
+position = Vector2(560, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
 [node name="7" parent="Warbrand Slots" unique_id=488228988 instance=ExtResource("1_u8cu3")]
 position = Vector2(660, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-placeable = true
-
-[node name="3" parent="Warbrand Slots" unique_id=1989232732 instance=ExtResource("1_u8cu3")]
-position = Vector2(260, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
@@ -60,14 +60,20 @@ scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="4" parent="Enemy Slots" unique_id=979452003 instance=ExtResource("1_u8cu3")]
-position = Vector2(360, 85)
+[node name="2" parent="Enemy Slots" unique_id=794948171 instance=ExtResource("1_u8cu3")]
+position = Vector2(160, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="6" parent="Enemy Slots" unique_id=843675490 instance=ExtResource("1_u8cu3")]
-position = Vector2(560, 85)
+[node name="3" parent="Enemy Slots" unique_id=1592008186 instance=ExtResource("1_u8cu3")]
+position = Vector2(260, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+placeable = true
+
+[node name="4" parent="Enemy Slots" unique_id=979452003 instance=ExtResource("1_u8cu3")]
+position = Vector2(360, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
@@ -78,20 +84,14 @@ scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
-[node name="2" parent="Enemy Slots" unique_id=794948171 instance=ExtResource("1_u8cu3")]
-position = Vector2(160, 85)
+[node name="6" parent="Enemy Slots" unique_id=843675490 instance=ExtResource("1_u8cu3")]
+position = Vector2(560, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
 
 [node name="7" parent="Enemy Slots" unique_id=2035908191 instance=ExtResource("1_u8cu3")]
 position = Vector2(660, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-placeable = true
-
-[node name="3" parent="Enemy Slots" unique_id=1592008186 instance=ExtResource("1_u8cu3")]
-position = Vector2(260, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
