@@ -86,8 +86,23 @@ func _on_area_2d_mouse_exited() -> void:
 	hovered_over=false
 	
 var selection_color_fade=0
-func attack(card):
-	pass
+func attack(target_card):
+	variable["Health"]-=target_card.variable["Attack"]
+	target_card.variable["Health"]-=variable["Attack"]
+	animations.append({
+							"Type":"Damaged",
+							"Damage":target_card.variable["Attack"],
+							"TTL":0,
+							"MAX TTL":0.4
+							})
+	target_card.animations.append({
+							"Type":"Damaged",
+							"Damage":variable["Attack"],
+							"TTL":0,
+							"MAX TTL":0.4
+							})
+	update_visually()
+	target_card.update_visually()
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

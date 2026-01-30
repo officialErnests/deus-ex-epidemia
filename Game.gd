@@ -303,11 +303,17 @@ func _process(delta: float) -> void:
 		elif UI["Action"]["Type"]=="Attack":
 			var Ui=UI["Action"]
 			Ui["Time"]+=delta
+			Ui["Attacker"].holder.z_index=20
+			Ui["Attacker"].z_index=2
 			#So, we have 4 stages in the attack stage, which will be reduced to three, after which the waiting is called again.
 			if Ui["Time"]>0.25 and Ui["Time"]<0.5:
 				var movement_q=(Ui["Time"]-0.25)/0.25
+				var pos_diff=abs(Ui["Alpha Pos"].x-Ui["Beta Pos"].x)/100
 				movement_q=pow(movement_q,2)
-				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(1-movement_q)+Ui["Beta Pos"]*movement_q
+				var movement_x=movement_q/(pos_diff+3)*(pos_diff+1)
+				Ui["Attacker"].holder.global_position.x=Ui["Alpha Pos"].x*(1-movement_x)+Ui["Beta Pos"].x*movement_x
+				Ui["Attacker"].holder.global_position.y=Ui["Alpha Pos"].y*(1-movement_q/3)+Ui["Beta Pos"].y*movement_q/3
+				
 				#print(Ui["Attacker"].global_position)
 				apex_card_battle_flag=false
 			elif 0.5<Ui["Time"] and Ui["Time"]<0.75:
@@ -315,11 +321,40 @@ func _process(delta: float) -> void:
 					apex_card_battle_flag=true
 					Ui["Attacker"].attack(Ui["Defender"])
 				var movement_q=(Ui["Time"]-0.5)/0.25
-				movement_q=pow(movement_q,0.5)
-				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]*(movement_q)+Ui["Beta Pos"]*(1-movement_q)
+				var pos_diff=abs(Ui["Alpha Pos"].x-Ui["Beta Pos"].x)/100
+				var movement_x=1-(1-pow(movement_q,0.5))/(pos_diff+3)*(pos_diff+1)
+				movement_q=1-(1-pow(movement_q,0.5))/3
+				Ui["Attacker"].holder.global_position.x=Ui["Alpha Pos"].x*(movement_x)+Ui["Beta Pos"].x*(1-movement_x)
+				Ui["Attacker"].holder.global_position.y=Ui["Alpha Pos"].y*(movement_q)+Ui["Beta Pos"].y*(1-movement_q)
+				
 			elif Ui["Time"]>0.75:
+				Ui["Attacker"].holder.z_index=-10
 				Ui["Attacker"].holder.global_position=Ui["Alpha Pos"]
 				UI["Action"]={
 					"Type":"Wait",
 					"Time Left":0.25
 				}
+				var removed_friendly=[]
+				for i in battle.friendly_team:
+					if i.variable["Health"]<=0:
+						removed_friendly.append(i)
+				for i in removed_friendly:
+					battle.friendly_team.remove(i)
+				var removed_enemy=[]
+				for i in battle.friendly_team:
+					if i.variable["Health"]<=0:
+						removed_enemy.append(i)
+				for i in removed_enemy:
+					battle.enemy_team.remove(i)
+				if len(battle.friendly_team)==0:
+					UI["Action"]={
+						"Type":"Loss",
+						"Time":0
+					}
+				if len(battle.enemy_team)==0:
+					UI["Action"]={
+						"Type":"Victory",
+						"Time":0
+					}
+				
+				
