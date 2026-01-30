@@ -1,0 +1,11 @@
+{
+	"Type":1,
+	"Name":"Hercules",
+	"Description":"",
+	"Cost":3,
+	"Attack":4,
+	"Health":5,
+	"Pool":"Greek Heroes",
+	"Effects":[],
+	"Dev Comment":" Big guy with good stats for the cost. Doesn't scale, but is great on it's own"
+}

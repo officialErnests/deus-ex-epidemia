@@ -1,0 +1,24 @@
+{
+	"Type":1,
+	"Name":"Psyche",
+	"Description":"Whenever she is attacked, she gains +2 health",
+	"Cost":3,
+	"Attack":1,
+	"Health":5,
+	"Pool":"Greek Heroes",
+	"Effects":[
+		{
+			"Trigger":"Defending",
+			"Effect List":[
+				{
+					"Type":"Modify Variable",
+					"Target":"self",
+					"Variable Name":"Health",
+					"Operation":"+",
+					"Value":2
+				}
+			]
+		}
+	],
+	"Dev Comment":"Gets +2 health whenever she is attacked. "
+}

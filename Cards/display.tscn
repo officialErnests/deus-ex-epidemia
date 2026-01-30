@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp7v0s45ot2v4"]
+
+[ext_resource type="Script" uid="uid://c5kxkradtnvx1" path="res://Cards/display.gd" id="1_e47lx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqdgr"]
+line_spacing = 2.0
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="Display" type="Node2D"]
+script = ExtResource("1_e47lx")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Give target minion +1 attack"
+label_settings = SubResource("LabelSettings_iqdgr")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 2
