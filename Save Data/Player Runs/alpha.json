@@ -95,6 +95,108 @@
 					"Tribe": "Neutral",
 					"Type": 1.0
 				}
+			},
+			{
+				"4": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 8.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -199,6 +301,179 @@
 					"Tribe": "Neutral",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 7.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 12.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 5.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -291,6 +566,236 @@
 					"Properties": [
 						"Immune While Attacking"
 					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 10.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 15.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 9.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 11.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
 					"Tribe": "Neutral",
 					"Type": 1.0
 				}
@@ -418,6 +923,121 @@
 					"Tribe": "Neutral",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 14.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 19.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -542,6 +1162,253 @@
 					"Properties": [
 						"Immune While Attacking"
 					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 18.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 26.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
 					"Tribe": "Neutral",
 					"Type": 1.0
 				}

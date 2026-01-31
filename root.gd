@@ -16,7 +16,10 @@ func _ready() -> void:
 			Game.card_piles["Hand"].card_pile.append(new_card)
 			new_card.belongs_to_pile="Hand"
 			new_card.changed_card_pile()
-	Game.new_shop()
+	if Game.will_start_new_game:
+		Game.start_new_game()
+	else:
+		Game.new_shop()
 	
 func get_warbrand():
 	var warbrand_cards={}

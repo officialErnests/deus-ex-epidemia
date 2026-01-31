@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dg3gy5lqg5vr3"]
+[gd_scene format=3 uid="uid://btsl4hvgilbwo"]
 
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="1_qpsoe"]
 [ext_resource type="Script" uid="uid://banj8lxvx17n3" path="res://Scripts/menu/pause_menu.gd" id="1_yhqo1"]
-[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="2_wwohx"]
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="2_wwohx"]
 [ext_resource type="Script" uid="uid://dqf0o1hwo0wyr" path="res://Scripts/menu/floating_masks.gd" id="3_ioit5"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="3_jjjql"]
 [ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="4_mpryc"]
@@ -78,7 +78,6 @@ theme = ExtResource("2_wwohx")
 text = "Continue"
 
 [node name="Settings" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=902498945]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_wwohx")
 text = "Settings
@@ -87,7 +86,6 @@ text = "Settings
 script = ExtResource("4_yhqo1")
 
 [node name="Exit" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=1637150840]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_wwohx")
 text = "Exit to main menu"

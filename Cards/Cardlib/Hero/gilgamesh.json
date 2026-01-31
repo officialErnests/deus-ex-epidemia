@@ -10,6 +10,8 @@
 	"Pool":"I",
     "Effects":[
         {
+        "Trigger":"ETB",
+			"Effect List":[{
 					"Type":"Target",
 					"Assign Variable":"Target",
 					"Global":0,
@@ -30,4 +32,5 @@
 					"Operation":"+",
 					"Value":1	
 				}]
+                }]
 }

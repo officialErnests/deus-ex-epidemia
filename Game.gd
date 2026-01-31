@@ -9,7 +9,7 @@ var card_index={}
 var card_types={}
 var card_piles={}
 var card_pools={}
-var variable={
+var default_variable={
 	"Max Gold":2,
 	"Max Gold Gain Left":8,
 	"Gold":0,
@@ -17,6 +17,7 @@ var variable={
 	"Shop Card Count":3,
 	"Floor":-1,
 }
+var variable=default_variable.duplicate()
 var shop_card_pool=[]
 var shop_pools=[]
 @onready var card_scene=preload("res://Cards/card.tscn")
@@ -242,6 +243,19 @@ func fuck_this_shit():
 		"Where?":"IN THE ASS",
 		"Action":"Nuh-uh, your mom."
 	}
+	for card in existing_cards.duplicate():
+		remove_card(card)
+var will_start_new_game=false
+func start_new_game():
+	variable=default_variable.duplicate()
+	process_on_hold=false
+	effect_stack=[]
+	resetUI()
+	new_shop()
+	shop_card_pool=[]
+	shop_pools=[]
+	shop_add_pool("I")
+	will_start_new_game=false
 func _ready():
 	load_card_types()
 	load_card_index()

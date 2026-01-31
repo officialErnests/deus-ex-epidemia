@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dqf0o1hwo0wyr" path="res://Scripts/menu/floating_masks.gd" id="1_b55im"]
 [ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="2_fxueo"]
 [ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_ls046"]
-[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="3_p6udj"]
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="3_p6udj"]
 [ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="4_4utaq"]
 [ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_h6oay"]
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_scqlf"]
@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_4utaq"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_scqlf"]
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="11_h6oay"]
-[ext_resource type="PackedScene" uid="uid://b147g85a43npc" path="res://Scenes/menus/credits_menu.tscn" id="12_scqlf"]
+[ext_resource type="PackedScene" path="res://Scenes/menus/credits_menu.tscn" id="12_scqlf"]
 [ext_resource type="PackedScene" uid="uid://e5i2p861xdcf" path="res://Scenes/tutorial/main_tutorial.tscn" id="12_sho4w"]
-[ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_a2x54"]
+[ext_resource type="PackedScene" path="res://Scenes/menus/settings.tscn" id="13_a2x54"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b55im"]
 shader = ExtResource("1_1bxdl")
@@ -84,6 +84,7 @@ theme = ExtResource("3_p6udj")
 text = "PLAY"
 script = ExtResource("9_4utaq")
 to_scene = ExtResource("11_h6oay")
+root = true
 
 [node name="Tutorial" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=1644677788]
 layout_mode = 2
