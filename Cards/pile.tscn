@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://lir46y366vjr"]
+[gd_scene format=3 uid="uid://lir46y366vjr"]
 
-[ext_resource type="Script" uid="uid://cvf65m7jiynlw" path="res://Cards/pile.gd" id="1_f5ori"]
+[ext_resource type="Script" uid="uid://dv8jfw71tualc" path="res://Cards/pile.gd" id="1_f5ori"]
 [ext_resource type="PackedScene" uid="uid://bmb7mohedvfk" path="res://Cards/card.tscn" id="2_erfk3"]
 
-[node name="Pile" type="Node2D"]
+[node name="Pile" type="Node2D" unique_id=294591946]
 script = ExtResource("1_f5ori")
+location = &"res://Cards/pile.gd"
 
-[node name="Card" parent="." instance=ExtResource("2_erfk3")]
+[node name="Card" parent="." unique_id=689902366 instance=ExtResource("2_erfk3")]
 visible = false
