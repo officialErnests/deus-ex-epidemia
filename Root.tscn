@@ -179,6 +179,7 @@ offset_left = 750.0
 offset_top = 51.0
 offset_right = 852.0
 offset_bottom = 82.0
+theme = ExtResource("6_f5i44")
 text = "Refresh (1$)"
 
 [node name="MoneyCounter" type="Label" parent="Shop" unique_id=680717458]

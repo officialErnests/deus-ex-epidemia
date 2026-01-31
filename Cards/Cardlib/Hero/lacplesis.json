@@ -6,6 +6,7 @@
 	"Attack":2,
 	"Health":2,
 	"Pool":"III",
+    "Tribe":"Hero",
 	"Effects":[{
 			"Trigger":"ETB",
 			"Effect List":[

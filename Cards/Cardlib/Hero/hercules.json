@@ -6,5 +6,6 @@
 	"Attack":3,
 	"Health":4,
 	"Pool":"I",
+    "Tribe":"Hero",
     "Effects":[]
 }
