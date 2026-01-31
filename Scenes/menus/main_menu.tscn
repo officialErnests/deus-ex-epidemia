@@ -4,6 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b55im"]
 shader = ExtResource("1_1bxdl")
+shader_parameter/fromTop = 0.2
 
 [node name="Control" type="Control" unique_id=1116063683]
 layout_mode = 3
@@ -15,7 +16,10 @@ grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1664391219]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1079640352]
+
 [node name="BG_black" type="CanvasLayer" parent="." unique_id=2007944531]
+layer = -1
 
 [node name="ColorRect2" type="ColorRect" parent="BG_black" unique_id=2016713202]
 z_index = 1

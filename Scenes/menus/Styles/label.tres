@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b6q43iqd74g3p"]
+
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="1_x87hs"]
+
+[resource]
+font = ExtResource("1_x87hs")
+font_size = 289
+font_color = Color(0.52844554, 0.40470982, 8.663535e-07, 1)
+outline_size = 5
+outline_color = Color(0.68071985, 0.58824456, 1.92523e-07, 1)
