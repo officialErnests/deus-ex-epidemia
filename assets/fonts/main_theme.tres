@@ -1,0 +1,71 @@
+[gd_resource type="Theme" format=3 uid="uid://d06pntua37tpb"]
+
+[ext_resource type="FontFile" uid="uid://dy15sa1jk333x" path="res://assets/fonts/Kalam-Light.ttf" id="1_gvjhl"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="1_oktg4"]
+
+[sub_resource type="FontVariation" id="FontVariation_5qjb8"]
+base_font = ExtResource("1_oktg4")
+variation_embolden = -0.79
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oktg4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.34, 0.34, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qjb8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 100
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.57, 0.57, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpmd2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 50
+border_width_top = 10
+border_width_right = 50
+border_width_bottom = 10
+border_color = Color(0, 0.57, 0.57, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfeqf"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.57, 0.57, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8ch2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 50
+border_width_top = 10
+border_width_right = 50
+border_width_bottom = 10
+border_color = Color(0, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="FontVariation" id="FontVariation_oktg4"]
+base_font = ExtResource("1_gvjhl")
+variation_embolden = -2.0
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = SubResource("FontVariation_5qjb8")
+Button/styles/disabled = SubResource("StyleBoxFlat_oktg4")
+Button/styles/focus = SubResource("StyleBoxFlat_5qjb8")
+Button/styles/hover = SubResource("StyleBoxFlat_mpmd2")
+Button/styles/normal = SubResource("StyleBoxFlat_kfeqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_w8ch2")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 0, 0, 1)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 200
+Label/fonts/font = SubResource("FontVariation_oktg4")

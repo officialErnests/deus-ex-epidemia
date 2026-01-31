@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://lir46y366vjr" path="res://Cards/pile.tscn" id="1_gxo8o"]
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
 [ext_resource type="Script" path="res://shop.gd" id="2_170dk"]
-[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="2_g0d6c"]
+[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3ipfy"]
-font = ExtResource("5_3ipfy")
-font_size = 52
-font_color = Color(0.52844554, 0.40470982, 8.663535e-07, 1)
-outline_size = 5
-outline_color = Color(0.68071985, 0.58824456, 1.92523e-07, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0g3p"]
+shader = ExtResource("2_g0d6c")
+shader_parameter/fromTop = 0.2
 
 [node name="Root" type="Node2D" unique_id=1545327209]
 script = ExtResource("1_cwqeq")
@@ -23,6 +21,24 @@ script = ExtResource("1_cwqeq")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=259659905]
 anchor_mode = 0
 editor_draw_limits = true
+
+[node name="BG_black" type="CanvasLayer" parent="Camera2D" unique_id=1402798585]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/BG_black" unique_id=1731198730]
+z_index = 1
+material = SubResource("ShaderMaterial_n0g3p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/BG_black" unique_id=1688850156]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [node name="Hand" parent="." unique_id=1261054207 instance=ExtResource("1_gxo8o")]
 position = Vector2(572, 648)
@@ -131,10 +147,18 @@ _type = "ShopSlot"
 placeable = true
 
 [node name="Enter Battle Button" type="Button" parent="Shop" unique_id=277183112]
-offset_left = 1030.0
-offset_top = 253.0
-offset_right = 1132.0
-offset_bottom = 284.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 951.0
+offset_top = 254.0
+offset_right = 1145.0
+offset_bottom = 326.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("6_f5i44")
 text = "Begin Battle"
 
 [node name="Refresh Shop" type="Button" parent="Shop" unique_id=532905941]
@@ -149,8 +173,9 @@ offset_left = 916.0
 offset_top = 180.0
 offset_right = 1134.0
 offset_bottom = 264.0
+theme = ExtResource("6_f5i44")
+theme_override_font_sizes/font_size = 51
 text = "3$"
-label_settings = SubResource("LabelSettings_3ipfy")
 horizontal_alignment = 2
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]

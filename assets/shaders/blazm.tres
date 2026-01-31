@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://r8rcrm42jhpj"]
+
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="1_0buqb"]
+
+[resource]
+shader = ExtResource("1_0buqb")
+shader_parameter/fromTop = 0.2
