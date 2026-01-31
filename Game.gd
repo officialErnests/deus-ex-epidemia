@@ -254,10 +254,13 @@ func deload_hand_data():
 	return card_data
 var roots=0
 func end_battle():
-	
 	for card in existing_cards:
 		card.queue_free()
 	existing_cards.clear()
+	if UI["Action"]["Result"]=="Lose":
+		variable["Candles"]-=1
+		if variable["Candles"]==0: #TODO: REPLACE WITH GAME OVER SCENE
+			get_tree().change_scene_to_file("res://Root.tscn")
 	get_tree().change_scene_to_file("res://Root.tscn")
 func refresh_shop():
 	for i in range(7):
