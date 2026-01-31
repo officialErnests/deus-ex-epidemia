@@ -14,11 +14,16 @@ var variable={
 	"Max Gold Gain Left":8,
 	"Gold":0,
 	"Candles":3,
-	"Shop Card Count":3
+	"Shop Card Count":3,
+	"Floor":-1,
 }
 var shop_card_pool=[]
+var shop_pools=[]
 @onready var card_scene=preload("res://Cards/card.tscn")
 #Debug functions:
+
+var battle_pools=[]
+#Array of arrays of arrays of card_data
 
 var log_index=0
 #Cool Hacker Log
@@ -66,6 +71,22 @@ func load_card_types():
 		card_types[json["ID"]]=json
 	chl("Loaded "+str(file_list.size())+" Card Types",1)
 
+func load_battle_pools():
+	var save_location="res://Save Data/Player Runs/alpha.json"
+	#var default_location="res://Save Data/Default/enemy_list.json"
+	battle_pools=JSON.parse_string(FileAccess.get_file_as_string(save_location))["Battles"]
+	#var default_battle_data=JSON.parse_string(FileAccess.get_file_as_string(default_location))["Battles"]
+	for floor_pool in battle_pools:
+		for individual_battle in floor_pool:
+			var new_battle={}
+			for individual_fighter in individual_battle:
+				new_battle[int(individual_fighter)]=individual_battle[individual_fighter]
+func auto_save_battles():
+	var saveable_data=JSON.stringify({"Battles":battle_pools},"\t")
+	var file = FileAccess.open("res://Save Data/Player Runs/alpha.json", FileAccess.WRITE)
+	if file:
+		file.store_string(saveable_data)
+		file.close()
 #Mainloop functions:
 var GlobalVariables={}
 var selected_card=null
@@ -94,6 +115,7 @@ func process_stack():
 			"Assigning To Variable":"#"+processed_effect["Assign Variable"],
 			"Focusing On Card":processed_effect["Card Parent"],
 			"Animation Time":0,
+			"Global":"Global" in processed_effect,
 			"Max Animation Time":0.3/debug_c.GAME_SPEED,
 			#Starts at scale of 1, ends on scale of 4
 			"Start Position":processed_effect["Card Parent"].global_position,
@@ -142,7 +164,7 @@ func process_stack():
 		for card in existing_cards:
 			card.queue_free()
 		existing_cards.clear()
-		print(UI["Party Friendly"])
+		#print(UI["Party Friendly"])
 		get_tree().change_scene_to_file("res://Battle.tscn")
 	effect_stack.pop_at(0)
 func ilina(x): #In List If Not Already: Places the item into a list if it isn't in one already
@@ -196,14 +218,21 @@ func draw_from_pile_to_pile(from_pile,to_pile):
 	drawn_card.changed_card_pile()
 
 func shop_add_pool(pool_name):
-	for i in card_pools[pool_name]:
-		if not i in shop_card_pool:
-			shop_card_pool.append(i)
+	if not pool_name in shop_pools:
+		shop_pools.append(pool_name)
+		for i in card_pools[pool_name]:
+			if not i in shop_card_pool:
+				shop_card_pool.append(i)
 func new_shop():
 	if variable["Max Gold Gain Left"]>0:
 		variable["Max Gold Gain Left"]-=1
 		variable["Max Gold"]+=1
 	variable["Gold"]=variable["Max Gold"]
+	variable["Floor"]+=1
+	if variable["Floor"]==len(battle_pools):
+		print("GG, game won")
+		get_tree().change_scene_to_file("res://Scenes/menus/game_over.tscn")
+		return
 	resetUI()
 	refresh_shop()
 	
@@ -211,7 +240,8 @@ func _ready():
 	load_card_types()
 	load_card_index()
 	shop_add_pool("Greek Heroes")
-	shop_add_pool("Food I")
+	#shop_add_pool("Food I")
+	load_battle_pools()
 	
 var smallest_distance_to_mouse=-1
 var csd_card=null
@@ -228,8 +258,12 @@ var i_can_turn_off_a_card_is_being_placed_on_a_holder=false
 var UI={
 	"Type":"Shop"
 } #used to declare whether or not a card is being targeted, etc
+
 func finish_targeting():
-	GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
+	if UI["Global"]:
+		GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
+	else:
+		UI["Card Parent"].variable["%"+UI["Assigning To Variable"]]=UI["Targeted Card"]
 	UI["Focusing On Card"].scale=Vector2(1.,1.)
 	process_on_hold=false
 	resetUI()
@@ -260,7 +294,11 @@ func end_battle():
 	if UI["Action"]["Result"]=="Lose":
 		variable["Candles"]-=1
 		if variable["Candles"]==0: #TODO: REPLACE WITH GAME OVER SCENE
-			get_tree().change_scene_to_file("res://Root.tscn")
+			get_tree().change_scene_to_file("res://Scenes/menus/game_over.tscn")
+			return
+	if UI["Action"]["Result"]=="Win":
+		battle_pools[variable["Floor"]].append(UI["Party Friendly"])
+		auto_save_battles()
 	get_tree().change_scene_to_file("res://Root.tscn")
 func refresh_shop():
 	for i in range(7):
@@ -279,6 +317,7 @@ func remove_card(card):
 	card.queue_free()
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
+var WeHaveSelectedACardOnField=false
 func _process(delta: float) -> void:
 	if not i_can_turn_off_a_card_is_being_placed_on_a_holder:
 		a_card_is_being_placed_on_a_holder=false
@@ -304,11 +343,44 @@ func _process(delta: float) -> void:
 		UI["Animation Q"]=ease(UI["Animation Time"]/UI["Max Animation Time"],-2.0)
 		UI["Focusing On Card"].scale=Vector2(1+1.5*UI["Animation Q"],1+1.5*UI["Animation Q"])
 		UI["Focusing On Card"].position=(1-UI["Animation Q"])*UI["Start Position"]+UI["Animation Q"]*Vector2(937,322)
-	
+	if is_instance_valid(root):
+		root.drag_to_sell_popup.visible=WeHaveSelectedACardOnField
 	if UI["Type"]=="Battle":
 		if UI["Action"]["Type"]=="Wait":
 			UI["Action"]["Time Left"]-=delta
 			if UI["Action"]["Time Left"]<0:
+				
+				if len(battle.friendly_team)==0 and len(battle.enemy_team)==0:
+					UI["Action"]={
+						"Type":"Battle End",
+						"Result":"Draw",
+						"Letters Done":"",
+						"Letters Left":"Looks like you've scored a draw. Eh, good enough, you pass.$#",
+						"Time":0,
+						"Letter Cooldown":0,
+					}
+					return
+				elif len(battle.friendly_team)==0:
+					UI["Action"]={
+						"Type":"Battle End",
+						"Result":"Lose",
+						"Letters Done":"",
+						"Letters Left":"Bro, Play something. I'm taking one of your candles as a lesson.$#",
+						"Time":0,
+						"Letter Cooldown":0,
+					}
+					return
+				elif len(battle.enemy_team)==0:
+					UI["Action"]={
+						"Type":"Battle End",
+						"Result":"Win",
+						"Letters Done":"",
+						"Letters Left":"A glorious victory, as all your opponents have fallen. You may advance.$#",
+						"Time":0,
+						"Letter Cooldown":0,
+					}
+					return
+				
 				var Ui=UI["Action"]
 				var defenders=[]
 				var attacker=null
@@ -430,6 +502,8 @@ func _process(delta: float) -> void:
 						"Letter Cooldown":0,
 					}
 		elif UI["Action"]["Type"]=="Battle End":
+			if !is_instance_valid(battle):
+				return
 			var Ui=UI["Action"]
 			Ui["Time"]+=delta
 			var progress_q=min(max(0,Ui["Time"]-0.75)/1.5,1)

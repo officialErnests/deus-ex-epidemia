@@ -8,6 +8,9 @@ var hovered_over=false
 @export var location="On Field"
 #This is used to determine which slots are a part of players warbrand. 
 @export var placeable=false
+@onready var og_pos=global_position
+var original_position=Vector2(0,0)
+var is_behind=false
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -26,6 +29,14 @@ func _process(delta: float) -> void:
 			Game.a_card_is_being_placed_on_a_holder=true
 			Game.i_can_turn_off_a_card_is_being_placed_on_a_holder=true
 			Game.card_holder_where_a_card_is_placed=self
+	if location=="On Field" and Game.selected_card!=null:
+		if Game.WeHaveSelectedACardOnField:
+			if original_position[0]<Game.selected_card.global_position[0]:
+				global_position=original_position+Vector2(-50,0)
+				is_behind=true
+			else:
+				global_position=original_position+Vector2(+50,0)
+				is_behind=false
 func _on_area_2d_mouse_entered() -> void:
 	hovered_over=true
 
