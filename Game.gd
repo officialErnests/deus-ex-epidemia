@@ -115,6 +115,7 @@ func process_stack():
 			"Assigning To Variable":"#"+processed_effect["Assign Variable"],
 			"Focusing On Card":processed_effect["Card Parent"],
 			"Animation Time":0,
+			"Global":"Global" in processed_effect,
 			"Max Animation Time":0.3/debug_c.GAME_SPEED,
 			#Starts at scale of 1, ends on scale of 4
 			"Start Position":processed_effect["Card Parent"].global_position,
@@ -257,8 +258,12 @@ var i_can_turn_off_a_card_is_being_placed_on_a_holder=false
 var UI={
 	"Type":"Shop"
 } #used to declare whether or not a card is being targeted, etc
+
 func finish_targeting():
-	GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
+	if UI["Global"]:
+		GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
+	else:
+		UI["Card Parent"].variable["%"+UI["Assigning To Variable"]]=UI["Targeted Card"]
 	UI["Focusing On Card"].scale=Vector2(1.,1.)
 	process_on_hold=false
 	resetUI()

@@ -1,0 +1,69 @@
+{
+	"Type":1,
+	"Name":"Lacplesis",
+	"Description":"ETB: Devours a Creature, gaining double it's stats",
+	"Cost":4,
+	"Attack":2,
+	"Health":2,
+	"Pool":"Hero III",
+	"Effects":[{
+			"Trigger":"ETB",
+			"Effect List":[
+				{
+					"Type":"Target",
+					"Assign Variable":"Target",
+					"Global":0,
+					"Target Filter":{
+						"Location":"On Field",
+                        "Tribe":"Creature"
+					}
+				},
+                {
+					"Type":"From Target Copy Variable To",
+					"Name":"Inherited_Health",
+                    "Global":0,
+					"Target":"%Target",
+                    "Variable":"Health"
+				},
+                {
+					"Type":"From Target Copy Variable To",
+					"Name":"Inherited_Attack",
+                    "Global":0,
+					"Target":"%Target",
+                    "Variable":"Attack"
+				},
+                {
+                    "Type":"Modify Variable",
+                    "Target":"self",
+                    "Variable Name":"Inherited_Health",
+                    "Operation":"*",
+                    "Value":2
+                },
+                {
+                    "Type":"Modify Variable",
+                    "Target":"self",
+                    "Variable Name":"Inherited_Attack",
+                    "Operation":"*",
+                    "Value":2
+                },
+                {
+                    "Type":"Modify Variable",
+                    "Target":"self",
+                    "Variable Name":"Attack",
+                    "Operation":"+",
+                    "Value":"%Inherited_Attack"
+                },
+                {
+                    "Type":"Modify Variable",
+                    "Target":"self",
+                    "Variable Name":"Health",
+                    "Operation":"+",
+                    "Value":"%Inherited_Health"
+                },
+                {
+                    "Type":"Destroy Card",
+                    "Target":"%Target"
+                }
+            ]}],
+	"Dev Comment":"Lacplesis, devours a friendly creature when played, gaining double the creature's stats"
+}
