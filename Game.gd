@@ -236,10 +236,16 @@ func new_shop():
 	resetUI()
 	refresh_shop()
 	
+func fuck_this_shit():
+	UI={
+		"Type":"Fucked",
+		"Where?":"IN THE ASS",
+		"Action":"Nuh-uh, your mom."
+	}
 func _ready():
 	load_card_types()
 	load_card_index()
-	shop_add_pool("Greek Heroes")
+	shop_add_pool("I")
 	#shop_add_pool("Food I")
 	load_battle_pools()
 	

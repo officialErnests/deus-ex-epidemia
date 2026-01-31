@@ -107,30 +107,30 @@ func _on_area_2d_mouse_exited() -> void:
 							})
 var selection_color_fade=0
 func attack(target_card):
-	variable["Health"]-=target_card.variable["Attack"]
-	target_card.variable["Health"]-=variable["Attack"]
-	animations.append({
-							"Type":"Damaged",
-							#"Damage":target_card.variable["Attack"],
-							"TTL":0,
-							"MAX TTL":0.4
-							})
-	target_card.animations.append({
-							"Type":"Damaged",
-							#"Damage":variable["Attack"],
-							"TTL":0,
-							"MAX TTL":0.4
-							})
-	get_hit(target_card.variable["Attack"])
-	target_card.get_hit(variable["Attack"])
-	if variable["Health"]<=0:
-		will_die=true
+	take_damage(target_card.variable["Attack"])
+	target_card.take_damage(variable["Attack"])
 	if target_card.variable["Health"]<=0:
 		target_card.will_die=true
 	
 	update_visually()
 	target_card.update_visually()
+func take_damage(damage):
+	if "Buffer" in variable:
+		if variable["Buffer"]>0:
+			variable["Buffer"]-=1
+			get_hit(0)
+			return
+	variable["Health"]-=damage
+	get_hit(damage)
+	if variable["Health"]<=0:
+		will_die=true
 func get_hit(damage):
+	animations.append({
+		"Type":"Damaged",
+		#"Damage":target_card.variable["Attack"],
+		"TTL":0,
+		"MAX TTL":0.4
+		})
 	$HitFx.visible=true
 	$HitFx/Label.text="-"+str(int(damage))
 func die_in_battle():
@@ -234,11 +234,6 @@ func deselect():
 			return 
 			
 			#holder.global_position=holder.og_pos
-			animations.append({
-				"Type":"Deselected",
-				"TTL":0,
-				"MAX TTL":0.12
-				}) #let's say, it gets smaller by 10 %
 
 var just_was_selected=false
 

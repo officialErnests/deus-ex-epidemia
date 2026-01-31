@@ -1,0 +1,10 @@
+{
+	"Type":1,
+	"Name":"Hercules",
+	"Description":"",
+	"Cost":3,
+	"Attack":3,
+	"Health":4,
+	"Pool":"I",
+    "Effects":[]
+}

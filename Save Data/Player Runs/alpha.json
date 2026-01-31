@@ -39,6 +39,21 @@
 					"Pool": "Greek Heroes",
 					"Type": 1.0
 				}
+			},
+			{
+				"3": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -64,6 +79,20 @@
 					"Name": "Hercules",
 					"Playable": 1.0,
 					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 9.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 10.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
 					"Type": 1.0
 				}
 			}
@@ -141,6 +170,33 @@
 					"Name": "Psyche",
 					"Playable": 1.0,
 					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			},
+			{
+				"2": {
+					"Attack": 5.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 9.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 10.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Neutral",
 					"Type": 1.0
 				}
 			}

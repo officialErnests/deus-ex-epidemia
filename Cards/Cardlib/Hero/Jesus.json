@@ -1,0 +1,12 @@
+{
+	"Type":1,
+	"Name":"Jesus",
+	"Description":"Reborn I\n Taunt II",
+	"Cost":2,
+	"Attack":0,
+	"Health":3,
+    "Taunt":2,
+    "Reborn":1,
+	"Pool":"II",
+    "Effects":[]
+}

@@ -1,0 +1,11 @@
+{
+	"Type":1,
+	"Name":"Achilles",
+	"Description":"Ignores the first 2 times it would take damage",
+	"Cost":4,
+	"Attack":2,
+	"Health":1,
+    "Buffer":2,
+	"Pool":"I",
+    "Effects":[]
+}

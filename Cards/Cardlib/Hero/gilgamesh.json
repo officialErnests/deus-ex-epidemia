@@ -1,14 +1,15 @@
+
 {
-	"Type":0,
-	"Name":"Banana",
-	"Description":"Choose a creature, give it +1/+1",
-	"Mana":1,
-	"Pool":"Food I",
-	"Effects":[
-		{
-			"Trigger":"ETB",
-			"Effect List":[
-				{
+	"Type":1,
+	"Name":"Gilgamesh",
+	"Description":"Play: Give a friendly minion +1/+2",
+	"Cost":2,
+	"Attack":2,
+	"Health":2,
+    "Buffer":2,
+	"Pool":"I",
+    "Effects":[
+        {
 					"Type":"Target",
 					"Assign Variable":"Target",
 					"Global":0,
@@ -19,19 +20,14 @@
 				{
 					"Type":"Modify Variable",
 					"Target":"#Target",
+					"Variable Name":"Health",
+					"Operation":"+",
+					"Value":2	
+				},{
+					"Type":"Modify Variable",
+					"Target":"#Target",
 					"Variable Name":"Attack",
 					"Operation":"+",
 					"Value":1	
-				},
-				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Health",
-					"Operation":"+",
-					"Value":1	
-				}
-
-			]
-		}
-	]
+				}]
 }

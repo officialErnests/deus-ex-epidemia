@@ -5,14 +5,13 @@
 	"Cost":4,
 	"Attack":2,
 	"Health":2,
-	"Pool":"Hero III",
+	"Pool":"III",
 	"Effects":[{
 			"Trigger":"ETB",
 			"Effect List":[
 				{
 					"Type":"Target",
 					"Assign Variable":"Target",
-					"Global":0,
 					"Target Filter":{
 						"Location":"On Field",
                         "Tribe":"Creature"
