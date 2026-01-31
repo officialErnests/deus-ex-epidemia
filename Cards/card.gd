@@ -2,6 +2,7 @@ extends Node2D
 
 #Card Internal Data
 @onready var TextDisplay=preload("res://Cards/display.tscn")
+@onready var Area=$Area2D
 var variable={}
 var activated_on_triggers={}
 var card_type=null
@@ -10,6 +11,7 @@ var belongs_to_pile=null
 var holder=null
 var immovable=true
 var location="Void"
+var will_die=false
 func setup(data:Dictionary):
 	variable=data.duplicate(true)
 	card_type=variable["Type"]
@@ -121,6 +123,11 @@ func attack(target_card):
 							})
 	get_hit(target_card.variable["Attack"])
 	target_card.get_hit(variable["Attack"])
+	if variable["Health"]<=0:
+		will_die=true
+	if target_card.variable["Health"]<=0:
+		target_card.will_die=true
+	
 	update_visually()
 	target_card.update_visually()
 func get_hit(damage):
@@ -148,13 +155,16 @@ func _input(event):
 						belongs_to_pile="Hand"
 						holder.card_held=null
 						holder.scale=Vector2(0.7,0.7)
+						Area.scale=Vector2(1,1)
 						holder=null
 						Game.card_piles["Hand"].card_pile.append(self)
 						changed_card_pile()
+						if not "Food I" in Game.shop_pools:
+							Game.shop_add_pool("Food I")
 					return
 				if not selected:
 					if Game.selected_card==null: #Only if the player isn't selecting another card already
-						if Game.closest_card==self and not immovable:
+						if Game.closest_card==self:
 							selected=true #Then and only then this card is selected
 							Game.selected_card=self
 							animations.append({
@@ -162,29 +172,73 @@ func _input(event):
 								"TTL":0,
 								"MAX TTL":0.12
 							}) #let's say, it grows by 10 %
-				else:
-					if Game.selected_card==self: #Only if the player isn't selecting another card already
-						selected=false #Then and only then this card is selected
-						Game.selected_card_nullify_trig=true
-						if Game.a_card_is_being_placed_on_a_holder:
-							if variable["Type"]==0:
-								return
-							Game.card_piles[belongs_to_pile].card_pile.erase(self)
-							immovable=true
-							belongs_to_pile=null
-							Game.card_holder_where_a_card_is_placed.card_held=self
-							Game.card_holder_where_a_card_is_placed.placeable=false
-							play()
-							changed_card_pile()
-						else:
+							if immovable:
+								Game.WeHaveSelectedACardOnField=true
+								var passed=false
+								for iter_card_holder in Game.root.warbrand_slots:
+									if iter_card_holder==holder:
+										passed=true
+										continue
+									iter_card_holder.original_position=iter_card_holder.global_position+Vector2(50-100*int(passed),0)
+				else:				
+					deselect()
 							
-							animations.append({
-							"Type":"Deselected",
-							"TTL":0,
-							"MAX TTL":0.12
-							}) #let's say, it gets smaller by 10 %
-
-
+func deselect():
+	if Game.selected_card==self: #Only if the player isn't selecting another card already
+		selected=false #Then and only then this card is selected
+		Game.selected_card_nullify_trig=true
+		Game.WeHaveSelectedACardOnField=false
+		if not self.immovable:
+			if Game.a_card_is_being_placed_on_a_holder:
+				if variable["Type"]==0:
+					return
+				Game.card_piles[belongs_to_pile].card_pile.erase(self)
+				immovable=true
+				belongs_to_pile=null
+				Game.card_holder_where_a_card_is_placed.card_held=self
+				Game.card_holder_where_a_card_is_placed.placeable=false
+				play()
+				changed_card_pile()
+			else:
+				animations.append({
+				"Type":"Deselected",
+				"TTL":0,
+				"MAX TTL":0.12
+				}) #let's say, it gets smaller by 10 %
+		else:
+			var sold=holder.global_position.y==100
+			var old_place=Game.root.warbrand_slots.find(holder)
+			var new_place=0
+			var new_order=[]
+			for iter_card_holder_id in range(len(Game.root.warbrand_slots)):
+				var iter_card_holder=Game.root.warbrand_slots[iter_card_holder_id]
+				iter_card_holder.global_position=iter_card_holder.og_pos
+				iter_card_holder.scale=Vector2(0.7,0.7)
+				if iter_card_holder==holder:
+					continue
+				if iter_card_holder.is_behind:
+					new_place=iter_card_holder_id
+				
+				new_order.append(iter_card_holder.card_held)
+			if old_place<new_place or new_place==0:
+				new_order.insert(new_place,self)
+			else:
+				new_order.insert(new_place+1,self)
+			if not sold:
+				for i in range(7):
+					Game.root.warbrand_slots[i].card_held=new_order[i]
+			else:
+				holder.card_held=null
+				Game.remove_card(self)
+				Game.variable["Gold"]+=1
+			return 
+			
+			#holder.global_position=holder.og_pos
+			animations.append({
+				"Type":"Deselected",
+				"TTL":0,
+				"MAX TTL":0.12
+				}) #let's say, it gets smaller by 10 %
 
 var just_was_selected=false
 
@@ -197,18 +251,26 @@ func _process(delta: float) -> void:
 				if progress_q>1:
 					animations.erase(iter_animation)
 					scale=Vector2(1.1,1.1)
+					if holder!=null:
+						holder.scale=scale*0.7
 				else:
 					progress_q=sin(progress_q*PI/2)
 					scale=Vector2(1+progress_q/10,1+progress_q/10)
+					if holder!=null:
+						holder.scale=scale*0.7
 			elif iter_animation["Type"]=="Deselected":
 				iter_animation["TTL"]+=delta
 				var progress_q=iter_animation["TTL"]/iter_animation["MAX TTL"]
 				if progress_q>1:
 					animations.erase(iter_animation)
 					scale=Vector2(1,1)
+					if holder!=null:
+						holder.scale=scale*0.7
 				else:
 					progress_q=1-sin(progress_q*PI/2)
 					scale=Vector2(1+progress_q/10,1+progress_q/10)
+					if holder!=null:
+						holder.scale=scale*0.7
 			elif iter_animation["Type"]=="Move Towards Pile":
 				iter_animation["Progress"]+=delta*10
 				if iter_animation["Progress"]<=iter_animation["Max Progress"]:
@@ -241,9 +303,11 @@ func _process(delta: float) -> void:
 				if progress_q>1:
 					animations.erase(iter_animation)
 					holder.scale=Vector2(1.3,1.3)
+					Area.scale=Vector2(0.7/holder.scale[0],0.7/holder.scale[1])
 				else:
 					progress_q=sin(progress_q*PI/2)
 					holder.scale=Vector2(0.7+progress_q/10*6,0.7+progress_q/10*6)
+					Area.scale=Vector2(0.7/holder.scale[0],0.7/holder.scale[1])
 			elif iter_animation["Type"]=="Shop Deselected":
 				if holder==null:
 					animations.erase(iter_animation)
@@ -253,13 +317,24 @@ func _process(delta: float) -> void:
 				if progress_q>1:
 					animations.erase(iter_animation)
 					holder.scale=Vector2(0.7,0.7)
+					Area.scale=Vector2(0.7/holder.scale[0],0.7/holder.scale[1])
 				else:
 					progress_q=1-sin(progress_q*PI/2)
 					holder.scale=Vector2(0.7+progress_q/10*6,0.7+progress_q/10*6)
+					Area.scale=Vector2(0.7/holder.scale[0],0.7/holder.scale[1])
 	if selected:
-		global_position=get_viewport().get_mouse_position()
-		just_was_selected=true
+		if not immovable:
+			global_position=get_viewport().get_mouse_position()
+			just_was_selected=true
+		else:
+			holder.global_position.x=get_viewport().get_mouse_position().x
+			holder.global_position.y=clamp(get_viewport().get_mouse_position().y,100,holder.og_pos.y)
+			if holder.global_position.y==100:
+				deselect()
+			just_was_selected=true
 	else: #Card flies towards it's card pile
+		if holder!=null and location=="On Field":
+			pass
 		if belongs_to_pile!=null:
 			if !is_instance_valid(Game.card_piles[belongs_to_pile]):
 				belongs_to_pile=null

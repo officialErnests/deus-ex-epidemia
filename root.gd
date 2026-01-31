@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var camera=$Camera2D
 @onready var shop_slots=$"Shop/Shop Slots".get_children()
+@onready var warbrand_slots=$"Shop/Warbrand Slots".get_children()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Game.root=self

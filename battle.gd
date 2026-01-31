@@ -26,7 +26,8 @@ var enemy_position=Vector2(0,0)
 func _ready() -> void:
 	pass # Replace with function body.
 	Game.battle=self
-	load_teams(Game.UI["Party Friendly"],sample_enemy_team)
+	var pool_pool=Game.battle_pools[Game.variable["Floor"]]
+	load_teams(Game.UI["Party Friendly"],pool_pool.pick_random())
 	enemy_position=$Enemy.global_position
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

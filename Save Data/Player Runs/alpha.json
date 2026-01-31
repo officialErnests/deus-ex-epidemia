@@ -1,0 +1,188 @@
+{
+	"Battles": [
+		[
+			{
+				"1": {
+					"Attack": 3.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"4": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			},
+			{
+				"4": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 5.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 6.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"4": {
+					"Attack": 8.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 9.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 7.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 8.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"4": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "Whenever she is attacked, she gains +2 health",
+					"Dev Comment": "Gets +2 health whenever she is attacked. ",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								}
+							],
+							"Trigger": "Defending"
+						}
+					],
+					"Health": 9.0,
+					"Name": "Psyche",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 1.0,
+					"Cost": 3.0,
+					"Description": "Whenever she is attacked, she gains +2 health",
+					"Dev Comment": "Gets +2 health whenever she is attacked. ",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								}
+							],
+							"Trigger": "Defending"
+						}
+					],
+					"Health": 5.0,
+					"Name": "Psyche",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 9.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 10.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 11.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 12.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 13.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 14.0,
+					"Name": "Heracles",
+					"Type": 1.0
+				}
+			}
+		]
+	]
+}
