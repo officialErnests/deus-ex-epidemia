@@ -338,7 +338,8 @@ func _process(delta: float) -> void:
 		UI["Animation Q"]=ease(UI["Animation Time"]/UI["Max Animation Time"],-2.0)
 		UI["Focusing On Card"].scale=Vector2(1+1.5*UI["Animation Q"],1+1.5*UI["Animation Q"])
 		UI["Focusing On Card"].position=(1-UI["Animation Q"])*UI["Start Position"]+UI["Animation Q"]*Vector2(937,322)
-	
+	if is_instance_valid(root):
+		root.drag_to_sell_popup.visible=WeHaveSelectedACardOnField
 	if UI["Type"]=="Battle":
 		if UI["Action"]["Type"]=="Wait":
 			UI["Action"]["Time Left"]-=delta

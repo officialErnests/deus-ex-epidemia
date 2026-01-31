@@ -13,6 +13,12 @@ font_color = Color(0.52844554, 0.40470982, 8.663535e-07, 1)
 outline_size = 5
 outline_color = Color(0.68071985, 0.58824456, 1.92523e-07, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3ipfy"]
+font = ExtResource("5_3ipfy")
+font_size = 40
+outline_size = 6
+outline_color = Color(0.008202022, 0.008202025, 0.008202025, 1)
+
 [node name="Root" type="Node2D" unique_id=1545327209]
 script = ExtResource("1_cwqeq")
 
@@ -153,6 +159,14 @@ offset_bottom = 264.0
 text = "3$"
 label_settings = SubResource("LabelSettings_g0d6c")
 horizontal_alignment = 2
+
+[node name="G" type="Label" parent="Shop" unique_id=2029000570]
+offset_top = -24.0
+offset_right = 1152.0
+offset_bottom = 40.0
+text = "v Drag up to sell v"
+label_settings = SubResource("LabelSettings_3ipfy")
+horizontal_alignment = 1
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]
 [connection signal="button_down" from="Shop/Refresh Shop" to="." method="_on_refresh_shop_button_down"]
