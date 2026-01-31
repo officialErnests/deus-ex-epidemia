@@ -108,20 +108,21 @@ func process_stack():
 		var targeted_cards=filter_cards()
 		if "Target Filter" in processed_effect:
 			targeted_cards=filter_cards(processed_effect["Target Filter"])
-		process_on_hold=true
-		UI={
-			"Type":"Targeting",
-			"Targeted Card":null,
-			"Possible Targets":targeted_cards,
-			"Assigning To Variable":"#"+processed_effect["Assign Variable"],
-			"Focusing On Card":processed_effect["Card Parent"],
-			"Animation Time":0,
-			"Global":"Global" in processed_effect,
-			"Max Animation Time":0.3/debug_c.GAME_SPEED,
-			#Starts at scale of 1, ends on scale of 4
-			"Start Position":processed_effect["Card Parent"].global_position,
-			#ends on the right side at the right scale
-		}
+		if len(targeted_cards)>0:
+			process_on_hold=true
+			UI={
+				"Type":"Targeting",
+				"Targeted Card":null,
+				"Possible Targets":targeted_cards,
+				"Assigning To Variable":"#"+processed_effect["Assign Variable"],
+				"Focusing On Card":processed_effect["Card Parent"],
+				"Animation Time":0,
+				"Global":"Global" in processed_effect,
+				"Max Animation Time":0.3/debug_c.GAME_SPEED,
+				#Starts at scale of 1, ends on scale of 4
+				"Start Position":processed_effect["Card Parent"].global_position,
+				#ends on the right side at the right scale
+			}
 	if processed_effect["Type"]=="Move Card To":
 		var affected_cards=processed_effect["Card Parent"]
 		if processed_effect["Card"]=="$self":
@@ -135,7 +136,8 @@ func process_stack():
 		var affected_cards=[]
 		
 		if processed_effect["Target"][0]=="#": #Trying to access a global variable
-			affected_cards=ilina(GlobalVariables[processed_effect["Target"]])
+			if processed_effect["Target"] in GlobalVariables:
+				affected_cards=ilina(GlobalVariables[processed_effect["Target"]])
 		if processed_effect["Target"]=="self": #Trying to access a local variable
 			affected_cards=ilina(processed_effect["Card Parent"])
 		for affected_card in affected_cards:
@@ -187,6 +189,11 @@ func filter_cards(filter_data={}):
 		for i in all_cards:
 			if i.location!=filter_data["Location"]:
 				removed_cards.append(i)
+	if "Tribe" in filter_data:
+		for i in all_cards:
+			if i.variable["Tribe"]!=filter_data["Tribe"]:
+				removed_cards.append(i)
+	
 	for i in removed_cards:
 		if i in all_cards:
 			all_cards.erase(i)
@@ -317,7 +324,11 @@ func end_battle():
 			get_tree().change_scene_to_file("res://Scenes/menus/game_over.tscn")
 			return
 	if UI["Action"]["Result"]=="Win":
-		battle_pools[variable["Floor"]].append(UI["Party Friendly"])
+		if len(battle_pools)==variable["Floor"]+1:
+			battle_pools.append([UI["Party Friendly"]])
+			variable["Floor"]+=1
+		else:
+			battle_pools[variable["Floor"]].append(UI["Party Friendly"])
 		auto_save_battles()
 	get_tree().change_scene_to_file("res://Root.tscn")
 func refresh_shop():

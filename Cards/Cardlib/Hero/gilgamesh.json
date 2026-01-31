@@ -6,8 +6,8 @@
 	"Cost":2,
 	"Attack":2,
 	"Health":2,
-    "Buffer":2,
 	"Pool":"I",
+    "Tribe":"Hero",
     "Effects":[
         {
         "Trigger":"ETB",
