@@ -1,21 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmb7mohedvfk"]
+[gd_scene format=3 uid="uid://bmb7mohedvfk"]
 
-[ext_resource type="Texture2D" uid="uid://cdtu3hgfwqrya" path="res://Cards/default_card.png" id="1_470ht"]
 [ext_resource type="Script" uid="uid://b7vckjbcjmfom" path="res://Cards/card.gd" id="1_wsk7e"]
+[ext_resource type="Texture2D" uid="uid://bedtf40a77asj" path="res://assets/gimp/Card.png" id="2_7bc8n"]
+[ext_resource type="Texture2D" uid="uid://cbjt0jo14sbrr" path="res://assets/gimp/HitFx.png" id="3_w0fdq"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="4_7bc8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk7e"]
 size = Vector2(130, 200)
 
-[node name="Card" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_w0fdq"]
+font = ExtResource("4_7bc8n")
+font_size = 180
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Card" type="Node2D" unique_id=1273429154]
 script = ExtResource("1_wsk7e")
 
-[node name="DefaultCard" type="Sprite2D" parent="."]
-texture = ExtResource("1_470ht")
+[node name="DefaultCard" type="Sprite2D" parent="." unique_id=241932620]
+position = Vector2(-4.500003, 9.536743e-07)
+scale = Vector2(0.34999996, 0.35999998)
+texture = ExtResource("2_7bc8n")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=372976917]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056395607]
 shape = SubResource("RectangleShape2D_wsk7e")
+
+[node name="HitFx" type="Sprite2D" parent="." unique_id=155173046]
+visible = false
+z_index = 100
+position = Vector2(1, -8)
+scale = Vector2(0.197, 0.225)
+texture = ExtResource("3_w0fdq")
+
+[node name="Label" type="Label" parent="HitFx" unique_id=897885044]
+offset_left = -467.00513
+offset_top = -48.8889
+offset_right = 345.1776
+offset_bottom = 315.55554
+rotation = -0.21604861
+text = "-34"
+label_settings = SubResource("LabelSettings_w0fdq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

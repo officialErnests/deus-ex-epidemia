@@ -35,6 +35,7 @@
 				"X":120,
 				"Y":30
 			},
+			"Scale":1.5,
 			"Text Color":"#000000",
 			"Display Variable":"Name"
 		},
@@ -42,48 +43,52 @@
 			"Type":"Text Display",
 			"Position":{
 				"X":0,
-				"Y":-75
+				"Y":-34
 			},
 			"Size":{
 				"X":120,
 				"Y":100
 			},
+			"Scale":1.5,
 			"Display Variable":"Description"
 		},
 		{
 			"Type":"Text Display",
 			"Position":{
-				"X":100,
-				"Y":-95
+				"X":50,
+				"Y":-145
 			},
 			"Size":{
-				"X":30,
-				"Y":30
+				"X":120,
+				"Y":120
 			},
+			"Scale":4,
 			"Display Variable":"Cost"
 		},
 		{
 			"Type":"Text Display",
 			"Position":{
-				"X":-20,
-				"Y":85
+				"X":-50,
+				"Y":22
 			},
 			"Size":{
-				"X":60,
-				"Y":30
+				"X":120,
+				"Y":120
 			},
+			"Scale":4,
 			"Display Variable":"Attack"
 		},
 		{
 			"Type":"Text Display",
 			"Position":{
-				"X":80,
-				"Y":85
+				"X":50,
+				"Y":22
 			},
 			"Size":{
-				"X":60,
-				"Y":30
+				"X":120,
+				"Y":120
 			},
+			"Scale":4,
 			"Display Variable":"Health"
 		}
 		

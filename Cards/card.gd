@@ -10,8 +10,8 @@ var belongs_to_pile=null
 var holder=null
 var immovable=true
 var location="Void"
-func setup(data):
-	variable=data
+func setup(data:Dictionary):
+	variable=data.duplicate(true)
 	card_type=variable["Type"]
 	
 	#Makes sure all the required variables exist, (returning to default if they don't)
@@ -81,28 +81,58 @@ var distance_from_mouse=99999
 
 func _on_area_2d_mouse_entered() -> void:
 	hovered_over=true
+	if location=="Shop":
+		for i in animations:
+			if i["Type"]=="Shop Deselected":
+				animations.erase(i)
+		unique_animation({
+								"Type":"Shop Selected",
+								"TTL":0,
+								"MAX TTL":0.2
+							})
+				
 
 func _on_area_2d_mouse_exited() -> void:
 	hovered_over=false
-	
+	if location=="Shop":
+		for i in animations:
+			if i["Type"]=="Shop Selected":
+				animations.erase(i)
+		unique_animation({
+								"Type":"Shop Deselected",
+								"TTL":0,
+								"MAX TTL":0.2
+							})
 var selection_color_fade=0
 func attack(target_card):
 	variable["Health"]-=target_card.variable["Attack"]
 	target_card.variable["Health"]-=variable["Attack"]
 	animations.append({
 							"Type":"Damaged",
-							"Damage":target_card.variable["Attack"],
+							#"Damage":target_card.variable["Attack"],
 							"TTL":0,
 							"MAX TTL":0.4
 							})
 	target_card.animations.append({
 							"Type":"Damaged",
-							"Damage":variable["Attack"],
+							#"Damage":variable["Attack"],
 							"TTL":0,
 							"MAX TTL":0.4
 							})
+	get_hit(target_card.variable["Attack"])
+	target_card.get_hit(variable["Attack"])
 	update_visually()
 	target_card.update_visually()
+func get_hit(damage):
+	$HitFx.visible=true
+	$HitFx/Label.text="-"+str(int(damage))
+func die_in_battle():
+	animations.append({
+							"Type":"Die In Battle",
+							#"Damage":variable["Attack"],
+							"TTL":0,
+							"MAX TTL":0.7
+							})
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -174,7 +204,41 @@ func _process(delta: float) -> void:
 				else:
 					global_position=iter_animation["End Position"]
 					animations.erase(iter_animation)
-	
+			elif iter_animation["Type"]=="Damaged":
+				iter_animation["TTL"]+=delta
+				
+				if iter_animation["TTL"]>iter_animation["MAX TTL"]:
+					$HitFx.visible=false
+					$HitFx/Label.text=""
+					animations.erase(iter_animation)
+			elif iter_animation["Type"]=="Die In Battle":
+				iter_animation["TTL"]+=delta
+				var progress_q=max(0,iter_animation["TTL"]-0.3)/0.4
+				modulate=Color(1.,1.,1., 1-progress_q)
+				if iter_animation["TTL"]>iter_animation["MAX TTL"]:
+					animations.erase(iter_animation)
+					Game.existing_cards.erase(self)
+					queue_free()
+					return
+			elif iter_animation["Type"]=="Shop Selected":
+				iter_animation["TTL"]+=delta
+				var progress_q=iter_animation["TTL"]/iter_animation["MAX TTL"]
+				if progress_q>1:
+					animations.erase(iter_animation)
+					print("Holder Grow")
+					holder.scale=Vector2(1.3,1.3)
+				else:
+					progress_q=sin(progress_q*PI/2)
+					holder.scale=Vector2(1+progress_q/10*3,1+progress_q/10*3)
+			elif iter_animation["Type"]=="Shop Deselected":
+				iter_animation["TTL"]+=delta
+				var progress_q=iter_animation["TTL"]/iter_animation["MAX TTL"]
+				if progress_q>1:
+					animations.erase(iter_animation)
+					holder.scale=Vector2(1,1)
+				else:
+					progress_q=1-sin(progress_q*PI/2)
+					holder.scale=Vector2(1+progress_q/10,1+progress_q/10)
 	if selected:
 		global_position=get_viewport().get_mouse_position()
 		just_was_selected=true
@@ -265,5 +329,5 @@ func _process(delta: float) -> void:
 		else:
 			selection_color_fade=max(0,selection_color_fade-delta*15)
 			modulate=Color(1.0-selection_color_fade, 1.0, 1.0, 1.0)
-	else:
+	elif Game.UI["Type"]!="Battle":
 		modulate=Color(1.,1.,1.,1.)

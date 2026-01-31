@@ -8,7 +8,13 @@ var effect_stack=[]
 var card_index={}
 var card_types={}
 var card_piles={}
-
+var card_pools={}
+var variable={
+	"Max Gold":3,
+	"Gold":3,
+	"Candles":3,
+}
+var shop_card_pool=[]
 @onready var card_scene=preload("res://Cards/card.tscn")
 #Debug functions:
 
@@ -45,6 +51,9 @@ func load_card_index():
 	for i in file_list:
 		var json=JSON.parse_string(FileAccess.get_file_as_string(i))
 		card_index[json["Name"]]=json
+		if not json["Pool"] in card_pools:
+			card_pools[json["Pool"]]=[]
+		card_pools[json["Pool"]].append(json["Name"])
 	chl("Loaded "+str(file_list.size())+" Cards",1)
 	
 #Loads all the card types within Cards/CardTypes, and just stacks them in a list
@@ -124,8 +133,8 @@ func process_stack():
 			"Team":randi_range(0,1),
 			"Friendly Index":-1,
 			"Enemy Index":-1,
-			"Queued Actions":[],
-			"Party Friendly":deload_party_data()
+			"Party Friendly":deload_party_data(),
+			"Hand Data":deload_hand_data()
 		}
 		#print(existing_cards)
 		for card in existing_cards:
@@ -183,11 +192,18 @@ func draw_from_pile_to_pile(from_pile,to_pile):
 	card_piles[from_pile].card_pile.pop_front()
 	card_piles[to_pile].card_pile.append(drawn_card)
 	drawn_card.changed_card_pile()
-	
+
+func shop_add_pool(pool_name):
+	for i in card_pools[pool_name]:
+		if not i in shop_card_pool:
+			shop_card_pool.append(i)
 
 func _ready():
 	load_card_types()
 	load_card_index()
+	shop_add_pool("Greek Heroes")
+	shop_add_pool("Food I")
+	
 var smallest_distance_to_mouse=-1
 var csd_card=null
 var closest_card=null
@@ -219,6 +235,27 @@ func deload_party_data():
 		var deloaded_card=warbrand[card_index].deload_card()
 		card_data[card_index+1]=deloaded_card
 	return card_data
+
+func deload_hand_data():
+	var card_data=[]
+	var warbrand=card_piles["Hand"].card_pile
+	for card in warbrand:
+		var deloaded_card=card.deload_card()
+		card_data.append(deloaded_card)
+	return card_data
+var roots=0
+func end_battle():
+	
+	for card in existing_cards:
+		card.queue_free()
+	existing_cards.clear()
+	get_tree().change_scene_to_file("res://Root.tscn")
+func refresh_shop():
+	for i in range(3):
+		var new_card=create_new_card(shop_card_pool[randi_range(0,len(shop_card_pool)-1)])
+		new_card.location="Shop"
+		root.shop_slots[i].card_held=new_card
+		
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
 func _process(delta: float) -> void:
@@ -232,13 +269,7 @@ func _process(delta: float) -> void:
 	i_can_turn_off_hand_is_hovered_over=false
 	frame+=1
 	if frame==1:
-		var card_deck=[]
-		card_deck.append("Banana")
-		for i in range(4):
-			card_deck.append(["Hercules","Perseus","Psyche"][randi_range(0,2)])
-		card_piles["Deck"].load_cards(card_deck)
-		for i in range(5):
-			draw_from_pile_to_pile("Deck","Hand")
+		pass
 	if len(effect_stack)>0: #Does one effect per frame, 
 		process_stack()
 	if smallest_distance_to_mouse>=0:
@@ -252,6 +283,7 @@ func _process(delta: float) -> void:
 		UI["Animation Q"]=ease(UI["Animation Time"]/UI["Max Animation Time"],-2.0)
 		UI["Focusing On Card"].scale=Vector2(1+1.5*UI["Animation Q"],1+1.5*UI["Animation Q"])
 		UI["Focusing On Card"].position=(1-UI["Animation Q"])*UI["Start Position"]+UI["Animation Q"]*Vector2(937,322)
+	
 	if UI["Type"]=="Battle":
 		if UI["Action"]["Type"]=="Wait":
 			UI["Action"]["Time Left"]-=delta
@@ -339,22 +371,68 @@ func _process(delta: float) -> void:
 					if i.variable["Health"]<=0:
 						removed_friendly.append(i)
 				for i in removed_friendly:
-					battle.friendly_team.remove(i)
+					i.die_in_battle()
+					battle.friendly_team.erase(i)
 				var removed_enemy=[]
-				for i in battle.friendly_team:
+				for i in battle.enemy_team:
 					if i.variable["Health"]<=0:
 						removed_enemy.append(i)
 				for i in removed_enemy:
-					battle.enemy_team.remove(i)
-				if len(battle.friendly_team)==0:
+					i.die_in_battle()
+					
+					battle.enemy_team.erase(i)
+				if len(battle.friendly_team)==0 and len(battle.enemy_team)==0:
 					UI["Action"]={
-						"Type":"Loss",
-						"Time":0
+						"Type":"Battle End",
+						"Result":"Draw",
+						"Letters Done":"",
+						"Letters Left":"Looks like you've scored a draw. Eh, good enough, you pass.$#",
+						"Time":0,
+						"Letter Cooldown":0,
 					}
-				if len(battle.enemy_team)==0:
+				elif len(battle.friendly_team)==0:
 					UI["Action"]={
-						"Type":"Victory",
-						"Time":0
+						"Type":"Battle End",
+						"Result":"Lose",
+						"Letters Done":"",
+						"Letters Left":"All your creatures have perished in the field, and now, so will one of your candles.$#",
+						"Time":0,
+						"Letter Cooldown":0,
 					}
+				elif len(battle.enemy_team)==0:
+					UI["Action"]={
+						"Type":"Battle End",
+						"Result":"Win",
+						"Letters Done":"",
+						"Letters Left":"A glorious victory, as all your opponents have fallen. You may advance.$#",
+						"Time":0,
+						"Letter Cooldown":0,
+					}
+		elif UI["Action"]["Type"]=="Battle End":
+			var Ui=UI["Action"]
+			Ui["Time"]+=delta
+			var progress_q=min(max(0,Ui["Time"]-0.75)/1.5,1)
+			battle.end_screen.modulate=Color(1,1,1,progress_q)
+			if Ui["Time"]>2.5:
+				if Ui["Letter Cooldown"]<=0:
+					if Ui["Letters Left"][len(Ui["Letters Done"])]==".":
+						Ui["Letter Cooldown"]=0.3+Ui["Letter Cooldown"]
+						Ui["Letters Done"]+=Ui["Letters Left"][len(Ui["Letters Done"])]
+					elif Ui["Letters Left"][len(Ui["Letters Done"])]=="$":
+						Ui["Letter Cooldown"]=2+Ui["Letter Cooldown"]
+						Ui["Letters Done"]+=" "
+					elif Ui["Letters Left"][len(Ui["Letters Done"])]=="#":
+						end_battle()
+						
+						
+						return
+					elif Ui["Letters Left"][len(Ui["Letters Done"])]==",":
+						Ui["Letter Cooldown"]=0.13+Ui["Letter Cooldown"]
+						Ui["Letters Done"]+=Ui["Letters Left"][len(Ui["Letters Done"])]
+					else:
+						Ui["Letter Cooldown"]=0.03+Ui["Letter Cooldown"]
+						Ui["Letters Done"]+=Ui["Letters Left"][len(Ui["Letters Done"])]
+					battle.end_screen_label.text=Ui["Letters Done"]
+				Ui["Letter Cooldown"]-=delta
 				
 				

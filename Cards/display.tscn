@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp7v0s45ot2v4"]
+[gd_scene format=3 uid="uid://dp7v0s45ot2v4"]
 
 [ext_resource type="Script" uid="uid://c5kxkradtnvx1" path="res://Cards/display.gd" id="1_e47lx"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="2_ia1nu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iqdgr"]
+resource_local_to_scene = true
 line_spacing = 2.0
+font = ExtResource("2_ia1nu")
 font_size = 8
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.9798022, 0.7499456, 0.7641066, 1)
+outline_size = 2
+outline_color = Color(0.18809804, 0.049014382, 0.01721879, 1)
 
-[node name="Display" type="Node2D"]
+[node name="Display" type="Node2D" unique_id=1323946141]
 script = ExtResource("1_e47lx")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=102623102]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,5 +30,6 @@ grow_vertical = 2
 text = "Give target minion +1 attack"
 label_settings = SubResource("LabelSettings_iqdgr")
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 2

@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c6e4x84bp1tde" path="res://battle.gd" id="1_lul25"]
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="1_u8cu3"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="3_1046u"]
+[ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_yh5fh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjn1s"]
+font = ExtResource("3_1046u")
 
 [node name="Battle" type="Node2D" unique_id=335685263]
 script = ExtResource("1_lul25")
@@ -95,3 +100,27 @@ position = Vector2(660, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
 placeable = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1762008172]
+position = Vector2(-168, -176)
+anchor_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=841663452]
+modulate = Color(1, 1, 1, 0)
+z_index = 103
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Camera2D/ColorRect" unique_id=629962225]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+label_settings = SubResource("LabelSettings_pjn1s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemy" type="Sprite2D" parent="." unique_id=1257106315]
+position = Vector2(408, -24)
+scale = Vector2(0.32398835, 0.32398835)
+texture = ExtResource("3_yh5fh")

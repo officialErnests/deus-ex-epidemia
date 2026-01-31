@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	$Panel.visible=card_held==null
 	if card_held!=null:
 		card_held.global_position=global_position
+		card_held.holder=self
 		card_held.scale=Vector2(0.7,0.7)
 		card_held.z_index-=1
 		card_held.location=location
