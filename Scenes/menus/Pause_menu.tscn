@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dg3gy5lqg5vr3"]
+
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="1_qpsoe"]
+[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="2_wwohx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjql"]
+shader = ExtResource("1_qpsoe")
+shader_parameter/fromTop = -1.015
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1229467536]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1686473356]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1046525960]
+material = SubResource("ShaderMaterial_jjjql")
+custom_minimum_size = Vector2(1152, 640)
+layout_mode = 2
+theme = ExtResource("2_wwohx")
+
+[node name="Panel2" type="Panel" parent="CenterContainer" unique_id=118432824]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+theme = ExtResource("2_wwohx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel2" unique_id=1739790607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel2/VBoxContainer" unique_id=228850381]
+layout_mode = 2
+text = "Apsleptais Velns"

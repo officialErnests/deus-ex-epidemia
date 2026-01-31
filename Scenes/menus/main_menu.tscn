@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_h6oay"]
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_scqlf"]
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_nnvic"]
+[ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_4utaq"]
+[ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_scqlf"]
+[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_h6oay"]
+[ext_resource type="PackedScene" uid="uid://b147g85a43npc" path="res://Scenes/menus/credits_menu.tscn" id="11_h6oay"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b55im"]
 shader = ExtResource("1_1bxdl")
@@ -30,13 +34,14 @@ grow_vertical = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Mask1" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=1757340851]
 z_index = -1
-custom_minimum_size = Vector2(300, 640)
+custom_minimum_size = Vector2(300, 600)
 layout_mode = 2
 script = ExtResource("1_b55im")
 img_size = 400
@@ -45,39 +50,73 @@ offset_speed = 1.2
 
 [node name="Middle" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=1894132461]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Middle" unique_id=608506451]
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1215083018]
 layout_mode = 2
-theme = ExtResource("3_p6udj")
-text = "Deus "
+size_flags_vertical = 3
 
-[node name="Play" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=2121798842]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Middle/Control" unique_id=608506451]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_p6udj")
+text = "Apsleptais Velns"
+script = ExtResource("9_scqlf")
+shake = 2.0
+shake_delay = 0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Middle" unique_id=845636968]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=2121798842]
 layout_mode = 2
 theme = ExtResource("3_p6udj")
 text = "PLAY"
+script = ExtResource("9_4utaq")
+to_scene = ExtResource("10_h6oay")
 
-[node name="Tutorial" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1644677788]
+[node name="Tutorial" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=1644677788]
 layout_mode = 2
 theme = ExtResource("3_p6udj")
 text = "Tutorial
 "
+script = ExtResource("9_4utaq")
 
-[node name="Settings" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=971350227]
+[node name="Settings" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=971350227]
 layout_mode = 2
 theme = ExtResource("3_p6udj")
 text = "Settings
 
 "
+script = ExtResource("9_4utaq")
 
-[node name="Exit" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=78708567]
+[node name="Credits" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=842209944]
+layout_mode = 2
+theme = ExtResource("3_p6udj")
+text = "Credits
+"
+script = ExtResource("9_4utaq")
+to_scene = ExtResource("11_h6oay")
+
+[node name="Exit" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=78708567]
 layout_mode = 2
 theme = ExtResource("3_p6udj")
 text = "Exit
 "
+script = ExtResource("9_4utaq")
+exit = true
 
 [node name="Mask2" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=1247152075]
 z_index = -1
-custom_minimum_size = Vector2(300, 640)
+custom_minimum_size = Vector2(300, 600)
 layout_mode = 2
 script = ExtResource("1_b55im")
 img_size = 400
