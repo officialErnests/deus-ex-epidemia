@@ -10,9 +10,11 @@ var card_types={}
 var card_piles={}
 var card_pools={}
 var variable={
-	"Max Gold":3,
-	"Gold":3,
+	"Max Gold":2,
+	"Max Gold Gain Left":8,
+	"Gold":0,
 	"Candles":3,
+	"Shop Card Count":3
 }
 var shop_card_pool=[]
 @onready var card_scene=preload("res://Cards/card.tscn")
@@ -197,7 +199,14 @@ func shop_add_pool(pool_name):
 	for i in card_pools[pool_name]:
 		if not i in shop_card_pool:
 			shop_card_pool.append(i)
-
+func new_shop():
+	if variable["Max Gold Gain Left"]>0:
+		variable["Max Gold Gain Left"]-=1
+		variable["Max Gold"]+=1
+	variable["Gold"]=variable["Max Gold"]
+	resetUI()
+	refresh_shop()
+	
 func _ready():
 	load_card_types()
 	load_card_index()
@@ -251,11 +260,20 @@ func end_battle():
 	existing_cards.clear()
 	get_tree().change_scene_to_file("res://Root.tscn")
 func refresh_shop():
-	for i in range(3):
+	for i in range(7):
+		if root.shop_slots[i].card_held!=null:
+			remove_card(root.shop_slots[i].card_held)
+	for i in range(min(7,variable["Shop Card Count"])):
 		var new_card=create_new_card(shop_card_pool[randi_range(0,len(shop_card_pool)-1)])
 		new_card.location="Shop"
 		root.shop_slots[i].card_held=new_card
-		
+func remove_card(card):
+	if card.holder!=null:
+		card.holder.card_held=null
+	if card.belongs_to_pile!=null:
+		card_piles[card.belongs_to_pile].card_pile.erase(card)
+	existing_cards.erase(card)
+	card.queue_free()
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
 func _process(delta: float) -> void:
