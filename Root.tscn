@@ -137,6 +137,13 @@ offset_right = 1132.0
 offset_bottom = 284.0
 text = "Begin Battle"
 
+[node name="Refresh Shop" type="Button" parent="Shop" unique_id=532905941]
+offset_left = 750.0
+offset_top = 51.0
+offset_right = 852.0
+offset_bottom = 82.0
+text = "Refresh (1$)"
+
 [node name="MoneyCounter" type="Label" parent="Shop" unique_id=680717458]
 offset_left = 916.0
 offset_top = 180.0
@@ -147,3 +154,4 @@ label_settings = SubResource("LabelSettings_g0d6c")
 horizontal_alignment = 2
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]
+[connection signal="button_down" from="Shop/Refresh Shop" to="." method="_on_refresh_shop_button_down"]

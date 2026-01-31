@@ -14,8 +14,8 @@ func _ready() -> void:
 			Game.card_piles["Hand"].card_pile.append(new_card)
 			new_card.belongs_to_pile="Hand"
 			new_card.changed_card_pile()
-	Game.resetUI()
-	Game.refresh_shop()
+	Game.new_shop()
+	
 func get_warbrand():
 	var warbrand_cards={}
 	var children=$"Shop/Warbrand Slots".get_children()
@@ -28,3 +28,9 @@ func get_warbrand():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Shop/MoneyCounter.text=str(Game.variable["Gold"])+"$"
+
+
+func _on_refresh_shop_button_down() -> void:
+	if Game.variable["Gold"]>=1:
+		Game.variable["Gold"]-=1
+		Game.refresh_shop()

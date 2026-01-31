@@ -140,6 +140,18 @@ func _input(event):
 				if Game.UI["Targeted Card"]==self:
 					Game.finish_targeting()
 			if hovered_over:
+				if location=="Shop":
+					if variable["Cost"]<=Game.variable["Gold"]:
+						Game.variable["Gold"]-=variable["Cost"]
+						Game.variable["Gold"]=int(Game.variable["Gold"])
+						location="Void"
+						belongs_to_pile="Hand"
+						holder.card_held=null
+						holder.scale=Vector2(0.7,0.7)
+						holder=null
+						Game.card_piles["Hand"].card_pile.append(self)
+						changed_card_pile()
+					return
 				if not selected:
 					if Game.selected_card==null: #Only if the player isn't selecting another card already
 						if Game.closest_card==self and not immovable:
@@ -221,24 +233,29 @@ func _process(delta: float) -> void:
 					queue_free()
 					return
 			elif iter_animation["Type"]=="Shop Selected":
+				if holder==null:
+					animations.erase(iter_animation)
+					break
 				iter_animation["TTL"]+=delta
 				var progress_q=iter_animation["TTL"]/iter_animation["MAX TTL"]
 				if progress_q>1:
 					animations.erase(iter_animation)
-					print("Holder Grow")
 					holder.scale=Vector2(1.3,1.3)
 				else:
 					progress_q=sin(progress_q*PI/2)
-					holder.scale=Vector2(1+progress_q/10*3,1+progress_q/10*3)
+					holder.scale=Vector2(0.7+progress_q/10*6,0.7+progress_q/10*6)
 			elif iter_animation["Type"]=="Shop Deselected":
+				if holder==null:
+					animations.erase(iter_animation)
+					break
 				iter_animation["TTL"]+=delta
 				var progress_q=iter_animation["TTL"]/iter_animation["MAX TTL"]
 				if progress_q>1:
 					animations.erase(iter_animation)
-					holder.scale=Vector2(1,1)
+					holder.scale=Vector2(0.7,0.7)
 				else:
 					progress_q=1-sin(progress_q*PI/2)
-					holder.scale=Vector2(1+progress_q/10,1+progress_q/10)
+					holder.scale=Vector2(0.7+progress_q/10*6,0.7+progress_q/10*6)
 	if selected:
 		global_position=get_viewport().get_mouse_position()
 		just_was_selected=true
