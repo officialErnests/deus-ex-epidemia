@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_nnvic"]
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_4utaq"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_scqlf"]
-[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="11_h6oay"]
+[ext_resource type="PackedScene" uid="uid://bhidgdtaitsp3" path="res://Scenes/menus/mask_select.tscn" id="11_a2x54"]
 [ext_resource type="PackedScene" uid="uid://b147g85a43npc" path="res://Scenes/menus/credits_menu.tscn" id="12_scqlf"]
 [ext_resource type="PackedScene" uid="uid://e5i2p861xdcf" path="res://Scenes/tutorial/main_tutorial.tscn" id="12_sho4w"]
 [ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_a2x54"]
@@ -84,7 +84,7 @@ layout_mode = 2
 theme = ExtResource("3_p6udj")
 text = "PLAY"
 script = ExtResource("9_4utaq")
-to_scene = ExtResource("11_h6oay")
+to_scene = ExtResource("11_a2x54")
 root = true
 
 [node name="Tutorial" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=1644677788]

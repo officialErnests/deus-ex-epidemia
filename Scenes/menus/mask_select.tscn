@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://bhidgdtaitsp3"]
+
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="1_73i61"]
+[ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="2_hyynq"]
+[ext_resource type="Script" uid="uid://dl3jyjfdmvm62" path="res://Scripts/game/mask_circle.gd" id="3_cx2c5"]
+[ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="4_5ftpc"]
+[ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="5_aenl8"]
+[ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="6_c81tt"]
+[ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="7_f8lgk"]
+[ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="8_i1afb"]
+[ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="9_k4mgf"]
+[ext_resource type="Material" uid="uid://3nkwsikvse0g" path="res://assets/shaders/gray.tres" id="10_hyynq"]
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="10_w6nk2"]
+[ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="11_aenl8"]
+[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="12_c81tt"]
+[ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="14_f8lgk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_od2m0"]
+shader = ExtResource("10_w6nk2")
+shader_parameter/fromTop = 0.2
+
+[node name="Mask_select" type="Control" unique_id=302902792]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2003986556]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=62643021]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 200.0
+grow_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1117125278]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_73i61")
+text = "Pick a mask"
+script = ExtResource("2_hyynq")
+shake = 2.0
+shake_delay = 0.1
+
+[node name="Mask_circle" type="Control" parent="CanvasLayer" unique_id=1627448766 node_paths=PackedStringArray("desc_container", "desc_title", "desc_text")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("3_cx2c5")
+masks = Dictionary[String, CompressedTexture2D]({
+"beetle": ExtResource("4_5ftpc"),
+"dragon": ExtResource("5_aenl8"),
+"eagle": ExtResource("6_c81tt"),
+"fox": ExtResource("7_f8lgk"),
+"rabbit": ExtResource("8_i1afb"),
+"whale": ExtResource("9_k4mgf")
+})
+gray = ExtResource("10_hyynq")
+desc_container = NodePath("../VBoxContainer")
+desc_title = NodePath("../VBoxContainer/Label")
+desc_text = NodePath("../VBoxContainer/RichTextLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=662486254]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -450.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_73i61")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=28109263]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.648568, 0.5942587, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "Test"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer" unique_id=1182583886]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Some Text goes here"
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=517228983]
+layout_mode = 2
+text = "Play"
+script = ExtResource("11_aenl8")
+to_scene = ExtResource("12_c81tt")
+
+[node name="BG_black" type="CanvasLayer" parent="." unique_id=515979373]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="BG_black" unique_id=1427615610]
+z_index = 1
+material = SubResource("ShaderMaterial_od2m0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BG_black" unique_id=946468621]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=734455177]
+stream = ExtResource("14_f8lgk")

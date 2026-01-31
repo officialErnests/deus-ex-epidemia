@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 
 Game="*uid://dx2nbat0ba5cf"
 debug_c="*uid://dkl5y3gj7bb1g"
+save_manager="*uid://ccxm8ulrv7grv"
+modifiers="*uid://bmutk67jjlk24"
 
 [display]
 
