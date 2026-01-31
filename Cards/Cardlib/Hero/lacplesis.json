@@ -1,11 +1,11 @@
 {
 	"Type":1,
 	"Name":"Lacplesis",
-	"Description":"ETB: Devours a Creature, gaining double it's stats",
+	"Description":"Play: Devours a Creature, gaining double it's stats",
 	"Cost":4,
 	"Attack":2,
 	"Health":2,
-	"Pool":"Hero III",
+	"Pool":"III",
 	"Effects":[{
 			"Trigger":"ETB",
 			"Effect List":[
