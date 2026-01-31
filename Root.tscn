@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
 [ext_resource type="Script" path="res://shop.gd" id="2_170dk"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="2_g0d6c"]
-[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
+[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0g3p"]
 shader = ExtResource("2_g0d6c")
@@ -31,7 +31,7 @@ anchor_mode = 0
 editor_draw_limits = true
 
 [node name="BG_black" type="CanvasLayer" parent="Camera2D" unique_id=1402798585]
-layer = -1
+layer = -10
 
 [node name="ColorRect2" type="ColorRect" parent="Camera2D/BG_black" unique_id=1731198730]
 z_index = 1
@@ -41,11 +41,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/BG_black" unique_id=1688850156]
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Hand" parent="." unique_id=1261054207 instance=ExtResource("1_gxo8o")]
