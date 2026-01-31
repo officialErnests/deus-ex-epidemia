@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://shop.gd" id="2_170dk"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="2_g0d6c"]
 [ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0g3p"]
 shader = ExtResource("2_g0d6c")
