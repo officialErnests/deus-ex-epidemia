@@ -1,13 +1,25 @@
 [gd_scene format=3 uid="uid://dg3gy5lqg5vr3"]
 
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="1_qpsoe"]
+[ext_resource type="Script" uid="uid://banj8lxvx17n3" path="res://Scripts/menu/pause_menu.gd" id="1_yhqo1"]
 [ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="2_wwohx"]
+[ext_resource type="Script" uid="uid://dqf0o1hwo0wyr" path="res://Scripts/menu/floating_masks.gd" id="3_ioit5"]
+[ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="3_jjjql"]
+[ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="4_mpryc"]
+[ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="4_yhqo1"]
+[ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="5_2y4lw"]
+[ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="6_u3osb"]
+[ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="7_62fp4"]
+[ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="8_yxwgu"]
+[ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="9_141pp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjql"]
 shader = ExtResource("1_qpsoe")
 shader_parameter/fromTop = -1.015
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1229467536]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1229467536 node_paths=PackedStringArray("continue_button")]
+script = ExtResource("1_yhqo1")
+continue_button = NodePath("CenterContainer/Middle/VBoxContainer/Continue")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1686473356]
 anchors_preset = 15
@@ -15,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_wwohx")
 
 [node name="Panel" type="Panel" parent="CenterContainer" unique_id=1046525960]
 material = SubResource("ShaderMaterial_jjjql")
@@ -22,19 +35,61 @@ custom_minimum_size = Vector2(1152, 640)
 layout_mode = 2
 theme = ExtResource("2_wwohx")
 
-[node name="Panel2" type="Panel" parent="CenterContainer" unique_id=118432824]
-custom_minimum_size = Vector2(400, 600)
+[node name="Mask1" type="Control" parent="CenterContainer" unique_id=1352579972]
+custom_minimum_size = Vector2(1000, 600)
 layout_mode = 2
-theme = ExtResource("2_wwohx")
+script = ExtResource("3_ioit5")
+img_size = 400
+masks = Array[CompressedTexture2D]([ExtResource("4_mpryc"), ExtResource("5_2y4lw"), ExtResource("6_u3osb"), ExtResource("7_62fp4"), ExtResource("8_yxwgu"), ExtResource("9_141pp")])
+offset_speed = 1.2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel2" unique_id=1739790607]
+[node name="Middle" type="VBoxContainer" parent="CenterContainer" unique_id=910483813]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Middle" unique_id=1376242864]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CenterContainer/Middle/Control" unique_id=99601223]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="CenterContainer/Panel2/VBoxContainer" unique_id=228850381]
-layout_mode = 2
+theme = ExtResource("2_wwohx")
 text = "Apsleptais Velns"
+script = ExtResource("3_jjjql")
+shake = 2.0
+shake_delay = 0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Middle" unique_id=17833065]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=544832508]
+layout_mode = 2
+theme = ExtResource("2_wwohx")
+text = "Continue"
+
+[node name="Settings" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=902498945]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_wwohx")
+text = "Settings
+
+"
+script = ExtResource("4_yhqo1")
+
+[node name="Exit" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=1637150840]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_wwohx")
+text = "Exit to main menu"
+script = ExtResource("4_yhqo1")
+main_menu = true

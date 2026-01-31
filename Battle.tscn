@@ -4,9 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="1_u8cu3"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="3_1046u"]
 [ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_yh5fh"]
+[ext_resource type="PackedScene" uid="uid://dg3gy5lqg5vr3" path="res://Scenes/menus/Pause_menu.tscn" id="4_yflgj"]
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="5_lrdw4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pjn1s"]
 font = ExtResource("3_1046u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hmwm"]
+shader = ExtResource("5_lrdw4")
+shader_parameter/fromTop = 0.2
 
 [node name="Battle" type="Node2D" unique_id=335685263]
 script = ExtResource("1_lul25")
@@ -119,6 +125,29 @@ offset_bottom = 648.0
 label_settings = SubResource("LabelSettings_pjn1s")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PauseMenu" parent="Camera2D" unique_id=1229467536 instance=ExtResource("4_yflgj")]
+layer = 10
+
+[node name="BG_black" type="CanvasLayer" parent="Camera2D" unique_id=1258217763]
+layer = -10
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/BG_black" unique_id=516935807]
+z_index = 1
+material = SubResource("ShaderMaterial_3hmwm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/BG_black" unique_id=1836453914]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Enemy" type="Sprite2D" parent="." unique_id=1257106315]
 position = Vector2(408, -24)

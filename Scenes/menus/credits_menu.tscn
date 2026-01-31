@@ -11,31 +11,6 @@
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_3vero"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_cvtnx"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="10_j07hm"]
-[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="11_58cpj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b55im"]
-shader = ExtResource("10_j07hm")
-shader_parameter/fromTop = 0.2
-
-[sub_resource type="PackedScene" id="PackedScene_ysxo5"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("Control", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "Camera2D", "CanvasLayer", "HBoxContainer", "offset_bottom", "alignment", "Mask1", "z_index", "custom_minimum_size", "script", "img_size", "masks", "offset_speed", "Middle", "VBoxContainer", "size_flags_vertical", "Label", "anchor_left", "anchor_top", "theme", "text", "shake", "shake_delay", "Play", "to_scene", "Button", "Tutorial", "Settings", "Credits", "Exit", "exit", "Mask2", "BG_black", "layer", "ColorRect2", "material", "color", "ColorRect", "offset_right"),
-"node_count": 18,
-"node_ids": PackedInt32Array(1116063683, 1664391219, 1079640352, 12929289, 1757340851, 1894132461, 1215083018, 608506451, 845636968, 2121798842, 1644677788, 971350227, 842209944, 78708567, 1247152075, 2007944531, 2016713202, 1826568279),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 3, 0, 0, 0, 7, 7, -1, 0, 0, 0, 0, 8, 8, -1, 0, 0, 2, 0, 9, 9, -1, 7, 2, 1, 3, 2, 4, 2, 10, 4, 5, 3, 6, 3, 11, 5, 0, 3, 0, 0, 12, -1, 7, 13, 6, 14, 7, 1, 3, 15, 8, 16, 9, 17, 10, 18, 11, 0, 3, 0, 20, 19, -1, 2, 1, 3, 11, 5, 0, 5, 0, 0, 0, -1, 2, 1, 3, 21, 0, 0, 6, 0, 22, 22, -1, 13, 1, 5, 2, 6, 23, 12, 24, 12, 3, 12, 4, 12, 5, 3, 6, 3, 25, 13, 26, 14, 15, 15, 27, 16, 28, 17, 0, 5, 0, 20, 20, -1, 3, 14, 18, 1, 3, 11, 5, 0, 8, 0, 31, 29, -1, 5, 1, 3, 25, 13, 26, 19, 15, 20, 30, 21, 0, 8, 0, 31, 32, -1, 4, 1, 3, 25, 13, 26, 22, 15, 20, 0, 8, 0, 31, 33, -1, 4, 1, 3, 25, 13, 26, 23, 15, 20, 0, 8, 0, 31, 34, -1, 5, 1, 3, 25, 13, 26, 24, 15, 20, 30, 25, 0, 8, 0, 31, 35, -1, 5, 1, 3, 25, 13, 26, 26, 15, 20, 36, 27, 0, 3, 0, 0, 37, -1, 7, 13, 6, 14, 7, 1, 3, 15, 8, 16, 9, 17, 10, 18, 28, 0, 0, 0, 8, 38, -1, 1, 39, 6, 0, 15, 0, 43, 40, -1, 8, 13, 5, 41, 29, 2, 1, 3, 2, 4, 2, 5, 3, 6, 3, 42, 30, 0, 15, 0, 43, 43, -1, 3, 44, 31, 10, 32, 42, 33, 0),
-"variants": [3, 15, 1.0, 2, -28.0, 1, -1, Vector2(300, 600), ExtResource("2_qu1eu"), 400, Array[CompressedTexture2D]([ExtResource("3_cvtnx"), ExtResource("4_58cpj"), ExtResource("5_ysxo5"), ExtResource("6_1o552"), ExtResource("7_dgwom"), ExtResource("8_sq7bp")]), 1.2, 0.5, ExtResource("1_c6jgo"), "Apsleptais Velns", ExtResource("9_cvtnx"), 2.0, 0.1, Vector2(300, 0), "PLAY", ExtResource("9_3vero"), ExtResource("11_58cpj"), "Tutorial
-", "Settings
-
-", "Credits
-", null, "Exit
-", true, 0.8, SubResource("ShaderMaterial_b55im"), Color(1, 0, 0, 1), 1152.0, 648.0, Color(0, 0, 0, 1)],
-"version": 3
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wgbv"]
 shader = ExtResource("10_j07hm")
@@ -116,7 +91,7 @@ layout_mode = 2
 theme = ExtResource("1_c6jgo")
 text = "Back"
 script = ExtResource("9_3vero")
-to_scene = SubResource("PackedScene_ysxo5")
+main_menu = true
 
 [node name="Mask2" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=606767091]
 z_index = -1

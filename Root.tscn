@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
 [ext_resource type="Script" path="res://shop.gd" id="2_170dk"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="2_g0d6c"]
+[ext_resource type="PackedScene" uid="uid://dg3gy5lqg5vr3" path="res://Scenes/menus/Pause_menu.tscn" id="2_n0g3p"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
 [ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
 
@@ -30,8 +31,10 @@ position = Vector2(0, -24)
 anchor_mode = 0
 editor_draw_limits = true
 
+[node name="PauseMenu" parent="Camera2D" unique_id=1229467536 instance=ExtResource("2_n0g3p")]
+
 [node name="BG_black" type="CanvasLayer" parent="Camera2D" unique_id=1402798585]
-layer = -10
+layer = -19
 
 [node name="ColorRect2" type="ColorRect" parent="Camera2D/BG_black" unique_id=1731198730]
 z_index = 1
