@@ -2,7 +2,7 @@
 	"ID":0,
 	"Name":"Instant",
 	"Required Variables":{
-		"Mana":0,
+		"Cost":1,
 		"Name":"MISSING NAME",
 		"Description":"MISSING DESCRIPTION",
 		"Playable":1
@@ -34,6 +34,7 @@
 				"X":120,
 				"Y":30
 			},
+			"Scale":1.5,
 			"Text Color":"#000000",
 			"Display Variable":"Name"
 		},
@@ -41,25 +42,27 @@
 			"Type":"Text Display",
 			"Position":{
 				"X":0,
-				"Y":-75
+				"Y":-34
 			},
 			"Size":{
 				"X":120,
 				"Y":100
 			},
+			"Scale":1.5,
 			"Display Variable":"Description"
 		},
 		{
 			"Type":"Text Display",
 			"Position":{
-				"X":100,
-				"Y":-95
+				"X":50,
+				"Y":-145
 			},
 			"Size":{
-				"X":30,
-				"Y":30
+				"X":120,
+				"Y":120
 			},
-			"Display Variable":"Mana"
+			"Scale":4,
+			"Display Variable":"Cost"
 		}
 
 	],

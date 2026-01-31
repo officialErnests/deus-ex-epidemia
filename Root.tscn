@@ -4,6 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://lir46y366vjr" path="res://Cards/pile.tscn" id="1_gxo8o"]
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
 [ext_resource type="Script" uid="uid://b288d65klme20" path="res://shop.gd" id="2_170dk"]
+[ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0d6c"]
+font = ExtResource("5_3ipfy")
+font_size = 52
+font_color = Color(0.52844554, 0.40470982, 8.663535e-07, 1)
+outline_size = 5
+outline_color = Color(0.68071985, 0.58824456, 1.92523e-07, 1)
 
 [node name="Root" type="Node2D" unique_id=1545327209]
 script = ExtResource("1_cwqeq")
@@ -21,11 +29,11 @@ position = Vector2(572, 648)
 location = &"Hand"
 
 [node name="Deck" parent="." unique_id=82659815 instance=ExtResource("1_gxo8o")]
-position = Vector2(13, 615)
+position = Vector2(-294, 773)
 location = &"Deck"
 
 [node name="Graveyard" parent="." unique_id=1667176252 instance=ExtResource("1_gxo8o")]
-position = Vector2(1123, 633)
+position = Vector2(1555, 713)
 location = &"Graveyard"
 
 [node name="Shop" type="Node2D" parent="." unique_id=1264223513]
@@ -35,40 +43,47 @@ script = ExtResource("2_170dk")
 [node name="Shop Slots" type="Node2D" parent="Shop" unique_id=126177195]
 position = Vector2(29, 29)
 
-[node name="CardHolder" parent="Shop/Shop Slots" unique_id=1255141651 instance=ExtResource("2_24d08")]
+[node name="1" parent="Shop/Shop Slots" unique_id=1255141651 instance=ExtResource("2_24d08")]
 position = Vector2(60, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
+location = "Shop"
 
-[node name="CardHolder4" parent="Shop/Shop Slots" unique_id=1915013123 instance=ExtResource("2_24d08")]
-position = Vector2(360, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-
-[node name="CardHolder6" parent="Shop/Shop Slots" unique_id=1361567445 instance=ExtResource("2_24d08")]
-position = Vector2(560, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-
-[node name="CardHolder5" parent="Shop/Shop Slots" unique_id=671066194 instance=ExtResource("2_24d08")]
-position = Vector2(460, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-
-[node name="CardHolder2" parent="Shop/Shop Slots" unique_id=132309266 instance=ExtResource("2_24d08")]
+[node name="2" parent="Shop/Shop Slots" unique_id=132309266 instance=ExtResource("2_24d08")]
 position = Vector2(160, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
+location = "Shop"
 
-[node name="CardHolder7" parent="Shop/Shop Slots" unique_id=1438768047 instance=ExtResource("2_24d08")]
-position = Vector2(660, 85)
-scale = Vector2(0.7, 0.7)
-_type = "ShopSlot"
-
-[node name="CardHolder3" parent="Shop/Shop Slots" unique_id=679280830 instance=ExtResource("2_24d08")]
+[node name="3" parent="Shop/Shop Slots" unique_id=679280830 instance=ExtResource("2_24d08")]
 position = Vector2(260, 85)
 scale = Vector2(0.7, 0.7)
 _type = "ShopSlot"
+location = "Shop"
+
+[node name="4" parent="Shop/Shop Slots" unique_id=1915013123 instance=ExtResource("2_24d08")]
+position = Vector2(360, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+location = "Shop"
+
+[node name="5" parent="Shop/Shop Slots" unique_id=671066194 instance=ExtResource("2_24d08")]
+position = Vector2(460, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+location = "Shop"
+
+[node name="6" parent="Shop/Shop Slots" unique_id=1361567445 instance=ExtResource("2_24d08")]
+position = Vector2(560, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+location = "Shop"
+
+[node name="7" parent="Shop/Shop Slots" unique_id=1438768047 instance=ExtResource("2_24d08")]
+position = Vector2(660, 85)
+scale = Vector2(0.7, 0.7)
+_type = "ShopSlot"
+location = "Shop"
 
 [node name="Warbrand Slots" type="Node2D" parent="Shop" unique_id=1880644447]
 position = Vector2(30, 245)
@@ -121,5 +136,14 @@ offset_top = 253.0
 offset_right = 1132.0
 offset_bottom = 284.0
 text = "Begin Battle"
+
+[node name="MoneyCounter" type="Label" parent="Shop" unique_id=680717458]
+offset_left = 916.0
+offset_top = 180.0
+offset_right = 1134.0
+offset_bottom = 264.0
+text = "3$"
+label_settings = SubResource("LabelSettings_g0d6c")
+horizontal_alignment = 2
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]

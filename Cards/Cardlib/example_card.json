@@ -3,6 +3,7 @@
 	"Name":"Test",
 	"Description":"Choose a creature, give it +1 attack.",
 	"Mana":1,
+	"Pool":"Unused",
 	"Effects":[
 		{
 			"Trigger":"ETB",

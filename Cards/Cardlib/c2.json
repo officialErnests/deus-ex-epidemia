@@ -3,6 +3,7 @@
 	"Name":"Test 2",
 	"Description":"Give yourself a cookie, you deserve one!",
 	"Mana":4,
+	"Pool":"Unused",
 	"Effects":[
 		{
 			"Trigger":"ETB",
