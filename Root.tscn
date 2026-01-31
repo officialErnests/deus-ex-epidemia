@@ -21,11 +21,12 @@ script = ExtResource("1_cwqeq")
 [node name="Cards" type="Node2D" parent="Runtime" unique_id=1070801391]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=259659905]
+position = Vector2(0, -24)
 anchor_mode = 0
 editor_draw_limits = true
 
 [node name="Hand" parent="." unique_id=1261054207 instance=ExtResource("1_gxo8o")]
-position = Vector2(572, 648)
+position = Vector2(576, 624)
 location = &"Hand"
 
 [node name="Deck" parent="." unique_id=82659815 instance=ExtResource("1_gxo8o")]
