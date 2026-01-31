@@ -78,6 +78,7 @@ theme = ExtResource("2_wwohx")
 text = "Continue"
 
 [node name="Settings" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=902498945]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_wwohx")
 text = "Settings
@@ -86,6 +87,7 @@ text = "Settings
 script = ExtResource("4_yhqo1")
 
 [node name="Exit" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=1637150840]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_wwohx")
 text = "Exit to main menu"

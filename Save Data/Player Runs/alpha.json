@@ -156,6 +156,88 @@
 					"Name": "Heracles",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -169,6 +251,117 @@
 					"Name": "Heracles",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Dev Comment": " Big guy with good stats for the cost. Doesn't scale, but is great on it's own",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Tribe": "Neutral",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -180,6 +373,120 @@
 					"Effects": [],
 					"Health": 14.0,
 					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 13.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 12.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "Immune While Attacking",
+					"Dev Comment": "immune while attacking",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Perseus",
+					"Playable": 1.0,
+					"Pool": "Greek Heroes",
+					"Properties": [
+						"Immune While Attacking"
+					],
+					"Tribe": "Neutral",
 					"Type": 1.0
 				}
 			}
