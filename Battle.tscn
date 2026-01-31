@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="1_u8cu3"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="3_1046u"]
 [ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_yh5fh"]
-[ext_resource type="PackedScene" uid="uid://dg3gy5lqg5vr3" path="res://Scenes/menus/Pause_menu.tscn" id="4_yflgj"]
+[ext_resource type="PackedScene" uid="uid://btsl4hvgilbwo" path="res://Scenes/menus/Pause_menu.tscn" id="4_yflgj"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="5_lrdw4"]
+[ext_resource type="AudioStream" uid="uid://cne0sjmg8257q" path="res://assets/lmms/fight.mp3" id="7_lrdw4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pjn1s"]
 font = ExtResource("3_1046u")
@@ -153,3 +154,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(408, -24)
 scale = Vector2(0.32398835, 0.32398835)
 texture = ExtResource("3_yh5fh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1111024982]
+stream = ExtResource("7_lrdw4")
+autoplay = true
