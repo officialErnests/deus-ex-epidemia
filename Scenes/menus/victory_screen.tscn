@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c2o52dhhi5jf0"]
+
+[ext_resource type="Script" uid="uid://dqf0o1hwo0wyr" path="res://Scripts/menu/floating_masks.gd" id="1_8ni6i"]
+[ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="2_s616x"]
+[ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_5e1d5"]
+[ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="4_vaqlx"]
+[ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_qr4we"]
+[ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_jrx7s"]
+[ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_sfg7t"]
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="8_cje25"]
+[ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_g3c6i"]
+[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_lbibx"]
+[ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rxdww"]
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="12_1wc5w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oepa1"]
+shader = ExtResource("12_1wc5w")
+shader_parameter/fromTop = 0.2
+
+[node name="GameOver" type="Control" unique_id=97188722]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1158743680]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1847531591]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Mask1" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=1448636721]
+z_index = -1
+custom_minimum_size = Vector2(300, 640)
+layout_mode = 2
+script = ExtResource("1_8ni6i")
+img_size = 400
+masks = Array[CompressedTexture2D]([ExtResource("2_s616x"), ExtResource("3_5e1d5"), ExtResource("4_vaqlx"), ExtResource("5_qr4we"), ExtResource("6_jrx7s"), ExtResource("7_sfg7t")])
+offset_speed = 1.2
+
+[node name="Middle" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=2053037969]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Middle" unique_id=279565273]
+layout_mode = 2
+theme = ExtResource("8_cje25")
+text = "You win"
+
+[node name="Play" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=2086551886]
+layout_mode = 2
+theme = ExtResource("8_cje25")
+text = "PLAY AGAIN"
+script = ExtResource("9_g3c6i")
+to_scene = ExtResource("10_lbibx")
+
+[node name="Main" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1483948378]
+layout_mode = 2
+theme = ExtResource("8_cje25")
+text = "Main menu
+"
+script = ExtResource("9_g3c6i")
+to_scene = ExtResource("11_rxdww")
+
+[node name="Mask2" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=460184110]
+z_index = -1
+custom_minimum_size = Vector2(300, 640)
+layout_mode = 2
+script = ExtResource("1_8ni6i")
+img_size = 400
+masks = Array[CompressedTexture2D]([ExtResource("2_s616x"), ExtResource("3_5e1d5"), ExtResource("4_vaqlx"), ExtResource("5_qr4we"), ExtResource("6_jrx7s"), ExtResource("7_sfg7t")])
+offset_speed = 0.8
+
+[node name="BG_black" type="CanvasLayer" parent="." unique_id=167313896]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="BG_black" unique_id=1855547755]
+z_index = 1
+material = SubResource("ShaderMaterial_oepa1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BG_black" unique_id=1484187904]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
