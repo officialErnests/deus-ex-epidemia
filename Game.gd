@@ -182,8 +182,9 @@ func process_stack():
 		#print(UI["Party Friendly"])
 		get_tree().change_scene_to_file("res://Battle.tscn")
 	elif processed_effect["Type"]=="Summon Creature":
-		var new_card=raw_create_card(processed_effect["Creature Data"])
+		
 		if UI["Type"]=="Battle":
+			var new_card=raw_create_card(processed_effect["Creature Data"])
 			if processed_effect["Card Parent"].team==0:
 				if len(battle.friendly_team)<7:
 					battle.friendly_team.insert(battle.friendly_team.find(processed_effect["Card Parent"]),new_card)
@@ -199,6 +200,7 @@ func process_stack():
 			
 			for i in range(7):
 				if root.warbrand_slots[(start_pos+i)%7].card_held==null:
+					var new_card=raw_create_card(processed_effect["Creature Data"])
 					root.warbrand_slots[(start_pos+i)%7].card_held=new_card
 					new_card.holder=root.warbrand_slots[(start_pos+i)%7]
 					break
