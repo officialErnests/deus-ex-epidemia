@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/menu/Mask_unlocker.gd" id="9_vaqlx"]
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_lbibx"]
 [ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rxdww"]
+[ext_resource type="PackedScene" uid="uid://bhidgdtaitsp3" path="res://Scenes/menus/mask_select.tscn" id="11_vaqlx"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="12_1wc5w"]
 [ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="13_5e1d5"]
 [ext_resource type="Script" path="res://Scripts/menu/audio_manager.gd" id="14_vaqlx"]
@@ -67,8 +68,12 @@ layout_mode = 2
 theme = ExtResource("8_cje25")
 text = "PLAY AGAIN"
 script = ExtResource("9_g3c6i")
+<<<<<<< HEAD
 to_scene = ExtResource("10_lbibx")
 root = true
+=======
+to_scene = ExtResource("11_vaqlx")
+>>>>>>> 9066e3c3e65c25c599b3f7e3e49b7486e8c7cb14
 
 [node name="Main" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1483948378]
 layout_mode = 2
