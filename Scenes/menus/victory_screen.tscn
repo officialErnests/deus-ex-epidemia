@@ -53,7 +53,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Middle" unique_id=279565273]
 layout_mode = 2
 theme = ExtResource("8_cje25")
-text = "You win"
+text = "You win..."
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Middle" unique_id=834357689]
 custom_minimum_size = Vector2(0, 200)
