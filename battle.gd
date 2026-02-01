@@ -6,7 +6,7 @@ extends Node2D
 @onready var end_screen_label=$Camera2D/ColorRect/Label
 var friendly_team=[]
 var enemy_team=[]
-var sample_enemy_team={ 4: { "Type": 1.0, "Name": "Psyche", "Description": "Whenever she is attacked, she gains +2 health", "Cost": 3.0, "Attack": 3.0, "Health": 7.0, "Pool": "Greek Heroes", "Effects": [{ "Trigger": "Defending", "Effect List": [{ "Type": "Modify Variable", "Target": "self", "Variable Name": "Health", "Operation": "+", "Value": 2.0 }] }], "Dev Comment": "Gets +2 health whenever she is attacked. ", "Playable": 1.0 } }
+var sample_enemy_team={4: { "Type": 1.0, "Name": "Psyche", "Description": "Whenever she is attacked, she gains +2 health", "Cost": 3.0, "Attack": 3.0, "Health": 7.0, "Pool": "Greek Heroes", "Effects": [{ "Trigger": "Defending", "Effect List": [{ "Type": "Modify Variable", "Target": "self", "Variable Name": "Health", "Operation": "+", "Value": 2.0 }] }], "Dev Comment": "Gets +2 health whenever she is attacked. ", "Playable": 1.0 } }
 func load_teams(friendly,enemy):
 	friendly_team=[]
 	for iterated_card_id in friendly:
@@ -15,6 +15,7 @@ func load_teams(friendly,enemy):
 		if int(iterated_child.name)<=len(friendly_team):
 			iterated_child.card_held=friendly_team[int(iterated_child.name)-1]
 			friendly_team[int(iterated_child.name)-1].holder=iterated_child
+			friendly_team[int(iterated_child.name)-1].team=0
 	enemy_team=[]
 	for iterated_card_id in enemy:
 		enemy_team.append(Game.raw_create_card(enemy[iterated_card_id]))
@@ -22,6 +23,7 @@ func load_teams(friendly,enemy):
 		if int(iterated_child.name)<=len(enemy_team):
 			iterated_child.card_held=enemy_team[int(iterated_child.name)-1]
 			enemy_team[int(iterated_child.name)-1].holder=iterated_child
+			enemy_team[int(iterated_child.name)-1].team=1
 var enemy_position=Vector2(0,0)
 func _ready() -> void:
 	pass # Replace with function body.

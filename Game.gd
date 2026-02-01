@@ -169,6 +169,29 @@ func process_stack():
 		existing_cards.clear()
 		#print(UI["Party Friendly"])
 		get_tree().change_scene_to_file("res://Battle.tscn")
+	if processed_effect["Type"]=="Summon Creature":
+		var new_card=raw_create_card(processed_effect["Creature Data"])
+		if UI["Type"]=="Battle":
+			if processed_effect["Card Parent"].team==0:
+				if len(battle.friendly_team)<7:
+					battle.friendly_team.insert(battle.friendly_team.find(processed_effect["Card Parent"]),new_card)
+			else:
+				if len(battle.enemy_team)<7:
+					battle.enemy_team.insert(battle.enemy_team.find(processed_effect["Card Parent"]),new_card)
+		elif UI["Type"]=="Shop":
+			var start_pos=0
+			for i in range(len(root.warbrand_slots)):
+				if root.warbrand_slots[i].card_held==processed_effect["Card Parent"]:
+					start_pos=i
+			
+			
+			for i in range(7):
+				if root.warbrand_slots[(start_pos+i)%7].card_held==null:
+					root.warbrand_slots[(start_pos+i)%7].card_held=new_card
+					new_card.holder=root.warbrand_slots[(start_pos+i)%7]
+					break
+			#for iter_child in root.warbrand_slots:
+				
 	effect_stack.pop_at(0)
 func ilina(x): #In List If Not Already: Places the item into a list if it isn't in one already
 	if x is Array:
@@ -260,6 +283,7 @@ func start_new_game():
 	resetUI()
 	new_shop()
 	shop_card_pool=[]
+	print(variable)
 	shop_pools=[]
 	shop_add_pool("I")
 	will_start_new_game=false
@@ -267,6 +291,9 @@ func _ready():
 	load_card_types()
 	load_card_index()
 	shop_add_pool("I")
+	shop_add_pool("II")
+	shop_add_pool("III")
+	
 	#shop_add_pool("Food I")
 	load_battle_pools()
 	
@@ -448,14 +475,15 @@ func _process(delta: float) -> void:
 						possible_defenders.append(iter_defender)
 				var defender=possible_defenders.pick_random()
 				UI["Team"]=1-UI["Team"]
-				UI["Action"]={
-					"Type":"Attack",
-					"Time":0,
-					"Attacker":attacker,
-					"Defender":defender,
-					"Alpha Pos":attacker.holder.global_position,
-					"Beta Pos":defender.holder.global_position,
-				}
+				if attacker!=null:
+					UI["Action"]={
+						"Type":"Attack",
+						"Time":0,
+						"Attacker":attacker,
+						"Defender":defender,
+						"Alpha Pos":attacker.holder.global_position,
+						"Beta Pos":defender.holder.global_position,
+					}
 		elif UI["Action"]["Type"]=="Attack":
 			var Ui=UI["Action"]
 			Ui["Time"]+=delta
@@ -495,16 +523,14 @@ func _process(delta: float) -> void:
 					if i.variable["Health"]<=0:
 						removed_friendly.append(i)
 				for i in removed_friendly:
-					i.die_in_battle()
-					battle.friendly_team.erase(i)
+					if i.die_in_battle(): battle.friendly_team.erase(i)
 				var removed_enemy=[]
 				for i in battle.enemy_team:
 					if i.variable["Health"]<=0:
 						removed_enemy.append(i)
 				for i in removed_enemy:
-					i.die_in_battle()
+					if i.die_in_battle(): battle.enemy_team.erase(i)
 					
-					battle.enemy_team.erase(i)
 				if len(battle.friendly_team)==0 and len(battle.enemy_team)==0:
 					UI["Action"]={
 						"Type":"Battle End",
