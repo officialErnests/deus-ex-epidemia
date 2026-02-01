@@ -1,12 +1,12 @@
 {
 	"Type":1,
-	"Name":"Test",
+	"Name":"Cerberus",
 	"Description":"Comes in with a second creature",
-	"Cost":2,
+	"Cost":3,
 	"Attack":1,
 	"Health":1,
 	"Pool":"I",
-    "Tribe":"TEST",
+    "Tribe":"Creature",
     "Effects":[
         {
         "Trigger":"ETB",
@@ -14,7 +14,20 @@
 					"Type":"Summon Creature",
 					"Creature Data": {
                         "Type":1,
-                        "Name":"Test 2",
+                        "Name":"Cerberus Head",
+                        "Description":"",
+                        "Cost":1,
+                        "Attack":1,
+                        "Health":1,
+                        "Pool":"I",
+                        "Tribe":"Hero",
+                        "Effects":[]
+                    }
+                    },{
+					"Type":"Summon Creature",
+					"Creature Data": {
+                        "Type":1,
+                        "Name":"Cerberus Head",
                         "Description":"",
                         "Cost":1,
                         "Attack":1,

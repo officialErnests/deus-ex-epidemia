@@ -110,6 +110,8 @@ func _on_area_2d_mouse_exited() -> void:
 							})
 var selection_color_fade=0
 func attack(target_card):
+	trigger("Attacking")
+	target_card.trigger("Defending")
 	take_damage(target_card.variable["Attack"])
 	target_card.take_damage(variable["Attack"])
 	if target_card.variable["Health"]<=0:
@@ -142,7 +144,7 @@ func die_in_battle():
 		if variable["Reborn"]>0:
 			variable["Health"]=1
 			variable["Reborn"]-=1
-			print("but i kept on")
+			update_visually()
 			return false
 	animations.append({
 							"Type":"Die In Battle",
