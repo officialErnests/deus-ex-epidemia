@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_7kvaf"]
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_b1nb0"]
 [ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rqxli"]
+[ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="13_rqxli"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="14_hakid"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oepa1"]
 shader = ExtResource("9_7eopa")
@@ -94,3 +96,9 @@ color = Color(1, 0, 0, 1)
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1950351263]
+stream = ExtResource("13_rqxli")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("14_hakid")

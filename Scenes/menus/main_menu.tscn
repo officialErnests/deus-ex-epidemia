@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://e5i2p861xdcf" path="res://Scenes/tutorial/main_tutorial.tscn" id="12_sho4w"]
 [ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_a2x54"]
 [ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="16_a2x54"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="17_hl4ju"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b55im"]
 shader = ExtResource("1_1bxdl")
@@ -154,3 +155,4 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("16_a2x54")
 volume_db = -10.0
 autoplay = true
+script = ExtResource("17_hl4ju")

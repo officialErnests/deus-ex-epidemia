@@ -133,3 +133,4 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=734455177]
 stream = ExtResource("14_f8lgk")
+autoplay = true
