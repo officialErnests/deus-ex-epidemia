@@ -1,17 +1,108 @@
 {
-	"Battles": [
-		[
-			{
-				"1": {
-					"Attack": 3.0,
-					"Cost": 2.0,
-					"Description": "",
-					"Effects": [],
-					"Health": 4.0,
-					"Name": "Heracles",
-					"Type": 1.0
-				}
-			}
-		]
-	]
+    "Battles":[
+        [
+            {
+                "1":{
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":3,
+                        "Health":3,
+                        "Cost":3,
+                        "Name":"Devil",
+                        "Description":""
+                    }
+            }
+        ],
+        [
+            {
+                "1":
+                    {
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":5,
+                        "Health":2,
+                        "Cost":2,
+                        "Name":"Romeo",
+                        "Description":"Lover Of Juliet"
+                    },
+                "2":
+                    {
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":2,
+                        "Health":5,
+                        "Cost":2,
+                        "Name":"Juli Eta",
+                        "Description":"Lover of Romeo"
+                    }
+            }
+        ],
+         [
+            {
+                "1":{
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":4,
+                        "Health":1,
+                        "Buffer":3,
+                        "Cost":2,
+                        "Name":"True Achiles",
+                        "Description":"Can't Be Killed (Easily)"
+                    }
+            }
+        ],
+         [
+            {
+                "1":{
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":10,
+                        "Health":10,
+                        "Cost":2,
+                        "Name":"Zeus",
+                        "Description":""
+                }
+            }
+        ],
+         [
+            {
+                "1":{
+                        "Effects":[{
+                            "Trigger":"Attacking",
+                            "Effect List":[
+                                {
+                                    "Type":"Get Neighbours",
+                                    "Target":"@Defender",
+                                    "Variable Name":"Thor Neighbours"
+                                },
+                                {
+                                    "Type":"Deal Damage",
+                                    "Target":"Thor Neighbours",
+                                    "Value":"!Attack"
+                                }
+                            ]
+                        }],
+                        "Type":1,
+                        "Attack":5,
+                        "Health":4,
+                        "Buffer":1,
+                        "Cost":4,
+                        "Name":"Thor",
+                        "Description":""
+                },
+                "2":{
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":2,
+                        "Health":20,
+                        "Taunt":1,
+                        "Cost":4,
+                        "Name":"Loki",
+                        "Description":""
+                }
+            }
+
+        ]
+    ]
+    
 }

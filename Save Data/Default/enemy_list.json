@@ -6,9 +6,9 @@
                         "Effects":[],
                         "Type":1,
                         "Attack":3,
-                        "Health":4,
-                        "Cost":2,
-                        "Name":"Heracles",
+                        "Health":3,
+                        "Cost":3,
+                        "Name":"Devil",
                         "Description":""
                     }
             }
@@ -20,10 +20,20 @@
                         "Effects":[],
                         "Type":1,
                         "Attack":5,
-                        "Health":6,
+                        "Health":2,
                         "Cost":2,
-                        "Name":"Heracles",
-                        "Description":""
+                        "Name":"Romeo",
+                        "Description":"Lover Of Juliet"
+                    },
+                "2":
+                    {
+                        "Effects":[],
+                        "Type":1,
+                        "Attack":2,
+                        "Health":5,
+                        "Cost":2,
+                        "Name":"Juli Eta",
+                        "Description":"Lover of Romeo"
                     }
             }
         ],
@@ -32,11 +42,12 @@
                 "1":{
                         "Effects":[],
                         "Type":1,
-                        "Attack":7,
-                        "Health":8,
+                        "Attack":4,
+                        "Health":1,
+                        "Buffer":3,
                         "Cost":2,
-                        "Name":"Heracles",
-                        "Description":""
+                        "Name":"True Achiles",
+                        "Description":"Can't Be Killed (Easily)"
                     }
             }
         ],
@@ -45,10 +56,10 @@
                 "1":{
                         "Effects":[],
                         "Type":1,
-                        "Attack":9,
+                        "Attack":10,
                         "Health":10,
                         "Cost":2,
-                        "Name":"Heracles",
+                        "Name":"Zeus",
                         "Description":""
                 }
             }
@@ -56,28 +67,41 @@
          [
             {
                 "1":{
+                        "Effects":[{
+                            "Trigger":"Attacking",
+                            "Effect List":[
+                                {
+                                    "Type":"Get Neighbours",
+                                    "Target":"@Defender",
+                                    "Variable Name":"Thor Neighbours"
+                                },
+                                {
+                                    "Type":"Deal Damage",
+                                    "Target":"Thor Neighbours",
+                                    "Value":"!Attack"
+                                }
+                            ]
+                        }],
+                        "Type":1,
+                        "Attack":5,
+                        "Health":4,
+                        "Buffer":1,
+                        "Cost":4,
+                        "Name":"Thor",
+                        "Description":""
+                },
+                "2":{
                         "Effects":[],
                         "Type":1,
-                        "Attack":11,
-                        "Health":12,
-                        "Cost":2,
-                        "Name":"Heracles",
+                        "Attack":2,
+                        "Health":20,
+                        "Taunt":1,
+                        "Cost":4,
+                        "Name":"Loki",
                         "Description":""
-                    }
+                }
             }
-        ],
-         [
-            {
-                "1":{
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":13,
-                        "Health":14,
-                        "Cost":2,
-                        "Name":"Heracles",
-                        "Description":""
-                    }
-            }
+
         ]
     ]
     
