@@ -95,7 +95,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3656107104,
+									"Trigger Key": 3656107104.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -129,7 +129,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3179219297,
+									"Trigger Key": 3179219297.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -150,6 +150,20 @@
 					"Effects": [],
 					"Health": 1.0,
 					"Name": "Test 2",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
 					"Playable": 1.0,
 					"Pool": "I",
 					"Tribe": "Hero",
@@ -404,7 +418,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 4131405700,
+									"Trigger Key": 4131405700.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -432,14 +446,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 1319909220,
+									"Trigger Key": 1319909220.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1319909220,
+									"Trigger Key": 1319909220.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -448,7 +462,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1319909220,
+									"Trigger Key": 1319909220.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -484,7 +498,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3656107104,
+									"Trigger Key": 3656107104.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -518,7 +532,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3179219297,
+									"Trigger Key": 3179219297.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -580,7 +594,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3359012682,
+									"Trigger Key": 3359012682.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -660,14 +674,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 3883214995,
+									"Trigger Key": 3883214995.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 3883214995,
+									"Trigger Key": 3883214995.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -676,7 +690,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 3883214995,
+									"Trigger Key": 3883214995.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -857,14 +871,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 2514355235,
+									"Trigger Key": 2514355235.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2514355235,
+									"Trigger Key": 2514355235.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -873,7 +887,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1319909220,
+									"Trigger Key": 1319909220.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -909,7 +923,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 3656107104,
+									"Trigger Key": 3656107104.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -937,14 +951,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 2218614231,
+									"Trigger Key": 2218614231.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2218614231,
+									"Trigger Key": 2218614231.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -953,7 +967,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2218614231,
+									"Trigger Key": 2218614231.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -1052,14 +1066,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 2514355235,
+									"Trigger Key": 2514355235.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2514355235,
+									"Trigger Key": 2514355235.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -1068,7 +1082,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2514355235,
+									"Trigger Key": 2514355235.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -1137,14 +1151,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 2091458533,
+									"Trigger Key": 2091458533.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2091458533,
+									"Trigger Key": 2091458533.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -1153,7 +1167,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 2091458533,
+									"Trigger Key": 2091458533.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
@@ -1479,14 +1493,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 1608857134,
+									"Trigger Key": 1608857134.0,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1608857134,
+									"Trigger Key": 1608857134.0,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -1495,7 +1509,7 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1608857134,
+									"Trigger Key": 1608857134.0,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
