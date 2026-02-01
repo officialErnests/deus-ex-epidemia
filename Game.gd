@@ -204,11 +204,52 @@ func process_stack():
 					break
 			#for iter_child in root.warbrand_slots:
 	elif processed_effect["Type"]=="Destroy Card":
-		remove_card(get_value(processed_effect["Card"]))
+		for iter_card in ilina(get_target(processed_effect["Card"])):
+			remove_card(get_value(iter_card))
 	elif processed_effect["Type"]=="Variable From":
 		var target=get_value(processed_effect["Target"])
 		save_at(processed_effect["Name"],target.variable[processed_effect["Variable"]])
-	
+	elif processed_effect["Type"]=="Get Neighbours":
+		var neighbours=[]
+		if UI["Type"]=="Battle":
+			#var team=-1
+			var t=false
+			var last_minion=null
+			for i in battle.warbrand_slots:
+				i=i.card_held
+				if len(neighbours)>0:
+					neighbours.append(i)
+					break
+				if get_target(processed_effect["Target"])==i:
+					if last_minion!=null:
+						neighbours.append(last_minion)
+					t=true
+				last_minion=i
+			if not t:
+				for i in battle.enemy_slots:
+					i=i.card_held
+					if len(neighbours)>0:
+						neighbours.append(i)
+						break
+					if get_target(processed_effect["Target"])==i:
+						if last_minion!=null:
+							neighbours.append(last_minion)
+					last_minion=i
+		if UI["Type"]=="Shop":
+			var last_minion=null
+			for i in root.warbrand_slots:
+				i=i.card_held
+				if len(neighbours)>0:
+					neighbours.append(i)
+					break
+				if get_target(processed_effect["Target"])==i:
+					neighbours.append(last_minion)
+				last_minion=i
+		save_at(processed_effect["Variable Name"],neighbours)
+	elif processed_effect["Type"]=="Deal Damage":
+		for iter_card in ilina(get_target(processed_effect["Target"])):
+			if is_instance_valid(iter_card):
+				iter_card.take_damage(get_value(processed_effect["Value"]))
 	else:
 		chl("Unknown Effect: "+processed_effect,debug_c.BUG_REPORT)
 	effect_stack.pop_at(0)
@@ -223,6 +264,9 @@ func ilina(x): #In List If Not Already: Places the item into a list if it isn't 
 func get_target(target,activator=null):
 	if target=="$self":
 		return activator
+	if target[0]=="@":
+		return variable[target]
+	return variable["@Parent"].variable[target]
 func get_value(x):
 	if x is int:
 		return x
@@ -230,7 +274,7 @@ func get_value(x):
 		return x
 	if x is String:
 		if x[0]=="!":
-			return variable["@Parent"][x.substr(1)]
+			return variable["@Parent"].variable[x.substr(1)]
 		if x[0]=="#":
 			return variable[x]
 		if x[0]=="@":
@@ -238,10 +282,10 @@ func get_value(x):
 func save_at(x,y):
 	if x is String:
 		if x[0]=="#":
-			variable["#"+x]=[y]
+			variable["#"+x]=y
 			return	
 		
-		variable["@Parent"].variable[x]=[y]
+		variable["@Parent"].variable[x]=y
 func filter_cards(filter_data={}):
 	var all_cards=existing_cards.duplicate()
 	var removed_cards=[]
@@ -513,6 +557,8 @@ func _process(delta: float) -> void:
 				var defender=possible_defenders.pick_random()
 				UI["Team"]=1-UI["Team"]
 				if attacker!=null:
+					variable["@Defender"]=defender
+					variable["@Attacker"]=attacker
 					UI["Action"]={
 						"Type":"Attack",
 						"Time":0,

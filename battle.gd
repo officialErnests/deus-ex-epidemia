@@ -4,6 +4,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 @onready var end_screen=$Camera2D/ColorRect
 @onready var end_screen_label=$Camera2D/ColorRect/Label
+@onready var warbrand_slots=$"Warbrand Slots".get_children()
+@onready var enemy_slots=$"Enemy Slots".get_children()
 var friendly_team=[]
 var enemy_team=[]
 var sample_enemy_team={4: { "Type": 1.0, "Name": "Psyche", "Description": "Whenever she is attacked, she gains +2 health", "Cost": 3.0, "Attack": 3.0, "Health": 7.0, "Pool": "Greek Heroes", "Effects": [{ "Trigger": "Defending", "Effect List": [{ "Type": "Modify Variable", "Target": "self", "Variable Name": "Health", "Operation": "+", "Value": 2.0 }] }], "Dev Comment": "Gets +2 health whenever she is attacked. ", "Playable": 1.0 } }
