@@ -5,7 +5,7 @@ func getUnlocked() -> Dictionary[String, bool]:
 		"beetle" = true,
 		"dragon" = false,
 		"eagle" = false,
-		"fox" = false,
+		"fox" = true,
 		"rabbit" = false,
 		"whale" = false,
 	}
