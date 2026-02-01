@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://cwkaotmo5thtt" path="res://root.gd" id="1_cwqeq"]
 [ext_resource type="PackedScene" uid="uid://lir46y366vjr" path="res://Cards/pile.tscn" id="1_gxo8o"]
 [ext_resource type="PackedScene" uid="uid://b08kcyvo6cgka" path="res://Cards/card_holder.tscn" id="2_24d08"]
-[ext_resource type="Script" uid="uid://b288d65klme20" path="res://shop.gd" id="2_170dk"]
+[ext_resource type="Script" path="res://shop.gd" id="2_170dk"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="2_g0d6c"]
 [ext_resource type="PackedScene" uid="uid://btsl4hvgilbwo" path="res://Scenes/menus/Pause_menu.tscn" id="2_n0g3p"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="5_3ipfy"]
 [ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="6_f5i44"]
 [ext_resource type="AudioStream" uid="uid://bbtrvwv5y43bl" path="res://assets/lmms/gameplay.mp3" id="9_2qvp8"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="10_8hd61"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0g3p"]
 shader = ExtResource("2_g0d6c")
@@ -204,6 +205,7 @@ horizontal_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=492423539]
 stream = ExtResource("9_2qvp8")
 autoplay = true
+script = ExtResource("10_8hd61")
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]
 [connection signal="button_down" from="Shop/Refresh Shop" to="." method="_on_refresh_shop_button_down"]

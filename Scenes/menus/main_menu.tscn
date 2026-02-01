@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_4utaq"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_scqlf"]
 [ext_resource type="PackedScene" uid="uid://bhidgdtaitsp3" path="res://Scenes/menus/mask_select.tscn" id="11_a2x54"]
+[ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="12_rm1hn"]
 [ext_resource type="PackedScene" uid="uid://b147g85a43npc" path="res://Scenes/menus/credits_menu.tscn" id="12_scqlf"]
 [ext_resource type="PackedScene" uid="uid://e5i2p861xdcf" path="res://Scenes/tutorial/main_tutorial.tscn" id="12_sho4w"]
 [ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_a2x54"]
@@ -87,6 +88,7 @@ text = "PLAY"
 script = ExtResource("9_4utaq")
 to_scene = ExtResource("11_a2x54")
 root = true
+click_sfx = ExtResource("12_rm1hn")
 
 [node name="Tutorial" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=1644677788]
 layout_mode = 2
@@ -95,6 +97,7 @@ text = "Tutorial
 "
 script = ExtResource("9_4utaq")
 to_scene = ExtResource("12_sho4w")
+click_sfx = ExtResource("12_rm1hn")
 
 [node name="Settings" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=971350227]
 layout_mode = 2
@@ -103,7 +106,8 @@ text = "Settings
 
 "
 script = ExtResource("9_4utaq")
-settings = true
+settings_bool = true
+click_sfx = ExtResource("12_rm1hn")
 
 [node name="Settings" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer/Settings" unique_id=860161343 instance=ExtResource("13_a2x54")]
 visible = false
@@ -115,6 +119,7 @@ text = "Credits
 "
 script = ExtResource("9_4utaq")
 to_scene = ExtResource("12_scqlf")
+click_sfx = ExtResource("12_rm1hn")
 
 [node name="Exit" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=78708567]
 layout_mode = 2
@@ -123,6 +128,7 @@ text = "Exit
 "
 script = ExtResource("9_4utaq")
 exit = true
+click_sfx = ExtResource("12_rm1hn")
 
 [node name="Mask2" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=1247152075]
 z_index = -1

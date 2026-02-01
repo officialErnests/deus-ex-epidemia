@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btsl4hvgilbwo" path="res://Scenes/menus/Pause_menu.tscn" id="4_yflgj"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="5_lrdw4"]
 [ext_resource type="AudioStream" uid="uid://cne0sjmg8257q" path="res://assets/lmms/fight.mp3" id="7_lrdw4"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="8_3hmwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pjn1s"]
 font = ExtResource("3_1046u")
@@ -158,3 +159,4 @@ texture = ExtResource("3_yh5fh")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1111024982]
 stream = ExtResource("7_lrdw4")
 autoplay = true
+script = ExtResource("8_3hmwm")

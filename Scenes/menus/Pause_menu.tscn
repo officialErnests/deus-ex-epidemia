@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="8_yxwgu"]
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="9_141pp"]
 [ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_ioit5"]
+[ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="13_mpryc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjql"]
 shader = ExtResource("1_qpsoe")
@@ -85,7 +86,8 @@ text = "Settings
 
 "
 script = ExtResource("4_yhqo1")
-settings = true
+settings_bool = true
+click_sfx = ExtResource("13_mpryc")
 
 [node name="Settings" parent="CenterContainer/Middle/VBoxContainer/Settings" unique_id=860161343 instance=ExtResource("13_ioit5")]
 
@@ -95,3 +97,4 @@ theme = ExtResource("2_wwohx")
 text = "Exit to main menu"
 script = ExtResource("4_yhqo1")
 main_menu = true
+click_sfx = ExtResource("13_mpryc")

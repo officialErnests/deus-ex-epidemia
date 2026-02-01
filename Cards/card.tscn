@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bedtf40a77asj" path="res://assets/gimp/Card.png" id="2_7bc8n"]
 [ext_resource type="Texture2D" uid="uid://cbjt0jo14sbrr" path="res://assets/gimp/HitFx.png" id="3_w0fdq"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="4_7bc8n"]
+[ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="5_p0ugb"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="6_p2x5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk7e"]
 size = Vector2(130, 200)
@@ -44,6 +46,11 @@ text = "-34"
 label_settings = SubResource("LabelSettings_w0fdq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="." unique_id=1365076649]
+stream = ExtResource("5_p0ugb")
+script = ExtResource("6_p2x5d")
+sfx = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
