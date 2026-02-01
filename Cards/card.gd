@@ -18,7 +18,6 @@ func setup(data:Dictionary):
 	card_type=variable["Type"]
 	
 	#Makes sure all the required variables exist, (returning to default if they don't)
-	print(Game.card_types.keys())
 	for iter_req_variable in Game.card_types[card_type]["Required Variables"]:
 		if not iter_req_variable in variable:
 			variable[iter_req_variable]=Game.card_types[card_type]["Required Variables"][iter_req_variable]

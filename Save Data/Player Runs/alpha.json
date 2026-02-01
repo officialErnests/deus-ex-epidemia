@@ -173,6 +173,21 @@
 			{
 				"1": {
 					"Attack": 3.0,
+					"Buffer": 1.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 3.0,
 					"Buffer": 1,
 					"Cost": 3.0,
 					"Description": "",
@@ -300,6 +315,49 @@
 					"Name": "Gilgamesh",
 					"Playable": 1.0,
 					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 3.0,
+					"Buffer": 1,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 3.0,
+					"Cost": 4.0,
+					"Description": "Also damages adjacent minions",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Thor",
+					"Playable": 1.0,
+					"Pool": "II",
 					"Tribe": "Hero",
 					"Type": 1.0
 				}
