@@ -5,3 +5,4 @@ var EFFECT_DATA=true
 var PROCESS_STACK=true
 
 var GAME_SPEED=1
+var BUG_REPORT=true

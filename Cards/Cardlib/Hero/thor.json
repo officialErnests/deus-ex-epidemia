@@ -1,0 +1,25 @@
+{
+	"Type":1,
+	"Name":"Thor",
+	"Description":"Also damages adjacent minions",
+	"Cost":4,
+	"Attack":3,
+	"Health":2,
+	"Pool":"II",
+    "Tribe":"Hero",
+    "Effects":[{
+        "Trigger":"Attacking",
+        "Effect List":[
+            {
+                "Type":"Get Neighbours",
+                "Target":"@Defender",
+                "Variable Name":"Thor Neighbours"
+            },
+            {
+                "Type":"Deal Damage",
+                "Target":"Thor Neighbours",
+                "Value":"!Attack"
+            }
+        ]
+    }]
+}

@@ -5,6 +5,7 @@ extends Button
 @export var main_menu: bool
 @export var root: bool = false
 @export var settings: bool = false
+
 func _ready() -> void:
 	connect("pressed", buttonPressed)
 

@@ -60,6 +60,7 @@ theme = ExtResource("8_32igv")
 text = "PLAY AGAIN"
 script = ExtResource("9_7kvaf")
 to_scene = ExtResource("10_b1nb0")
+root = true
 
 [node name="Main" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1483948378]
 layout_mode = 2

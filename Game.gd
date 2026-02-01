@@ -100,6 +100,8 @@ func process_stack():
 		return
 	var processed_effect=effect_stack[0]
 	chl("Processing Effect: "+str(processed_effect),debug_c.PROCESS_STACK)
+	if "Card Parent" in processed_effect:
+		variable["@Parent"]=processed_effect["Card Parent"]
 	#print(existing_cards)
 	#Effects that affect cards
 	if processed_effect["Type"]=="Target": #The game begins the sequence where a card is being targeted. 
@@ -123,7 +125,10 @@ func process_stack():
 				"Start Position":processed_effect["Card Parent"].global_position,
 				#ends on the right side at the right scale
 			}
-	if processed_effect["Type"]=="Move Card To":
+		else:
+			chl("Target Effect Failed, 0 targettable creatures")
+			negate_effect(processed_effect["Trigger Key"])
+	elif processed_effect["Type"]=="Move Card To":
 		var affected_cards=processed_effect["Card Parent"]
 		if processed_effect["Card"]=="$self":
 			affected_cards=processed_effect["Card Parent"]
@@ -132,7 +137,7 @@ func process_stack():
 			affected_card.belongs_to_pile=processed_effect["Card Pile ID"]
 			card_piles[processed_effect["Card Pile ID"]].card_pile.append(affected_card)
 			affected_card.changed_card_pile()
-	if processed_effect["Type"]=="Modify Variable":
+	elif processed_effect["Type"]=="Modify Variable":
 		var affected_cards=[]
 		
 		if processed_effect["Target"][0]=="#": #Trying to access a global variable
@@ -146,10 +151,17 @@ func process_stack():
 		
 			if processed_effect["Operation"]=="+":
 				affected_card.variable[processed_effect["Variable Name"]]+=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="-":
+				affected_card.variable[processed_effect["Variable Name"]]-=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="*":
+				affected_card.variable[processed_effect["Variable Name"]]*=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="/":
+				affected_card.variable[processed_effect["Variable Name"]]/=get_value(processed_effect["Value"])
+			
 			affected_card.update_visually()
 	
 	#Game based effects
-	if processed_effect["Type"]=="Begin Battle Phase":
+	elif processed_effect["Type"]=="Begin Battle Phase":
 		
 		UI={
 			"Type":"Battle",
@@ -169,7 +181,7 @@ func process_stack():
 		existing_cards.clear()
 		#print(UI["Party Friendly"])
 		get_tree().change_scene_to_file("res://Battle.tscn")
-	if processed_effect["Type"]=="Summon Creature":
+	elif processed_effect["Type"]=="Summon Creature":
 		var new_card=raw_create_card(processed_effect["Creature Data"])
 		if UI["Type"]=="Battle":
 			if processed_effect["Card Parent"].team==0:
@@ -191,8 +203,19 @@ func process_stack():
 					new_card.holder=root.warbrand_slots[(start_pos+i)%7]
 					break
 			#for iter_child in root.warbrand_slots:
-				
+	elif processed_effect["Type"]=="Destroy Card":
+		remove_card(get_value(processed_effect["Card"]))
+	elif processed_effect["Type"]=="Variable From":
+		var target=get_value(processed_effect["Target"])
+		save_at(processed_effect["Name"],target.variable[processed_effect["Variable"]])
+	
+	else:
+		chl("Unknown Effect: "+processed_effect,debug_c.BUG_REPORT)
 	effect_stack.pop_at(0)
+func negate_effect(effect_key):
+	for effect in effect_stack:
+		if effect["Trigger Key"]==effect_key:
+			effect_stack.erase(effect)
 func ilina(x): #In List If Not Already: Places the item into a list if it isn't in one already
 	if x is Array:
 		return x
@@ -205,6 +228,20 @@ func get_value(x):
 		return x
 	if x is float:
 		return x
+	if x is String:
+		if x[0]=="!":
+			return variable["@Parent"][x.substr(1)]
+		if x[0]=="#":
+			return variable[x]
+		if x[0]=="@":
+			return variable[x]
+func save_at(x,y):
+	if x is String:
+		if x[0]=="#":
+			variable["#"+x]=[y]
+			return	
+		
+		variable["@Parent"].variable[x]=[y]
 func filter_cards(filter_data={}):
 	var all_cards=existing_cards.duplicate()
 	var removed_cards=[]
@@ -262,7 +299,7 @@ func new_shop():
 	variable["Floor"]+=1
 	if variable["Floor"]==len(battle_pools):
 		print("GG, game won")
-		get_tree().change_scene_to_file("res://Scenes/menus/game_over.tscn")
+		get_tree().change_scene_to_file("res://Scenes/menus/victory_screen.tscn")
 		return
 	resetUI()
 	refresh_shop()
@@ -283,16 +320,16 @@ func start_new_game():
 	resetUI()
 	new_shop()
 	shop_card_pool=[]
-	print(variable)
 	shop_pools=[]
 	shop_add_pool("I")
+	shop_add_pool("II")
+	shop_add_pool("III")
 	will_start_new_game=false
 func _ready():
 	load_card_types()
 	load_card_index()
 	shop_add_pool("I")
-	shop_add_pool("II")
-	shop_add_pool("III")
+	
 	
 	#shop_add_pool("Food I")
 	load_battle_pools()
@@ -317,7 +354,7 @@ func finish_targeting():
 	if UI["Global"]:
 		GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	else:
-		UI["Card Parent"].variable["%"+UI["Assigning To Variable"]]=UI["Targeted Card"]
+		UI["Card Parent"].variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	UI["Focusing On Card"].scale=Vector2(1.,1.)
 	process_on_hold=false
 	resetUI()
