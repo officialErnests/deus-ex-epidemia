@@ -188,7 +188,7 @@
 			{
 				"1": {
 					"Attack": 3.0,
-					"Buffer": 1,
+					"Buffer": 1.0,
 					"Cost": 3.0,
 					"Description": "",
 					"Effects": [],
@@ -322,7 +322,7 @@
 			{
 				"1": {
 					"Attack": 3.0,
-					"Buffer": 1,
+					"Buffer": 1.0,
 					"Cost": 3.0,
 					"Description": "",
 					"Effects": [],
@@ -372,6 +372,95 @@
 					"Effects": [],
 					"Health": 8.0,
 					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 4.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 6.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 3.0,
+					"Buffer": 1,
+					"Cost": 4.0,
+					"Description": "Also damages adjacent minions",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Thor",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Trigger Key": 1430621723,
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 1430621723,
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 1430621723,
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
 					"Type": 1.0
 				}
 			}
