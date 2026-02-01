@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c21cwcc2a03fy"]
+
+[ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="1_bca20"]
+[ext_resource type="Script" uid="uid://dm6kp27svm7pc" path="res://Scripts/menu/current_mask.gd" id="2_pt6ov"]
+[ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_dr74k"]
+[ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="4_vb3km"]
+[ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_lvwqe"]
+[ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_0njup"]
+[ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_6jfwh"]
+
+[node name="display_current" type="CanvasLayer" unique_id=683316084]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=830647974]
+position = Vector2(1054, 552)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_bca20")
+script = ExtResource("2_pt6ov")
+masks = Dictionary[String, CompressedTexture2D]({
+"beetle": ExtResource("1_bca20"),
+"dragon": ExtResource("3_dr74k"),
+"eagle": ExtResource("4_vb3km"),
+"fox": ExtResource("5_lvwqe"),
+"rabbit": ExtResource("6_0njup"),
+"whale": ExtResource("7_6jfwh")
+})
