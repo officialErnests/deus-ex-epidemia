@@ -9,4 +9,14 @@ Perhaps something in the game variable.
 Today, i need to make it so that there is a battle phase, where cards can attack other cards. 
 
 #Var - global variable
-%Var - in card.variable 
+
+@var - scene specific variable (attacker and defender mid battle)
+    @Attacker - card that attacks during attack
+    @Defender - card that is attacked during attack`
+    @Parent - card that is using the effect
+!var - card parent's variable
+
+
+String.substr(1)
+
+#Actually no, fuck that old stuff, if you save to a variable, unless you specify it to be a global one, by putting a # before it, it'll be a local one

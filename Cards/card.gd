@@ -54,10 +54,12 @@ func deload_card():
 #Card logic
 #Is called whenever a card is tested for a trigger
 func trigger(_trig):
+	var trigger_key=randi()
 	if _trig in activated_on_triggers:
 		for iter_effect_list in activated_on_triggers[_trig]:
 			for iter_effect in iter_effect_list: #These effects should also be added to Game.effect_stack
 				iter_effect["Card Parent"]=self
+				iter_effect["Trigger Key"]=trigger_key
 				Game.effect_stack.append(iter_effect)
 				Game.chl("Added Effect to stack: "+str(iter_effect),debug_c.EFFECT_DATA)
 		if _trig=="ETB":

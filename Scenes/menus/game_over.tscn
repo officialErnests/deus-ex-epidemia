@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_b1nb0"]
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_rqxli"]
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_hakid"]
-[ext_resource type="Theme" uid="uid://d06pntua37tpb" path="res://assets/fonts/main_theme.tres" id="8_32igv"]
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="8_32igv"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="9_7eopa"]
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_7kvaf"]
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_b1nb0"]
@@ -58,6 +58,7 @@ theme = ExtResource("8_32igv")
 text = "PLAY AGAIN"
 script = ExtResource("9_7kvaf")
 to_scene = ExtResource("10_b1nb0")
+root = true
 
 [node name="Main" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1483948378]
 layout_mode = 2

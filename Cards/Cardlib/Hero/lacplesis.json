@@ -12,24 +12,22 @@
 			"Effect List":[
 				{
 					"Type":"Target",
-					"Assign Variable":"Target",
+					"Assign Variable":"Jesus Target",
 					"Target Filter":{
 						"Location":"On Field",
                         "Tribe":"Creature"
 					}
 				},
                 {
-					"Type":"From Target Copy Variable To",
+					"Type":"Variable From",
 					"Name":"Inherited_Health",
-                    "Global":0,
-					"Target":"%Target",
+					"Target":"Jesus Target",
                     "Variable":"Health"
 				},
                 {
-					"Type":"From Target Copy Variable To",
+					"Type":"Variable From",
 					"Name":"Inherited_Attack",
-                    "Global":0,
-					"Target":"%Target",
+					"Target":"Jesus Target",
                     "Variable":"Attack"
 				},
                 {
@@ -51,18 +49,18 @@
                     "Target":"self",
                     "Variable Name":"Attack",
                     "Operation":"+",
-                    "Value":"%Inherited_Attack"
+                    "Value":"!Inherited_Attack"
                 },
                 {
                     "Type":"Modify Variable",
                     "Target":"self",
                     "Variable Name":"Health",
                     "Operation":"+",
-                    "Value":"%Inherited_Health"
+                    "Value":"!Inherited_Health"
                 },
                 {
                     "Type":"Destroy Card",
-                    "Target":"%Target"
+                    "Target":"Jesus Target"
                 }
             ]}],
 	"Dev Comment":"Lacplesis, devours a friendly creature when played, gaining double the creature's stats"
