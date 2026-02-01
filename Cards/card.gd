@@ -12,6 +12,7 @@ var holder=null
 var immovable=true
 var location="Void"
 var will_die=false
+var team=0 #used only in battles
 func setup(data:Dictionary):
 	variable=data.duplicate(true)
 	card_type=variable["Type"]
@@ -134,12 +135,19 @@ func get_hit(damage):
 	$HitFx.visible=true
 	$HitFx/Label.text="-"+str(int(damage))
 func die_in_battle():
+	if "Reborn" in variable:
+		if variable["Reborn"]>0:
+			variable["Health"]=1
+			variable["Reborn"]-=1
+			print("but i kept on")
+			return false
 	animations.append({
 							"Type":"Die In Battle",
 							#"Damage":variable["Attack"],
 							"TTL":0,
 							"MAX TTL":0.7
 							})
+	return true
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

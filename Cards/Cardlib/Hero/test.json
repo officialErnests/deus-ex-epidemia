@@ -1,0 +1,28 @@
+{
+	"Type":1,
+	"Name":"Test",
+	"Description":"Comes in with a second creature",
+	"Cost":2,
+	"Attack":1,
+	"Health":1,
+	"Pool":"I",
+    "Tribe":"TEST",
+    "Effects":[
+        {
+        "Trigger":"ETB",
+		"Effect List":[{
+					"Type":"Summon Creature",
+					"Creature Data": {
+                        "Type":1,
+                        "Name":"Test 2",
+                        "Description":"",
+                        "Cost":1,
+                        "Attack":1,
+                        "Health":1,
+                        "Pool":"I",
+                        "Tribe":"Hero",
+                        "Effects":[]
+                    }
+                    }]
+                }]
+}
