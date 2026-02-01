@@ -13,12 +13,17 @@ config_version=5
 config/name="deus-ex-epidemia"
 run/main_scene="uid://tfomefgym0r7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/stretch_mode=2
+boot_splash/image="uid://bxdfkmoy3ah0h"
 config/icon="res://icon.svg"
 
 [autoload]
 
 Game="*uid://dx2nbat0ba5cf"
 debug_c="*uid://dkl5y3gj7bb1g"
+save_manager="*uid://ccxm8ulrv7grv"
+modifiers="*uid://bmutk67jjlk24"
 
 [display]
 
@@ -26,7 +31,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

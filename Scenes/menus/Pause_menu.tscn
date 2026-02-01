@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="7_62fp4"]
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="8_yxwgu"]
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="9_141pp"]
+[ext_resource type="PackedScene" uid="uid://xtrdek3040t7" path="res://Scenes/menus/settings.tscn" id="13_ioit5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjql"]
 shader = ExtResource("1_qpsoe")
@@ -84,6 +85,9 @@ text = "Settings
 
 "
 script = ExtResource("4_yhqo1")
+settings = true
+
+[node name="Settings" parent="CenterContainer/Middle/VBoxContainer/Settings" unique_id=860161343 instance=ExtResource("13_ioit5")]
 
 [node name="Exit" type="Button" parent="CenterContainer/Middle/VBoxContainer" unique_id=1637150840]
 layout_mode = 2
