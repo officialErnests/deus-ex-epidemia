@@ -23,8 +23,8 @@ config/icon="res://icon.svg"
 Game="*uid://dx2nbat0ba5cf"
 debug_c="*uid://dkl5y3gj7bb1g"
 modifiers="*uid://bmutk67jjlk24"
-settings="*uid://bwqv6henya0hr"
-save_manager="*uid://nrloficcj6q4"
+settings="*uid://drrrjj0dv1r4l"
+save_manager="*uid://u8ppq8y1ul7d"
 
 [display]
 

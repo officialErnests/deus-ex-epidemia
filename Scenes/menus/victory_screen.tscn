@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rxdww"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="12_1wc5w"]
 [ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="13_5e1d5"]
-[ext_resource type="Script" path="res://Scripts/menu/audio_manager.gd" id="14_vaqlx"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="14_vaqlx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oepa1"]
 shader = ExtResource("12_1wc5w")

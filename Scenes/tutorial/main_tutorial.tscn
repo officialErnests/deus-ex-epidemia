@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://e5i2p861xdcf"]
 
+[ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="1_ydo4e"]
+[ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="2_jfv4d"]
+[ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="4_dlihx"]
+[ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="5_kwivs"]
+[ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="6_3qrun"]
+[ext_resource type="Texture2D" uid="uid://br3mw64rn1e6o" path="res://assets/gimp/candle_dark.png" id="7_6hkqr"]
+[ext_resource type="Texture2D" uid="uid://bedtf40a77asj" path="res://assets/gimp/Card.png" id="8_dvs5c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opcxs"]
+shader = ExtResource("5_kwivs")
+shader_parameter/fromTop = 0.2
+
 [node name="Control" type="Control" unique_id=79397341]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +19,129 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BG_black" type="CanvasLayer" parent="." unique_id=370410321]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="BG_black" unique_id=1890625836]
+z_index = 1
+material = SubResource("ShaderMaterial_opcxs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BG_black" unique_id=978100326]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="." unique_id=2008568291]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=333411777]
+layout_mode = 0
+offset_left = 226.0
+offset_top = -12.0
+offset_right = 580.0
+offset_bottom = 228.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/font_size = 100
+text = "Masks"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1638445937]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 129.0
+offset_right = 611.0
+offset_bottom = 349.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/normal_font_size = 30
+text = "Masks change how the game is played, by giving you powers and abilities, as well new troops"
+
+[node name="Label2" type="Label" parent="Control" unique_id=1338720197]
+layout_mode = 0
+offset_left = 657.0
+offset_top = -12.0
+offset_right = 1011.0
+offset_bottom = 228.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/font_size = 100
+text = "Game"
+horizontal_alignment = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control" unique_id=1056182681]
+clip_contents = false
+layout_mode = 0
+offset_left = 616.0
+offset_top = 126.0
+offset_right = 1004.0
+offset_bottom = 314.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/normal_font_size = 30
+text = "The game is about making heaven, by beating all opponents' decks, before all candles go dark."
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Control" unique_id=210676682]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 328.0
+offset_right = 599.0
+offset_bottom = 568.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/font_size = 100
+text = "Cards"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Control" unique_id=684043109]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 460.0
+offset_right = 744.0
+offset_bottom = 680.0
+theme = ExtResource("1_ydo4e")
+theme_override_font_sizes/normal_font_size = 30
+text = "Cards have price, title, description, health and attack.
+As the description shows, a cool description"
+
+[node name="Beetle" type="Sprite2D" parent="." unique_id=326519944]
+position = Vector2(126, 58.000008)
+scale = Vector2(0.29104045, 0.29104045)
+texture = ExtResource("6_3qrun")
+
+[node name="CandleDark" type="Sprite2D" parent="." unique_id=1940618140]
+position = Vector2(1050, 114)
+scale = Vector2(0.23240742, 0.23240742)
+texture = ExtResource("7_6hkqr")
+
+[node name="Card" type="Sprite2D" parent="." unique_id=1143696102]
+position = Vector2(144, 498.99997)
+scale = Vector2(0.368, 0.368)
+texture = ExtResource("8_dvs5c")
+
+[node name="Exit" type="Button" parent="." unique_id=697156328]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -82.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_ydo4e")
+text = "Back
+
+"
+script = ExtResource("2_jfv4d")
+main_menu = true
+click_sfx = ExtResource("4_dlihx")
