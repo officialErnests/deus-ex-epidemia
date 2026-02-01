@@ -20,3 +20,58 @@ Today, i need to make it so that there is a battle phase, where cards can attack
 String.substr(1)
 
 #Actually no, fuck that old stuff, if you save to a variable, unless you specify it to be a global one, by putting a # before it, it'll be a local one
+
+
+6 of each (3 level 1, 2 level 2, 1 level 3)
+Heroes:
+
+Gilgamesh
+Achiles
+Hercules
+
+Jesus
+Thor
+
+Lacplesis
+
+Villains:
+
+Donald Trump
+Stalin
+Ghengis Khan
+
+Jack The Ripper
+Caligula
+
+Hitler
+
+Celebrities: 
+
+Michael Jackson
+Shakespeare
+Churchil
+
+Julius Caesar
+Rasputin
+
+Karlis Ulmanis
+
+Creatures:
+
+Cerberus
+Phoenix
+Yeti
+
+Werewolf
+Vampire
+
+Minotaur
+
+Scientists:
+
+T. J. Kaczynski.
+Einstein
+Newton
+Euler
+Leonardo Da Vinchi
+Diogenes
