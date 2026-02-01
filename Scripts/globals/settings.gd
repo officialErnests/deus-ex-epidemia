@@ -5,7 +5,7 @@ var sfx_volume = 1
 signal  music_volume_changed(music_volume)
 
 func setMusicVolume(p_value) -> void:
-    p_value = p_value
+    music_volume = p_value
     music_volume_changed.emit(p_value)
 
 func setSfxVolume(music_volume) -> void:

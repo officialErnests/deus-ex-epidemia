@@ -10,7 +10,7 @@
 [ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="8_32igv"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="9_7eopa"]
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_7kvaf"]
-[ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_b1nb0"]
+[ext_resource type="PackedScene" uid="uid://bhidgdtaitsp3" path="res://Scenes/menus/mask_select.tscn" id="10_rqxli"]
 [ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rqxli"]
 [ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="13_rqxli"]
 [ext_resource type="Script" path="res://Scripts/menu/audio_manager.gd" id="14_hakid"]
@@ -59,7 +59,7 @@ layout_mode = 2
 theme = ExtResource("8_32igv")
 text = "PLAY AGAIN"
 script = ExtResource("9_7kvaf")
-to_scene = ExtResource("10_b1nb0")
+to_scene = ExtResource("10_rqxli")
 root = true
 
 [node name="Main" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=1483948378]

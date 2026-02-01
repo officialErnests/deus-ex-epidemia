@@ -125,6 +125,7 @@ func take_damage(damage):
 			variable["Buffer"]-=1
 			get_hit(0)
 			return
+	get_node("HitSfx").play()
 	variable["Health"]-=damage
 	get_hit(damage)
 	if variable["Health"]<=0:

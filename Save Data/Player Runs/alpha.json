@@ -558,6 +558,154 @@
 					"Tribe": "Hero",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 1.0,
+					"Cost": 2.0,
+					"Description": "Comes in with a second creature",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Card Parent": "<Freed Object>",
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Test 2",
+										"Pool": "I",
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Trigger Key": 3359012682,
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 1.0,
+					"Name": "Test",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "TEST",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Test 2",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 5.0,
+					"Cost": 4.0,
+					"Description": "Also damages adjacent minions",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 5.0,
+					"Name": "Thor",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Trigger Key": 3883214995,
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 3883214995,
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 3883214995,
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -656,7 +804,19 @@
 			},
 			{
 				"1": {
-					"Attack": 9.0,
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 7.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 6.0,
 					"Cost": 4.0,
 					"Description": "Also damages adjacent minions",
 					"Effects": [
@@ -676,45 +836,11 @@
 							"Trigger": "Attacking"
 						}
 					],
-					"Health": 11.0,
+					"Health": 7.0,
 					"Name": "Thor",
 					"Playable": 1.0,
 					"Pool": "II",
 					"Tribe": "Hero",
-					"Type": 1.0
-				},
-				"2": {
-					"Attack": 1.0,
-					"Cost": 2.0,
-					"Description": "Comes in with a second creature",
-					"Effects": [
-						{
-							"Effect List": [
-								{
-									"Card Parent": "<Freed Object>",
-									"Creature Data": {
-										"Attack": 1.0,
-										"Cost": 1.0,
-										"Description": "",
-										"Effects": [],
-										"Health": 1.0,
-										"Name": "Test 2",
-										"Pool": "I",
-										"Tribe": "Hero",
-										"Type": 1.0
-									},
-									"Trigger Key": 4131405700,
-									"Type": "Summon Creature"
-								}
-							],
-							"Trigger": "ETB"
-						}
-					],
-					"Health": 1.0,
-					"Name": "Test",
-					"Playable": 1.0,
-					"Pool": "I",
-					"Tribe": "TEST",
 					"Type": 1.0
 				},
 				"3": {
@@ -731,14 +857,14 @@
 									"Target Filter": {
 										"Location": "On Field"
 									},
-									"Trigger Key": 1319909220,
+									"Trigger Key": 2514355235,
 									"Type": "Target"
 								},
 								{
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
-									"Trigger Key": 1319909220,
+									"Trigger Key": 2514355235,
 									"Type": "Modify Variable",
 									"Value": 2.0,
 									"Variable Name": "Health"
@@ -868,6 +994,179 @@
 					"Effects": [],
 					"Health": 14.0,
 					"Name": "Heracles",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 7.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 6.0,
+					"Cost": 4.0,
+					"Description": "Also damages adjacent minions",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 7.0,
+					"Name": "Thor",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Trigger Key": 2514355235,
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 2514355235,
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 2514355235,
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 3.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Trigger Key": 2091458533,
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 2091458533,
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 2091458533,
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
 					"Type": 1.0
 				}
 			}
@@ -1068,6 +1367,135 @@
 									"Card Parent": "<Freed Object>",
 									"Operation": "+",
 									"Target": "#Target",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 2.0,
+					"Name": "Gilgamesh",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 5.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 7.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 6.0,
+					"Cost": 4.0,
+					"Description": "Also damages adjacent minions",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 7.0,
+					"Name": "Thor",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 2.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 4.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Play: Give a friendly minion +1/+2",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Assign Variable": "Target",
+									"Card Parent": "<Freed Object>",
+									"Global": 0.0,
+									"Target Filter": {
+										"Location": "On Field"
+									},
+									"Trigger Key": 1608857134,
+									"Type": "Target"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 1608857134,
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Operation": "+",
+									"Target": "#Target",
+									"Trigger Key": 1608857134,
 									"Type": "Modify Variable",
 									"Value": 1.0,
 									"Variable Name": "Attack"
