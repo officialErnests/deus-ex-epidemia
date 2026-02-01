@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="8_v21mo"]
 [ext_resource type="Script" uid="uid://d4hou6p33gn7e" path="res://Scripts/menu/NB_master_effects.gd" id="9_665jx"]
 [ext_resource type="Script" uid="uid://dymbs1rac3dw2" path="res://Scripts/menu/settings.gd" id="10_efyol"]
+[ext_resource type="Script" uid="uid://2ejjyv1p8144" path="res://Scripts/menu/settings_universal.gd" id="11_xng2f"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="12_ixbfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wgbv"]
@@ -94,12 +95,36 @@ script = ExtResource("9_665jx")
 shake = 2.0
 shake_delay = 0.1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/HBoxContainer/Middle" unique_id=360725322]
-custom_minimum_size = Vector2(0, 200)
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/HBoxContainer/Middle" unique_id=610216259]
 layout_mode = 2
-text = "Settings - wip"
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Credits/HBoxContainer/Middle/HBoxContainer" unique_id=130440691]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Music volume"
+
+[node name="HSlider" type="HSlider" parent="Credits/HBoxContainer/Middle/HBoxContainer" unique_id=1031033987]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("11_xng2f")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Credits/HBoxContainer/Middle" unique_id=1422522031]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Credits/HBoxContainer/Middle/HBoxContainer2" unique_id=1536581479]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Sfx volume  "
+
+[node name="HSlider" type="HSlider" parent="Credits/HBoxContainer/Middle/HBoxContainer2" unique_id=1967614595]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("11_xng2f")
+this_type = 1
 
 [node name="Back" type="Button" parent="Credits/HBoxContainer/Middle" unique_id=231249069 node_paths=PackedStringArray("rooted")]
 layout_mode = 2
