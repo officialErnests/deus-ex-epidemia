@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_sfg7t"]
 [ext_resource type="Theme" uid="uid://do2lk0clpbgsh" path="res://assets/fonts/main_theme.tres" id="8_cje25"]
 [ext_resource type="Script" uid="uid://df5tbirsrs8i4" path="res://Scripts/menu/NB_master_button.gd" id="9_g3c6i"]
+[ext_resource type="Script" uid="uid://cmnf3pxcbi521" path="res://Scripts/menu/Mask_unlocker.gd" id="9_vaqlx"]
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="10_lbibx"]
 [ext_resource type="PackedScene" uid="uid://tfomefgym0r7" path="res://Scenes/menus/main_menu.tscn" id="11_rxdww"]
 [ext_resource type="Shader" uid="uid://45wh4n1kv6lp" path="res://Scripts/Shaders/screen_aura.gdshader" id="12_1wc5w"]
+[ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="13_5e1d5"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="14_vaqlx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oepa1"]
 shader = ExtResource("12_1wc5w")
@@ -51,6 +54,13 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("8_cje25")
 text = "You win"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Middle" unique_id=834357689]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme = ExtResource("8_cje25")
+text = "You have unlocked a mask!"
+script = ExtResource("9_vaqlx")
 
 [node name="Play" type="Button" parent="CanvasLayer/HBoxContainer/Middle" unique_id=2086551886]
 layout_mode = 2
@@ -93,3 +103,9 @@ color = Color(1, 0, 0, 1)
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=670593116]
+stream = ExtResource("13_5e1d5")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("14_vaqlx")
