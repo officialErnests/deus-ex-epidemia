@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://3llxunafx0gl" path="res://Root.tscn" id="12_c81tt"]
 [ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="13_c81tt"]
 [ext_resource type="AudioStream" uid="uid://duqp7bjmpyko6" path="res://assets/lmms/menu.mp3" id="14_f8lgk"]
-[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="16_f8lgk"]
+[ext_resource type="Script" path="res://Scripts/menu/audio_manager.gd" id="16_f8lgk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od2m0"]
 shader = ExtResource("10_w6nk2")
@@ -114,6 +114,7 @@ layout_mode = 2
 text = "Play"
 script = ExtResource("11_aenl8")
 to_scene = ExtResource("12_c81tt")
+root = true
 click_sfx = ExtResource("13_c81tt")
 
 [node name="BG_black" type="CanvasLayer" parent="." unique_id=515979373]

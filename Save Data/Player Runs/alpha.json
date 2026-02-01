@@ -169,6 +169,21 @@
 					"Tribe": "Hero",
 					"Type": 1.0
 				}
+			},
+			{
+				"1": {
+					"Attack": 3.0,
+					"Buffer": 1,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 4.0,
+					"Name": "Hercules",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
 			}
 		],
 		[

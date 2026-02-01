@@ -30,4 +30,5 @@ func buttonPressed():
 		return
 	get_tree().change_scene_to_packed(to_scene)
 	if root:
+		
 		Game.will_start_new_game=true

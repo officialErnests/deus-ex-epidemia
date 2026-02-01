@@ -349,7 +349,46 @@ func new_shop():
 		return
 	resetUI()
 	refresh_shop()
-	
+	if modifiers.current_mask=="fox":
+		var new_card=raw_create_card({
+	"Type":0.0,
+	"Name":"Claws of a Fox",
+	"Description":"Cive a minion +1/+1",
+	"Mana":1,
+	"Pool":"Food I",
+	"Effects":[
+		{
+			"Trigger":"ETB",
+			"Effect List":[
+				{
+					"Type":"Target",
+					"Assign Variable":"Target",
+					"Global":0,
+					"Target Filter":{
+						"Location":"On Field"
+					}
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Attack",
+					"Operation":"+",
+					"Value":1	
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Health",
+					"Operation":"+",
+					"Value":1	
+				},
+			]
+		}
+	]
+})
+		card_piles["Hand"].card_pile.append(new_card)
+		new_card.belongs_to_pile="Hand"
+		new_card.changed_card_pile()
 func fuck_this_shit():
 	UI={
 		"Type":"Fucked",
@@ -359,6 +398,7 @@ func fuck_this_shit():
 	for card in existing_cards.duplicate():
 		remove_card(card)
 var will_start_new_game=false
+var selected_mask=null
 func start_new_game():
 	variable=default_variable.duplicate()
 	process_on_hold=false
@@ -368,9 +408,54 @@ func start_new_game():
 	shop_card_pool=[]
 	shop_pools=[]
 	shop_add_pool("I")
+	mask_setup()
 	shop_add_pool("II")
 	shop_add_pool("III")
 	will_start_new_game=false
+func mask_setup():
+	if modifiers.current_mask=="beetle":
+		var new_card=raw_create_card({
+	"Type":0.0,
+	"Name":"Beetle Scales",
+	"Description":"Choose a minion, it ignores the first time it takes damage",
+	"Mana":1,
+	"Pool":"Food I",
+	"Effects":[
+		{
+			"Trigger":"ETB",
+			"Effect List":[
+				{
+					"Type":"Target",
+					"Assign Variable":"Target",
+					"Global":0,
+					"Target Filter":{
+						"Location":"On Field"
+					}
+				},
+				{
+					"Type":"Modify Variable",
+					"Target":"#Target",
+					"Variable Name":"Buffer",
+					"Operation":"+",
+					"Value":1	
+				},
+			]
+		}
+	]
+})
+		card_piles["Hand"].card_pile.append(new_card)
+		new_card.belongs_to_pile="Hand"
+		new_card.changed_card_pile()
+	if modifiers.current_mask=="whale":
+		variable["Candles"]+=1
+	if modifiers.current_mask=="dragon":
+		variable["Max Gold"]+=1
+		variable["Shop Card Count"]+=1
+		variable["Candles"]-=1
+	if modifiers.current_mask=="rabbit":
+		variable["Shop Card Count"]+=1
+	if modifiers.current_mask=="eagle":
+		variable["Max Gold"]+=1
 func _ready():
 	load_card_types()
 	load_card_index()
