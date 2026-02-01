@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1vuskawyjjpn"]
+
+[ext_resource type="Script" uid="uid://cw5h8ctyo8dpg" path="res://Scenes/additives/lit_candle.gd" id="1_aa2tp"]
+[ext_resource type="Texture2D" uid="uid://dqdk7hbhl3yfy" path="res://assets/gimp/candle_lit.png" id="1_klrrd"]
+[ext_resource type="Texture2D" uid="uid://br3mw64rn1e6o" path="res://assets/gimp/candle_dark.png" id="2_4jb8t"]
+
+[node name="LitCandle" type="Node2D" unique_id=1639017581]
+scale = Vector2(0.24814814, 0.24814814)
+script = ExtResource("1_aa2tp")
+
+[node name="CandleDark" type="Sprite2D" parent="." unique_id=605962992]
+visible = false
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(0.9552239, 0.9552239)
+texture = ExtResource("1_klrrd")
+
+[node name="CandleDark2" type="Sprite2D" parent="." unique_id=1166877443]
+position = Vector2(3.2424927e-05, 1.8119812e-05)
+scale = Vector2(0.9552239, 0.95522386)
+texture = ExtResource("2_4jb8t")

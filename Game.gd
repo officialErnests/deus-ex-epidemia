@@ -345,6 +345,7 @@ func new_shop():
 	variable["Floor"]+=1
 	if variable["Floor"]==len(battle_pools):
 		print("GG, game won")
+		fuck_this_shit()
 		get_tree().change_scene_to_file("res://Scenes/menus/victory_screen.tscn")
 		return
 	resetUI()

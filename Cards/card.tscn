@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cbjt0jo14sbrr" path="res://assets/gimp/HitFx.png" id="3_w0fdq"]
 [ext_resource type="FontFile" uid="uid://b1py8nb133qdy" path="res://assets/fonts/Kalam-Bold.ttf" id="4_7bc8n"]
 [ext_resource type="AudioStream" uid="uid://b4nwwbj1p4ju1" path="res://assets/lmms/hit.mp3" id="5_p0ugb"]
-[ext_resource type="Script" path="res://Scripts/menu/audio_manager.gd" id="6_p2x5d"]
+[ext_resource type="Script" uid="uid://b8m3gs25jfnb2" path="res://Scripts/menu/audio_manager.gd" id="6_p2x5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk7e"]
 size = Vector2(130, 200)
@@ -27,6 +27,7 @@ texture = ExtResource("2_7bc8n")
 [node name="Area2D" type="Area2D" parent="." unique_id=372976917]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056395607]
+visible = false
 shape = SubResource("RectangleShape2D_wsk7e")
 
 [node name="HitFx" type="Sprite2D" parent="." unique_id=155173046]

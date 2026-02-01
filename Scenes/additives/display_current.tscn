@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://c21cwcc2a03fy"]
 
 [ext_resource type="Texture2D" uid="uid://c3rubvyvklbxt" path="res://assets/gimp/beetle.png" id="1_bca20"]
-[ext_resource type="Script" uid="uid://dm6kp27svm7pc" path="res://Scripts/menu/current_mask.gd" id="2_pt6ov"]
+[ext_resource type="Script" uid="uid://b37h3ecfr4c0m" path="res://Scenes/additives/display_current.gd" id="1_dr74k"]
+[ext_resource type="Script" path="res://Scripts/menu/current_mask.gd" id="2_pt6ov"]
 [ext_resource type="Texture2D" uid="uid://bxdfkmoy3ah0h" path="res://assets/gimp/dragon.png" id="3_dr74k"]
 [ext_resource type="Texture2D" uid="uid://djgwr4s8b50xt" path="res://assets/gimp/eagle.png" id="4_vb3km"]
 [ext_resource type="Texture2D" uid="uid://dox61h6gy8xt8" path="res://assets/gimp/fox.png" id="5_lvwqe"]
 [ext_resource type="Texture2D" uid="uid://dtnu17xwjomss" path="res://assets/gimp/rabbit.png" id="6_0njup"]
 [ext_resource type="Texture2D" uid="uid://btiwvallsembl" path="res://assets/gimp/whale.png" id="7_6jfwh"]
+[ext_resource type="PackedScene" uid="uid://b1vuskawyjjpn" path="res://Scenes/additives/lit_candle.tscn" id="8_tb744"]
 
 [node name="display_current" type="CanvasLayer" unique_id=683316084]
+script = ExtResource("1_dr74k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=830647974]
 position = Vector2(1054, 552)
@@ -23,3 +26,16 @@ masks = Dictionary[String, CompressedTexture2D]({
 "rabbit": ExtResource("6_0njup"),
 "whale": ExtResource("7_6jfwh")
 })
+
+[node name="LitCandle" parent="." unique_id=1639017581 instance=ExtResource("8_tb744")]
+position = Vector2(1112, 448.00006)
+
+[node name="LitCandle2" parent="." unique_id=834648775 instance=ExtResource("8_tb744")]
+position = Vector2(1048, 432)
+
+[node name="LitCandle3" parent="." unique_id=525652473 instance=ExtResource("8_tb744")]
+position = Vector2(999.99994, 448)
+
+[node name="LitCandle4" parent="." unique_id=465876764 instance=ExtResource("8_tb744")]
+visible = false
+position = Vector2(952, 568)
