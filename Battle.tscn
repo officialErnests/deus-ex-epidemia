@@ -164,7 +164,6 @@ layer = 3
 [node name="Enemy" type="Sprite2D" parent="." unique_id=1257106315]
 position = Vector2(408, -24)
 scale = Vector2(0.32398835, 0.32398835)
-texture = ExtResource("3_yh5fh")
 script = ExtResource("7_fmwbo")
 masks = Array[CompressedTexture2D]([ExtResource("8_8eejf"), ExtResource("3_yh5fh"), ExtResource("9_q2vb4"), ExtResource("10_t2xxn"), ExtResource("11_n2hxx"), ExtResource("12_rdn28")])
 
