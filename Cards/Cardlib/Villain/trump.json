@@ -1,0 +1,30 @@
+{
+	"Type":1,
+	"Name":"Donald Trump",
+	"Description":"When attacking, summons a 2/1 Elon Musk",
+	"Cost":3,
+	"Attack":2,
+	"Health":4,
+	"Pool":"II",
+    "Tribe":"Villain",
+    "Effects":[{
+        "Trigger":"Attacking",
+        "Effect List":[
+            {
+					"Type":"Summon Creature",
+					"Creature Data": {
+                        "Type":1,
+                        "Name":"Elon Musk",
+                        "Description":"",
+                        "Cost":1,
+                        "Attack":1,
+                        "Health":2,
+                        "Pool":"I",
+                        "Tribe":"Villain",
+                        "Effects":[]
+                    }
+                    }
+        ]
+    }],
+    "Dev Comment":"https://www.thetoptens.com/people/worst-people-history/"
+}

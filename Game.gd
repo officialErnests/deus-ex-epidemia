@@ -72,8 +72,14 @@ func load_card_types():
 		card_types[json["ID"]]=json
 	chl("Loaded "+str(file_list.size())+" Card Types",1)
 
+var tsd=0
 func load_battle_pools():
 	var save_location="res://Save Data/Player Runs/alpha.json"
+	if tsd==0:
+		tsd=1
+	else:
+		save_location="res://Save Data/Player Runs/alpha.json"
+		
 	#var default_location="res://Save Data/Default/enemy_list.json"
 	battle_pools=JSON.parse_string(FileAccess.get_file_as_string(save_location))["Battles"]
 	#var default_battle_data=JSON.parse_string(FileAccess.get_file_as_string(default_location))["Battles"]
@@ -187,6 +193,7 @@ func process_stack():
 			var new_card=raw_create_card(processed_effect["Creature Data"])
 			if processed_effect["Card Parent"].team==0:
 				if len(battle.friendly_team)<7:
+					#battle.warbrand_slots[]
 					battle.friendly_team.insert(battle.friendly_team.find(processed_effect["Card Parent"]),new_card)
 			else:
 				if len(battle.enemy_team)<7:
