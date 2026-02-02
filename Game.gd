@@ -10,11 +10,11 @@ var card_types={}
 var card_piles={}
 var card_pools={}
 var default_variable={
-	"Max Gold":2,
+	"Max Gold":20,
 	"Max Gold Gain Left":8,
 	"Gold":0,
 	"Candles":3,
-	"Shop Card Count":3,
+	"Shop Card Count":6, #change to 3 later
 	"Floor":-1,
 }
 var variable=default_variable.duplicate()
@@ -191,13 +191,35 @@ func process_stack():
 		
 		if UI["Type"]=="Battle":
 			var new_card=raw_create_card(processed_effect["Creature Data"])
+			var selected_place=[]
+			var _team=[]
 			if processed_effect["Card Parent"].team==0:
-				if len(battle.friendly_team)<7:
-					#battle.warbrand_slots[]
-					battle.friendly_team.insert(battle.friendly_team.find(processed_effect["Card Parent"]),new_card)
+				selected_place=battle.warbrand_slots
+				_team=battle.friendly_team
 			else:
-				if len(battle.enemy_team)<7:
-					battle.enemy_team.insert(battle.enemy_team.find(processed_effect["Card Parent"]),new_card)
+				selected_place=battle.enemy_slots
+				_team=battle.enemy_team
+			var start_pos=-1
+			for i in range(7):
+				if processed_effect["Card Parent"]==selected_place[i].card_held:
+					start_pos=i
+			
+			if start_pos==-1:
+				negate_effect(processed_effect["Trigger Key"])
+				return
+			
+			var placed=false
+			for i in range(7):
+				if selected_place[(start_pos+i)%7].card_held==null:
+					selected_place[(start_pos+i)%7].card_held=new_card
+					new_card.holder=selected_place[(start_pos+i)%7]
+					_team.append(new_card)
+					print("placed at: ",i)
+					placed=true
+					break
+			if not placed:
+				chl("Card Not Summoned")
+				remove_card(new_card)
 		elif UI["Type"]=="Shop":
 			var start_pos=0
 			for i in range(len(root.warbrand_slots)):
@@ -210,6 +232,7 @@ func process_stack():
 					var new_card=raw_create_card(processed_effect["Creature Data"])
 					root.warbrand_slots[(start_pos+i)%7].card_held=new_card
 					new_card.holder=root.warbrand_slots[(start_pos+i)%7]
+					
 					break
 			#for iter_child in root.warbrand_slots:
 	elif processed_effect["Type"]=="Destroy Card":
@@ -263,6 +286,7 @@ func process_stack():
 		chl("Unknown Effect: "+processed_effect,debug_c.BUG_REPORT)
 	effect_stack.pop_at(0)
 func negate_effect(effect_key):
+	chl("Negating Effect With Key: ",effect_key)
 	for effect in effect_stack:
 		if effect["Trigger Key"]==effect_key:
 			effect_stack.erase(effect)
@@ -337,7 +361,13 @@ func draw_from_pile_to_pile(from_pile,to_pile):
 	card_piles[from_pile].card_pile.pop_front()
 	card_piles[to_pile].card_pile.append(drawn_card)
 	drawn_card.changed_card_pile()
-
+func remove_card(card):
+	if card.holder!=null:
+		card.holder.card_held=null
+	if card.belongs_to_pile!=null:
+		card_piles[card.belongs_to_pile].card_pile.erase(card)
+	existing_cards.erase(card)
+	card.queue_free()
 func shop_add_pool(pool_name):
 	if not pool_name in shop_pools:
 		shop_pools.append(pool_name)
@@ -542,13 +572,7 @@ func refresh_shop():
 		var new_card=create_new_card(shop_card_pool[randi_range(0,len(shop_card_pool)-1)])
 		new_card.location="Shop"
 		root.shop_slots[i].card_held=new_card
-func remove_card(card):
-	if card.holder!=null:
-		card.holder.card_held=null
-	if card.belongs_to_pile!=null:
-		card_piles[card.belongs_to_pile].card_pile.erase(card)
-	existing_cards.erase(card)
-	card.queue_free()
+
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
 var WeHaveSelectedACardOnField=false

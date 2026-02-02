@@ -1,108 +1,174 @@
 {
-	"Battles":[
+	"Battles": [
 		[
 			{
-				"1":{
-						"Effects":[],
-						"Type":1,
-						"Attack":3,
-						"Health":3,
-						"Cost":3,
-						"Name":"Devil",
-						"Description":""
-					}
-			}
-		],
-		[
+				"1": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Devil",
+					"Type": 1.0
+				}
+			},
 			{
-				"1":
-					{
-						"Effects":[],
-						"Type":1,
-						"Attack":5,
-						"Health":2,
-						"Cost":2,
-						"Name":"Romeo",
-						"Description":"Lover Of Juliet"
-					},
-				"2":
-					{
-						"Effects":[],
-						"Type":1,
-						"Attack":2,
-						"Health":5,
-						"Cost":2,
-						"Name":"Juli Eta",
-						"Description":"Lover of Romeo"
-					}
-			}
-		],
-		 [
-			{
-				"1":{
-						"Effects":[],
-						"Type":1,
-						"Attack":4,
-						"Health":1,
-						"Buffer":3,
-						"Cost":2,
-						"Name":"True Achiles",
-						"Description":"Can't Be Killed (Easily)"
-					}
-			}
-		],
-		 [
-			{
-				"1":{
-						"Effects":[],
-						"Type":1,
-						"Attack":10,
-						"Health":10,
-						"Cost":2,
-						"Name":"Zeus",
-						"Description":""
+				"1": {
+					"Attack": 2.0,
+					"Cost": 3.0,
+					"Description": "When attacking, summons a 2/1 Elon Musk",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 2.0,
+										"Name": "Elon Musk",
+										"Pool": "I",
+										"Tribe": "Villain",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Donald Trump",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Cost": 3.0,
+					"Description": "When attacking, summons a 2/1 Elon Musk",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 2.0,
+										"Name": "Elon Musk",
+										"Pool": "I",
+										"Tribe": "Villain",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Donald Trump",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
 				}
 			}
 		],
-		 [
+		[
 			{
-				"1":{
-						"Effects":[{
-							"Trigger":"Attacking",
-							"Effect List":[
+				"1": {
+					"Attack": 5.0,
+					"Cost": 2.0,
+					"Description": "Lover Of Juliet",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Romeo",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Lover of Romeo",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Juli Eta",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 4.0,
+					"Buffer": 3.0,
+					"Cost": 2.0,
+					"Description": "Can't Be Killed (Easily)",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "True Achiles",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 10.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 10.0,
+					"Name": "Zeus",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 5.0,
+					"Buffer": 1.0,
+					"Cost": 4.0,
+					"Description": "",
+					"Effects": [
+						{
+							"Effect List": [
 								{
-									"Type":"Get Neighbours",
-									"Target":"@Defender",
-									"Variable Name":"Thor Neighbours"
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
 								},
 								{
-									"Type":"Deal Damage",
-									"Target":"Thor Neighbours",
-									"Value":"!Attack"
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
 								}
-							]
-						}],
-						"Type":1,
-						"Attack":5,
-						"Health":4,
-						"Buffer":1,
-						"Cost":4,
-						"Name":"Thor",
-						"Description":""
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Thor",
+					"Type": 1.0
 				},
-				"2":{
-						"Effects":[],
-						"Type":1,
-						"Attack":2,
-						"Health":20,
-						"Taunt":1,
-						"Cost":4,
-						"Name":"Loki",
-						"Description":""
+				"2": {
+					"Attack": 2.0,
+					"Cost": 4.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 20.0,
+					"Name": "Loki",
+					"Taunt": 1.0,
+					"Type": 1.0
 				}
 			}
-
 		]
 	]
-	
 }
