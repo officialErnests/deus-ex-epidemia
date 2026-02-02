@@ -1,0 +1,31 @@
+{
+	"Type":1,
+	"Name":"Caligula",
+	"Description":"On Attack: summons Incitatus",
+	"Cost":4,
+	"Attack":5,
+	"Health":4,
+    "Taunt":1,
+	"Pool":"II",
+    "Tribe":"Villain",
+    "Effects":[{
+        "Trigger":"Attacking",
+        "Effect List":[
+            {
+					"Type":"Summon Creature",
+					"Creature Data": {
+                        "Type":1,
+                        "Name":"Incitatus",
+                        "Description":"Taunt I, whenever is attacked, give Caligula +2/+1",
+                        "Cost":5,
+                        "Attack":1,
+                        "Health":4,
+                        "Pool":"Token",
+                        "Tribe":"Horse",
+                        "Effects":[]
+                    }
+                    }
+        ]
+    }],
+    "Dev Comment":"haha, lol, funny horse"
+}
