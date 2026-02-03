@@ -16,7 +16,7 @@
 					"Creature Data": {
                         "Type":1,
                         "Name":"Incitatus",
-                        "Description":"Taunt I, whenever is attacked, give Caligula +2/+1",
+                        "Description":"Taunt I, whenever attacked, give Caligula +2/+1",
                         "Cost":5,
                         "Attack":1,
                         "Health":4,
@@ -27,7 +27,26 @@
                                 "Trigger":"Defending",
                                 "Effect List":[
                                     {
-                                        "Type":""
+                                        "Type":"Modify Variable",
+                                        "Target":{
+                                            "Name":"Caligula",
+                                            "Count":1,
+                                            "Team":"Friendly"
+                                        },
+                                        "Variable Name":"Health",
+                                        "Operation":"+",
+                                        "Value":2
+                                    },
+                                    {
+                                        "Type":"Modify Variable",
+                                        "Target":{
+                                            "Name":"Caligula",
+                                            "Count":1,
+                                            "Team":"Friendly"
+                                        },
+                                        "Variable Name":"Attack",
+                                        "Operation":"+",
+                                        "Value":1
                                     }
                                 ]
                             }
@@ -36,5 +55,5 @@
                     }
         ]
     }],
-    "Dev Comment":"haha, lol, funny horse"
+    "Dev Comment":"haha, lol, funny horse. Also if you have more than a single Caligula on the board, there is a chance you get the stats spread"
 }

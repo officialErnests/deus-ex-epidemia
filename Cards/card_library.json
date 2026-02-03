@@ -1,0 +1,631 @@
+{
+	"Banana": {
+		"Type": 0.0,
+		"Name": "Banana",
+		"Description": "Choose a creature, give it +1/+1",
+		"Cost": 1.0,
+		"Pool": "Food I",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Banana Target",
+						"Target Filter": {
+							"Location": "On Field",
+							"Type": 1.0
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Banana Target",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Value": 1.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Banana Target",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"Cerberus": {
+		"Type": 1.0,
+		"Name": "Cerberus",
+		"Description": "Comes in with a second creature",
+		"Cost": 3.0,
+		"Attack": 1.0,
+		"Health": 1.0,
+		"Pool": "I",
+		"Tribe": "Creature",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Cerberus Head",
+							"Description": "",
+							"Cost": 1.0,
+							"Attack": 1.0,
+							"Health": 1.0,
+							"Pool": "I",
+							"Tribe": "Hero",
+							"Effects": []
+						}
+					},
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Cerberus Head",
+							"Description": "",
+							"Cost": 1.0,
+							"Attack": 1.0,
+							"Health": 1.0,
+							"Pool": "I",
+							"Tribe": "Hero",
+							"Effects": []
+						}
+					}
+				]
+			}
+		]
+	},
+	"Thor": {
+		"Type": 1.0,
+		"Name": "Thor",
+		"Description": "Also damages adjacent minions",
+		"Cost": 4.0,
+		"Attack": 3.0,
+		"Health": 2.0,
+		"Pool": "II",
+		"Tribe": "Hero",
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Get Neighbours",
+						"Target": "@Defender",
+						"Variable Name": "Thor Neighbours"
+					},
+					{
+						"Type": "Deal Damage",
+						"Target": "Thor Neighbours",
+						"Value": "!Attack"
+					}
+				]
+			}
+		]
+	},
+	"Lacplesis": {
+		"Type": 1.0,
+		"Name": "Lacplesis",
+		"Description": "ETB: Devours a Creature, gaining double it's stats",
+		"Cost": 4.0,
+		"Attack": 2.0,
+		"Health": 2.0,
+		"Pool": "III",
+		"Tribe": "Hero",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Jesus Target",
+						"Target Filter": {
+							"Location": "On Field",
+							"Tribe": "Creature"
+						}
+					},
+					{
+						"Type": "Variable From",
+						"Name": "Inherited_Health",
+						"Target": "Jesus Target",
+						"Variable": "Health"
+					},
+					{
+						"Type": "Variable From",
+						"Name": "Inherited_Attack",
+						"Target": "Jesus Target",
+						"Variable": "Attack"
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Inherited_Health",
+						"Operation": "*",
+						"Value": 2.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Inherited_Attack",
+						"Operation": "*",
+						"Value": 2.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Value": "!Inherited_Attack"
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": "!Inherited_Health"
+					},
+					{
+						"Type": "Destroy Card",
+						"Target": "Jesus Target"
+					}
+				]
+			}
+		],
+		"Dev Comment": "Lacplesis, devours a friendly creature when played, gaining double the creature's stats"
+	},
+	"Achilles": {
+		"Type": 1.0,
+		"Name": "Achilles",
+		"Description": "Ignores the first 2 times it would take damage",
+		"Cost": 4.0,
+		"Attack": 1.0,
+		"Health": 1.0,
+		"Buffer": 2.0,
+		"Pool": "I",
+		"Tribe": "Hero",
+		"Effects": []
+	},
+	"Gilgamesh": {
+		"Type": 1.0,
+		"Name": "Gilgamesh",
+		"Description": "Play: Give a friendly minion +2/+1",
+		"Cost": 2.0,
+		"Attack": 2.0,
+		"Health": 2.0,
+		"Pool": "I",
+		"Tribe": "Hero",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Gilg Target",
+						"Target Filter": {
+							"Location": "On Field"
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Gilg Target",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 2.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Gilg Target",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"Hercules": {
+		"Type": 1.0,
+		"Name": "Hercules",
+		"Description": "",
+		"Cost": 3.0,
+		"Attack": 3.0,
+		"Health": 4.0,
+		"Pool": "I",
+		"Tribe": "Hero",
+		"Effects": []
+	},
+	"Jesus": {
+		"Type": 1.0,
+		"Name": "Jesus",
+		"Description": "Reborn I\n Taunt II",
+		"Cost": 2.0,
+		"Attack": 0.0,
+		"Health": 3.0,
+		"Taunt": 2.0,
+		"Reborn": 1.0,
+		"Pool": "II",
+		"Tribe": "Hero",
+		"Effects": []
+	},
+	"Global Variable": {
+		"Type": 0.0,
+		"Name": "Global Variable Storer",
+		"Description": "Created to store global variables within",
+		"Mana": 0.0,
+		"Pool": "NaN-NULL-351 This is intentionally left stupidly long to not appear in any card pool ever, that's it",
+		"Gold": 0.0,
+		"Max Gold": 2.0,
+		"Max Gold Gain Left": 8.0,
+		"Candles": 3.0,
+		"Shop Card Count": 3.0,
+		"Floor": -1.0,
+		"Playable": 0.0,
+		"Effects": []
+	},
+	"Beetle Scales": {
+		"Type": 0.0,
+		"Name": "Beetle Scales",
+		"Description": "Choose a minion, it ignores the first time it takes damage",
+		"Mana": 1.0,
+		"Pool": "Token",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Beetle Target",
+						"Target Filter": {
+							"Location": "On Field"
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Beetle Target",
+						"Variable Name": "Buffer",
+						"Operation": "+",
+						"Value": 10.0
+					}
+				]
+			}
+		]
+	},
+	"Claws of a Fox": {
+		"Type": 0.0,
+		"Name": "Claws of a Fox",
+		"Description": "Cive a minion +1/+1",
+		"Mana": 1.0,
+		"Pool": "Token",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Fox Target",
+						"Target Filter": {
+							"Location": "On Field"
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Fox Target",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Value": 1.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Fox Target",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"Strike Oil": {
+		"Type": 0.0,
+		"Name": "Strike Oil",
+		"Description": "Gain an extra max gold",
+		"Cost": 3.0,
+		"Pool": "I",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "global",
+						"Variable Name": "Max Gold",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"Grimbur": {
+		"Type": 1.0,
+		"Name": "Grimbur",
+		"Description": "Avenge(1): gain +2/+1",
+		"Cost": 4.0,
+		"Attack": 2.0,
+		"Health": 1.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Avenge",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 1.0
+					}
+				]
+			},
+			{
+				"Trigger": "Avenge",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 2.0
+					}
+				]
+			}
+		],
+		"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/"
+	},
+	"Ashlaka": {
+		"Type": 1.0,
+		"Name": "Ashlaka",
+		"Description": "Avenge(1): give all friendly minions +1/+0",
+		"Cost": 4.0,
+		"Attack": 1.0,
+		"Health": 4.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Avenge",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Target": {
+							"Team": "Friendly"
+						},
+						"Value": 1.0
+					}
+				]
+			}
+		],
+		"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/"
+	},
+	"Geton": {
+		"Type": 1.0,
+		"Name": "Geton",
+		"Description": "Avenge(2): gain +3/+2",
+		"Cost": 5.0,
+		"Attack": 5.0,
+		"Health": 4.0,
+		"AvengeCounter": 0.0,
+		"Pool": "I",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Avenge",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "AvengeCounter",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 1.0
+					},
+					{
+						"Type": "If",
+						"Condition": "Value Comparison",
+						"Comparison": ">=",
+						"Value 1": "!AvengeCounter",
+						"Value 2": 2.0,
+						"Trigger": "Avenger"
+					}
+				]
+			},
+			{
+				"Trigger": "Avenger",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 3.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 2.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "AvengeCounter",
+						"Operation": "=",
+						"Target": "self",
+						"Value": 0.0
+					}
+				]
+			}
+		],
+		"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/"
+	},
+	"Asalon": {
+		"Type": 1.0,
+		"Name": "Asalon",
+		"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+		"Cost": 4.0,
+		"Attack": 2.0,
+		"Health": 3.0,
+		"AvengeCounter": 0.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Avenge",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "AvengeCounter",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 1.0
+					},
+					{
+						"Type": "If",
+						"Condition": "Value Comparison",
+						"Comparison": ">=",
+						"Value 1": "!AvengeCounter",
+						"Value 2": 3.0,
+						"Trigger": "Avenger"
+					}
+				]
+			},
+			{
+				"Trigger": "Avenger",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "AvengeCounter",
+						"Operation": "=",
+						"Target": "self",
+						"Value": 0.0
+					},
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Guard",
+							"Description": "",
+							"Cost": 1.0,
+							"Attack": 1.0,
+							"Health": 3.0,
+							"Taunt": 1.0,
+							"Pool": "I",
+							"Tribe": "Hero",
+							"Effects": []
+						}
+					}
+				]
+			}
+		],
+		"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/"
+	},
+	"Pooko": {
+		"Type": 1.0,
+		"Name": "Pooko",
+		"Description": "When attacking, summons a 2/1 Rooko",
+		"Cost": 3.0,
+		"Attack": 2.0,
+		"Health": 3.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Rooko",
+							"Description": "",
+							"Cost": 1.0,
+							"Attack": 1.0,
+							"Health": 2.0,
+							"Pool": "I",
+							"Tribe": "Villain",
+							"Effects": []
+						}
+					}
+				]
+			}
+		],
+		"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/"
+	},
+	"Caligula": {
+		"Type": 1.0,
+		"Name": "Caligula",
+		"Description": "On Attack: summons Incitatus",
+		"Cost": 4.0,
+		"Attack": 3.0,
+		"Health": 4.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Incitatus",
+							"Description": "Taunt I, whenever attacked, give Caligula +2/+1",
+							"Cost": 5.0,
+							"Attack": 1.0,
+							"Health": 4.0,
+							"Taunt": 1.0,
+							"Pool": "Token",
+							"Tribe": "Horse",
+							"Effects": [
+								{
+									"Trigger": "Defending",
+									"Effect List": [
+										{
+											"Type": "Modify Variable",
+											"Target": {
+												"Name": "Caligula",
+												"Count": 1.0,
+												"Team": "Friendly"
+											},
+											"Variable Name": "Health",
+											"Operation": "+",
+											"Value": 2.0
+										},
+										{
+											"Type": "Modify Variable",
+											"Target": {
+												"Name": "Caligula",
+												"Count": 1.0,
+												"Team": "Friendly"
+											},
+											"Variable Name": "Attack",
+											"Operation": "+",
+											"Value": 1.0
+										}
+									]
+								}
+							]
+						}
+					}
+				]
+			}
+		],
+		"Dev Comment": "haha, lol, funny horse. Also if you have more than a single Caligula on the board, there is a chance you get the stats spread"
+	}
+}

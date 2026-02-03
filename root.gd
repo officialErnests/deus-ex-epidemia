@@ -32,10 +32,10 @@ func get_warbrand():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Shop/MoneyCounter.text=str(Game.variable["Gold"])+"$"
+	$Shop/MoneyCounter.text=str(Game.global_card.variable["Gold"])+"$"
 
 
 func _on_refresh_shop_button_down() -> void:
-	if Game.variable["Gold"]>=1:
-		Game.variable["Gold"]-=1
+	if Game.global_card.variable["Gold"]>=1:
+		Game.global_card.variable["Gold"]-=1
 		Game.refresh_shop()

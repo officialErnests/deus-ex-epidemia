@@ -10,17 +10,24 @@ var card_types={}
 var card_piles={}
 var card_pools={}
 var default_variable={
-	"Max Gold":20,
+	"Max Gold":2,
 	"Max Gold Gain Left":8,
 	"Gold":0,
 	"Candles":3,
-	"Shop Card Count":6, #change to 3 later
+	"Shop Card Count":3, #change to 3 later
 	"Floor":-1,
 }
+
 var variable=default_variable.duplicate()
 var shop_card_pool=[]
 var shop_pools=[]
 @onready var card_scene=preload("res://Cards/card.tscn")
+
+var global_card = null #(usually is a card, that you can save and load global variables from, and interact with in cards. )
+
+@onready var card_lib=preload("res://Cards/card_library.json")
+@onready var card_types_lib=preload("res://Cards/card_types.json")
+@onready var battle_pools_json=preload("res://Save Data/Player Runs/alpha.json")
 #Debug functions:
 
 var battle_pools=[]
@@ -55,22 +62,33 @@ func Rsearch(path):
 	
 #Loads all the cards within Cards/Cardlib, and puts them into the card_index dict, with their name as the key
 func load_card_index():
-	var file_list=Rsearch("Cards/Cardlib")
-	for i in file_list:
-		var json=JSON.parse_string(FileAccess.get_file_as_string(i))
-		card_index[json["Name"]]=json
-		if not json["Pool"] in card_pools:
-			card_pools[json["Pool"]]=[]
-		card_pools[json["Pool"]].append(json["Name"])
-	chl("Loaded "+str(file_list.size())+" Cards",1)
-	
+	#var file_list=Rsearch("Cards/Cardlib")
+	var json=JSON.parse_string(FileAccess.get_file_as_string("res://Cards/card_library.json"))
+	#for i in file_list:
+	#	var json=JSON.parse_string(FileAccess.get_file_as_string(i))
+	#		card_index[json["Name"]]=json
+	#	if not json["Pool"] in card_pools:
+#			card_pools[json["Pool"]]=[]
+#		card_pools[json["Pool"]].append(json["Name"])
+#	chl("Loaded "+str(file_list.size())+" Cards",1)
+	for iter_card_id in json:
+		var card_data=json[iter_card_id]
+		card_index[card_data["Name"]]=card_data
+		if not card_data["Pool"] in card_pools:
+			card_pools[card_data["Pool"]]=[]
+		card_pools[card_data["Pool"]].append(card_data["Name"])
+	chl("Loaded "+str(len(json))+" Cards",1)
 #Loads all the card types within Cards/CardTypes, and just stacks them in a list
 func load_card_types():
-	var file_list=Rsearch("Cards/CardTypes")
-	for i in file_list:
-		var json=JSON.parse_string(FileAccess.get_file_as_string(i))
-		card_types[json["ID"]]=json
-	chl("Loaded "+str(file_list.size())+" Card Types",1)
+	#var file_list=Rsearch("Cards/CardTypes")
+	var json=JSON.parse_string(FileAccess.get_file_as_string("res://Cards/card_types.json"))
+	for iter_card_id in json:
+		var card_type_data=json[iter_card_id]
+		card_types[card_type_data["ID"]]=card_type_data
+	#for i in file_list:
+	#	var json=JSON.parse_string(FileAccess.get_file_as_string(i))
+	#	card_types[json["ID"]]=json
+	chl("Loaded "+str(len(json))+" Card Types",1)
 
 var tsd=0
 func load_battle_pools():
@@ -107,7 +125,7 @@ func process_stack():
 	var processed_effect=effect_stack[0]
 	chl("Processing Effect: "+str(processed_effect),debug_c.PROCESS_STACK)
 	if "Card Parent" in processed_effect:
-		variable["@Parent"]=processed_effect["Card Parent"]
+		global_card.variable["@Parent"]=processed_effect["Card Parent"]
 	#print(existing_cards)
 	#Effects that affect cards
 	if processed_effect["Type"]=="Target": #The game begins the sequence where a card is being targeted. 
@@ -122,7 +140,7 @@ func process_stack():
 				"Type":"Targeting",
 				"Targeted Card":null,
 				"Possible Targets":targeted_cards,
-				"Assigning To Variable":"#"+processed_effect["Assign Variable"],
+				"Assigning To Variable":processed_effect["Assign Variable"],
 				"Focusing On Card":processed_effect["Card Parent"],
 				"Animation Time":0,
 				"Global":"Global" in processed_effect,
@@ -144,20 +162,7 @@ func process_stack():
 			card_piles[processed_effect["Card Pile ID"]].card_pile.append(affected_card)
 			affected_card.changed_card_pile()
 	elif processed_effect["Type"]=="Modify Variable":
-		var affected_cards=[]
-		
-		if processed_effect["Target"][0]=="#": #Trying to access a global variable
-			if processed_effect["Operation"]=="+":
-				variable[processed_effect["Variable Name"]]+=get_value(processed_effect["Value"])
-			if processed_effect["Operation"]=="-":
-				variable[processed_effect["Variable Name"]]-=get_value(processed_effect["Value"])
-			if processed_effect["Operation"]=="*":
-				variable[processed_effect["Variable Name"]]*=get_value(processed_effect["Value"])
-			if processed_effect["Operation"]=="/":
-				variable[processed_effect["Variable Name"]]/=get_value(processed_effect["Value"])
-			
-		if processed_effect["Target"]=="self": #Trying to access a local variable
-			affected_cards=ilina(processed_effect["Card Parent"])
+		var affected_cards=ilina(get_target(processed_effect["Target"]))
 		for affected_card in affected_cards:
 			if not processed_effect["Variable Name"] in affected_card.variable:
 				affected_card.variable[processed_effect["Variable Name"]]=0
@@ -170,6 +175,8 @@ func process_stack():
 				affected_card.variable[processed_effect["Variable Name"]]*=get_value(processed_effect["Value"])
 			if processed_effect["Operation"]=="/":
 				affected_card.variable[processed_effect["Variable Name"]]/=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="=":
+				affected_card.variable[processed_effect["Variable Name"]]=get_value(processed_effect["Value"])
 			
 			affected_card.update_visually()
 	
@@ -221,6 +228,7 @@ func process_stack():
 					selected_place[(start_pos+i)%7].card_held=new_card
 					new_card.holder=selected_place[(start_pos+i)%7]
 					_team.append(new_card)
+					new_card.team=processed_effect["Card Parent"].team
 					print("placed at: ",i)
 					placed=true
 					break
@@ -289,6 +297,26 @@ func process_stack():
 		for iter_card in ilina(get_target(processed_effect["Target"])):
 			if is_instance_valid(iter_card):
 				iter_card.take_damage(get_value(processed_effect["Value"]))
+	elif processed_effect["Type"]=="If":
+		var condition_success=false
+		if processed_effect["Condition"]=="Value Comparison":
+			if processed_effect["Comparison"]==">=":
+				if get_value(processed_effect["Value 1"])>=get_value(processed_effect["Value 2"]):
+					condition_success=true
+			if processed_effect["Comparison"]=="<=":
+				if get_value(processed_effect["Value 1"])<=get_value(processed_effect["Value 2"]):
+					condition_success=true
+			if processed_effect["Comparison"]=="==":
+				if get_value(processed_effect["Value 1"])==get_value(processed_effect["Value 2"]):
+					condition_success=true
+			if processed_effect["Comparison"]==">":
+				if get_value(processed_effect["Value 1"])>get_value(processed_effect["Value 2"]):
+					condition_success=true
+			if processed_effect["Comparison"]=="<":
+				if get_value(processed_effect["Value 1"])<get_value(processed_effect["Value 2"]):
+					condition_success=true
+		if condition_success:
+			processed_effect["Card Parent"].trigger(processed_effect["Trigger"])
 	else:
 		chl("Unknown Effect: "+processed_effect,debug_c.BUG_REPORT)
 	effect_stack.pop_at(0)
@@ -302,11 +330,17 @@ func ilina(x): #In List If Not Already: Places the item into a list if it isn't 
 		return x
 	return [x]
 func get_target(target,activator=null):
+	if target is Dictionary:
+		return filter_cards(target)
 	if target=="$self":
 		return activator
+	if target=="self":
+		return global_card.variable["@Parent"]
 	if target[0]=="@":
-		return variable[target]
-	return variable["@Parent"].variable[target]
+		return global_card.variable[target]
+	if target=="global":
+		return global_card
+	return global_card.variable["@Parent"].variable[target]
 func get_value(x):
 	if x is int:
 		return x
@@ -314,18 +348,18 @@ func get_value(x):
 		return x
 	if x is String:
 		if x[0]=="!":
-			return variable["@Parent"].variable[x.substr(1)]
+			return global_card.variable["@Parent"].variable[x.substr(1)]
 		if x[0]=="#":
-			return variable[x]
+			return global_card.variable[x.substr(1)]
 		if x[0]=="@":
-			return variable[x]
+			return global_card.variable[x]
 func save_at(x,y):
 	if x is String:
 		if x[0]=="#":
-			variable["#"+x]=y
+			global_card.variable[x]=y
 			return	
 		
-		variable["@Parent"].variable[x]=y
+		global_card.variable["@Parent"].variable[x]=y
 func filter_cards(filter_data={}):
 	var all_cards=existing_cards.duplicate()
 	var removed_cards=[]
@@ -337,10 +371,25 @@ func filter_cards(filter_data={}):
 		for i in all_cards:
 			if i.variable["Tribe"]!=filter_data["Tribe"]:
 				removed_cards.append(i)
-	
+	if "Name" in filter_data:
+		for i in all_cards:
+			if i.variable["Name"]!=filter_data["Name"]:
+				removed_cards.append(i)
+	if "Team" in filter_data:
+		if filter_data["Team"]=="Friendly":
+			for i in all_cards:
+				if i.team!=global_card.variable["@Parent"].team:
+					removed_cards.append(i)
+		else: #Enemy
+			for i in all_cards:
+				if i.team==global_card.variable["@Parent"].team:
+					removed_cards.append(i)
 	for i in removed_cards:
 		if i in all_cards:
 			all_cards.erase(i)
+	if "Count" in filter_data:
+		all_cards.shuffle()
+		all_cards=all_cards.slice(0,filter_data["Count"])
 	return all_cards
 
 func create_new_card(card_name,is_in_index=true):
@@ -382,12 +431,12 @@ func shop_add_pool(pool_name):
 			if not i in shop_card_pool:
 				shop_card_pool.append(i)
 func new_shop():
-	if variable["Max Gold Gain Left"]>0:
-		variable["Max Gold Gain Left"]-=1
-		variable["Max Gold"]+=1
-	variable["Gold"]=variable["Max Gold"]
-	variable["Floor"]+=1
-	if variable["Floor"]==len(battle_pools):
+	if global_card.variable["Max Gold Gain Left"]>0:
+		global_card.variable["Max Gold Gain Left"]-=1
+		global_card.variable["Max Gold"]+=1
+	global_card.variable["Gold"]=int(global_card.variable["Max Gold"])
+	global_card.variable["Floor"]+=1
+	if global_card.variable["Floor"]==len(battle_pools):
 		print("GG, game won")
 		fuck_this_shit()
 		get_tree().change_scene_to_file("res://Scenes/menus/victory_screen.tscn")
@@ -395,42 +444,7 @@ func new_shop():
 	resetUI()
 	refresh_shop()
 	if modifiers.current_mask=="fox":
-		var new_card=raw_create_card({
-	"Type":0.0,
-	"Name":"Claws of a Fox",
-	"Description":"Cive a minion +1/+1",
-	"Mana":1,
-	"Pool":"Food I",
-	"Effects":[
-		{
-			"Trigger":"ETB",
-			"Effect List":[
-				{
-					"Type":"Target",
-					"Assign Variable":"Target",
-					"Global":0,
-					"Target Filter":{
-						"Location":"On Field"
-					}
-				},
-				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Attack",
-					"Operation":"+",
-					"Value":1	
-				},
-				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Health",
-					"Operation":"+",
-					"Value":1	
-				},
-			]
-		}
-	]
-})
+		var new_card=create_new_card("Claws of a Fox")
 		card_piles["Hand"].card_pile.append(new_card)
 		new_card.belongs_to_pile="Hand"
 		new_card.changed_card_pile()
@@ -445,7 +459,13 @@ func fuck_this_shit():
 var will_start_new_game=false
 var selected_mask=null
 func start_new_game():
-	variable=default_variable.duplicate()
+	if global_card!=null:
+		remove_card(global_card)
+	global_card=create_new_card("Global Variable Storer")
+	existing_cards.erase(global_card)
+	#global_card.variable["Max Gold"]+=10
+	global_card.global_position=Vector2(-1000,-1000)
+	#variable=default_variable.duplicate()
 	process_on_hold=false
 	effect_stack=[]
 	resetUI()
@@ -459,48 +479,20 @@ func start_new_game():
 	will_start_new_game=false
 func mask_setup():
 	if modifiers.current_mask=="beetle":
-		var new_card=raw_create_card({
-	"Type":0.0,
-	"Name":"Beetle Scales",
-	"Description":"Choose a minion, it ignores the first time it takes damage",
-	"Mana":1,
-	"Pool":"Food I",
-	"Effects":[
-		{
-			"Trigger":"ETB",
-			"Effect List":[
-				{
-					"Type":"Target",
-					"Assign Variable":"Target",
-					"Global":0,
-					"Target Filter":{
-						"Location":"On Field"
-					}
-				},
-				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Buffer",
-					"Operation":"+",
-					"Value":1	
-				},
-			]
-		}
-	]
-})
+		var new_card=create_new_card("Beetle Scales")
 		card_piles["Hand"].card_pile.append(new_card)
 		new_card.belongs_to_pile="Hand"
 		new_card.changed_card_pile()
 	if modifiers.current_mask=="whale":
-		variable["Candles"]+=1
+		global_card.variable["Candles"]+=1
 	if modifiers.current_mask=="dragon":
-		variable["Max Gold"]+=1
-		variable["Shop Card Count"]+=1
-		variable["Candles"]-=1
+		global_card.variable["Max Gold"]+=1
+		global_card.variable["Shop Card Count"]+=1
+		global_card.variable["Candles"]-=1
 	if modifiers.current_mask=="rabbit":
-		variable["Shop Card Count"]+=1
+		global_card.variable["Shop Card Count"]+=1
 	if modifiers.current_mask=="eagle":
-		variable["Max Gold"]+=1
+		global_card.variable["Max Gold"]+=1
 func _ready():
 	load_card_types()
 	load_card_index()
@@ -528,9 +520,9 @@ var UI={
 
 func finish_targeting():
 	if UI["Global"]:
-		variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
+		global_card.variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	else:
-		UI["Card Parent"].variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
+		UI["Focusing On Card"].variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	UI["Focusing On Card"].scale=Vector2(1.,1.)
 	process_on_hold=false
 	resetUI()
@@ -559,23 +551,23 @@ func end_battle():
 		card.queue_free()
 	existing_cards.clear()
 	if UI["Action"]["Result"]=="Lose":
-		variable["Candles"]-=1
-		if variable["Candles"]==0: #TODO: REPLACE WITH GAME OVER SCENE
+		global_card.variable["Candles"]-=1
+		if global_card.variable["Candles"]==0: #TODO: REPLACE WITH GAME OVER SCENE
 			get_tree().change_scene_to_file("res://Scenes/menus/game_over.tscn")
 			return
 	if UI["Action"]["Result"]=="Win":
-		if len(battle_pools)==variable["Floor"]+1:
+		if len(battle_pools)==global_card.variable["Floor"]+1:
 			battle_pools.append([UI["Party Friendly"]])
-			variable["Floor"]+=1
+			global_card.variable["Floor"]+=1
 		else:
-			battle_pools[variable["Floor"]].append(UI["Party Friendly"])
+			battle_pools[global_card.variable["Floor"]].append(UI["Party Friendly"])
 		auto_save_battles()
 	get_tree().change_scene_to_file("res://Root.tscn")
 func refresh_shop():
 	for i in range(7):
 		if root.shop_slots[i].card_held!=null:
 			remove_card(root.shop_slots[i].card_held)
-	for i in range(min(7,variable["Shop Card Count"])):
+	for i in range(min(7,global_card.variable["Shop Card Count"])):
 		var new_card=create_new_card(shop_card_pool[randi_range(0,len(shop_card_pool)-1)])
 		new_card.location="Shop"
 		root.shop_slots[i].card_held=new_card
@@ -678,13 +670,15 @@ func _process(delta: float) -> void:
 							max_taunt=iter_defender.variable["Taunt"]
 							possible_defenders=[]
 						taunt_level=iter_defender.variable["Taunt"]
+					
 					if taunt_level==max_taunt:
 						possible_defenders.append(iter_defender)
+				
 				var defender=possible_defenders.pick_random()
 				UI["Team"]=1-UI["Team"]
 				if attacker!=null:
-					variable["@Defender"]=defender
-					variable["@Attacker"]=attacker
+					global_card.variable["@Defender"]=defender
+					global_card.variable["@Attacker"]=attacker
 					UI["Action"]={
 						"Type":"Attack",
 						"Time":0,

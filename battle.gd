@@ -6,6 +6,9 @@ extends Node2D
 @onready var end_screen_label=$Camera2D/ColorRect/Label
 @onready var warbrand_slots=$"Warbrand Slots".get_children()
 @onready var enemy_slots=$"Enemy Slots".get_children()
+@onready var camera=$Camera2D
+var screen_shake_left=0
+@onready var camera_pos=camera.global_position
 var friendly_team=[]
 var enemy_team=[]
 var sample_enemy_team={4: { "Type": 1.0, "Name": "Psyche", "Description": "Whenever she is attacked, she gains +2 health", "Cost": 3.0, "Attack": 3.0, "Health": 7.0, "Pool": "Greek Heroes", "Effects": [{ "Trigger": "Defending", "Effect List": [{ "Type": "Modify Variable", "Target": "self", "Variable Name": "Health", "Operation": "+", "Value": 2.0 }] }], "Dev Comment": "Gets +2 health whenever she is attacked. ", "Playable": 1.0 } }
@@ -30,7 +33,7 @@ var enemy_position=Vector2(0,0)
 func _ready() -> void:
 	pass # Replace with function body.
 	Game.battle=self
-	var pool_pool=Game.battle_pools[Game.variable["Floor"]]
+	var pool_pool=Game.battle_pools[Game.global_card.variable["Floor"]]
 	load_teams(Game.UI["Party Friendly"],pool_pool.pick_random())
 	enemy_position=$Enemy.global_position
 	
@@ -41,3 +44,11 @@ func _process(delta: float) -> void:
 	time+=delta
 	enemy_offset=Vector2(cos(time*2)*200,sin(time*4+PI/4)*50)
 	$Enemy.global_position=enemy_position+enemy_offset
+	if screen_shake_left>0:
+		var screen_offset=log(PI+screen_shake_left)
+		screen_shake_left*=0.5
+		var angle=TAU*randf()
+		camera.global_position=camera_pos+Vector2(cos(angle)*screen_offset,sin(angle)*screen_offset)
+		if screen_shake_left<0.01:
+			screen_shake_left=0
+			camera.global_position=camera_pos

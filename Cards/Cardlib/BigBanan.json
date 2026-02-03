@@ -1,37 +1,36 @@
 {
-	"Type":0,
-	"Name":"Banana",
-	"Description":"Choose a creature, give it +1/+1",
-	"Mana":1,
-	"Pool":"Food I",
-	"Effects":[
+	"Type": 0.0,
+	"Name": "Banana",
+	"Description": "Choose a creature, give it +1/+1",
+	"Cost": 1.0,
+	"Pool": "Food I",
+	"Effects": [
 		{
-			"Trigger":"ETB",
-			"Effect List":[
+			"Trigger": "ETB",
+			"Effect List": [
 				{
-					"Type":"Target",
-					"Assign Variable":"Target",
-					"Global":0,
-					"Target Filter":{
-						"Location":"On Field",
-						"Type":1
+					"Type": "Target",
+					"Assign Variable": "Target",
+					"Global": 0.0,
+					"Target Filter": {
+						"Location": "On Field",
+						"Type": 1.0
 					}
 				},
 				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Attack",
-					"Operation":"+",
-					"Value":1	
+					"Type": "Modify Variable",
+					"Target": "#Target",
+					"Variable Name": "Attack",
+					"Operation": "+",
+					"Value": 1.0
 				},
 				{
-					"Type":"Modify Variable",
-					"Target":"#Target",
-					"Variable Name":"Health",
-					"Operation":"+",
-					"Value":1	
+					"Type": "Modify Variable",
+					"Target": "#Target",
+					"Variable Name": "Health",
+					"Operation": "+",
+					"Value": 1.0
 				}
-
 			]
 		}
 	]

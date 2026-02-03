@@ -15,10 +15,44 @@ Triggers:
 
 Effects:
     (Universal)
+        Destroy Card: destroys a card. 
+            Required Arguments:
+                Target[string|filter target]: Which card is 
+                    Supports filter targetting
+        Get Neighbours: returns a list of the cards on both side of target card
+            Required arguments:
+                Target[string|filter target]: which cards neighbours are returned
+                    Supports filter targetting
+                Variable Name[string]: Which variable is the cards effect assigned to
         Modify Variable: Lets you modify the variable of a card
             Note: I want to implement a global card whose variables can be modified, so i don't have to overwrite everything for the global variables. 
             Required Arguments:
-                Target: 
+                Operation[+|-|*|/]: which of these arithmetic operations is done on the target card.
+                Target[string|filter target]: Which cards variables are changed 
+                    (thoughts) What if i made a card and named that global, so you could use this to target it
+                    Supports filter targetting
+                Value[int|saved variable]: what's on the other side of the operation
+                Variable Name[string]: Which of the cards variables is changed
+        Summon Creature: Summons another creature, doesn't if the board is too full
+            Required Arguments:
+                [
+                Creature Data[dict]: Raw data of the creature being summoned. Useful for tokens, etc
+                [OR]
+                {unimplemented}
+                Creature Name[string]: The name of the creature being summoned (from the already written down cards) 
+                [OR]
+                Creature Pool[string]: The name of the pool of the creature being summoned (for some smaller creature pools)
+                [OR]
+                Creature Target[dict]: The target filtering of the creature being summoned, useful if you'd like to summon a random creature that fits the targeting
+                ] 
+        {bugged, needs further fixing}
+        Variable From: Lets you grab a variable from another cards local variables, and assign a name to it. 
+            Note: changing it locally doesn't change it on the other card
+            Required Arguments:
+                Name[string]: what name is the new variable saved as
+                Target[string|filter target]: which card is targeted 
+                    Supports filter targetting, reduces count to 1 card. 
+                Variable[string]: which of the cards variables is grabbed
     (Shop Only)
         Target: chooses one creature via the targetting UI, and assigns them a variable. 
             Note: if no card exists that can be targeted, negates the effect. 
@@ -33,6 +67,15 @@ Effects:
                         Type[int]: The type that the target card needs to be
                         Tribe[string]: the type that the target card must have
                         {unimplemented / untested}
-                        Name[string]: all creatures matching the name provided
                         Count[int]: the maximum ammount of creatures that can be targeted. 
+                        Name[string]: all creatures matching the name provided
+                        Team["Friendly"|"Enemy"]: which team does the target belong to
+    (Battle Only)
+        Deal Damage: Deals damage to targeet creature
+            Required Arguments:
+                Target[string|filter target]: which card should damage be dealt to
+                Value[int|saved variable]: how much damage should be dealt to the creature
+
+Filter Targetting:
+    Explanation: Instead of leaving a variable of what to target, you may add a dict such as the target filter argument of the Target effect. All arguments are the same
 

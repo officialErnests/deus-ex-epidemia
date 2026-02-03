@@ -96,7 +96,6 @@ func _on_area_2d_mouse_entered() -> void:
 								"MAX TTL":0.2
 							})
 				
-
 func _on_area_2d_mouse_exited() -> void:
 	hovered_over=false
 	if location=="Shop":
@@ -114,6 +113,7 @@ func attack(target_card):
 	target_card.trigger("Defending")
 	take_damage(target_card.variable["Attack"])
 	target_card.take_damage(variable["Attack"])
+	Game.battle.screen_shake_left=variable["Attack"]+target_card.variable["Attack"]
 	if target_card.variable["Health"]<=0:
 		target_card.will_die=true
 	
@@ -146,6 +146,10 @@ func die_in_battle():
 			variable["Reborn"]-=1
 			update_visually()
 			return false
+	for i in Game.existing_cards:
+		if i!=self:
+			if i.team==team:
+				i.trigger("Avenge")
 	animations.append({
 							"Type":"Die In Battle",
 							#"Damage":variable["Attack"],
@@ -161,9 +165,9 @@ func _input(event):
 					Game.finish_targeting()
 			if hovered_over:
 				if location=="Shop":
-					if variable["Cost"]<=Game.variable["Gold"]:
-						Game.variable["Gold"]-=variable["Cost"]
-						Game.variable["Gold"]=int(Game.variable["Gold"])
+					if variable["Cost"]<=Game.global_card.variable["Gold"]:
+						Game.global_card.variable["Gold"]-=variable["Cost"]
+						Game.global_card.variable["Gold"]=int(Game.global_card.variable["Gold"])
 						location="Void"
 						belongs_to_pile="Hand"
 						holder.card_held=null
@@ -243,7 +247,7 @@ func deselect():
 			else:
 				holder.card_held=null
 				Game.remove_card(self)
-				Game.variable["Gold"]+=1
+				Game.global_card.variable["Gold"]+=1
 			return 
 			
 			#holder.global_position=holder.og_pos
