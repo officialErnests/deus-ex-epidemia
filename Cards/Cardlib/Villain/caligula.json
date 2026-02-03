@@ -22,7 +22,16 @@
                         "Health":4,
                         "Pool":"Token",
                         "Tribe":"Horse",
-                        "Effects":[]
+                        "Effects":[
+                            {
+                                "Trigger":"Defending",
+                                "Effect List":[
+                                    {
+                                        "Type":""
+                                    }
+                                ]
+                            }
+                        ]
                     }
                     }
         ]

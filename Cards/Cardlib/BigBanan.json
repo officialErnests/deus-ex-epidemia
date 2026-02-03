@@ -13,7 +13,8 @@
 					"Assign Variable":"Target",
 					"Global":0,
 					"Target Filter":{
-						"Location":"On Field"
+						"Location":"On Field",
+						"Type":1
 					}
 				},
 				{

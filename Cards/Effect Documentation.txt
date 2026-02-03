@@ -1,0 +1,38 @@
+Triggers:
+    (Universal)
+    
+    (Shop only)
+        ETB: Triggers when the card is played from a players hand. 
+    
+
+    (Battle only)
+        Attacking: Triggers when the card is attacking another card.
+        
+        {unimplemented / untested}
+        Defending: Triggers when the card is attacked by another card. 
+        Death: Triggers when the card dies by battle 
+
+
+Effects:
+    (Universal)
+        Modify Variable: Lets you modify the variable of a card
+            Note: I want to implement a global card whose variables can be modified, so i don't have to overwrite everything for the global variables. 
+            Required Arguments:
+                Target: 
+    (Shop Only)
+        Target: chooses one creature via the targetting UI, and assigns them a variable. 
+            Note: if no card exists that can be targeted, negates the effect. 
+            Required Arguments:
+                Assign Variable[string]: What variable is assigned to the target, (and saved in the memory)
+            Optional Arguments:
+                Global [int]: Adding this argument means that the card gets saved in global variables and not in the cards variables. 
+                    NOTE: This saves the spot at the target place as the target variable, and can therefore override global variables
+                Target Filter[dict]: Allows you to filter only which kind of cards can be used.
+                    Arguments:
+                        Location[string]: What the cards location must be (will be explained later, but for now "On Field" is the players board, and that's all there is to it)
+                        Type[int]: The type that the target card needs to be
+                        Tribe[string]: the type that the target card must have
+                        {unimplemented / untested}
+                        Name[string]: all creatures matching the name provided
+                        Count[int]: the maximum ammount of creatures that can be targeted. 
+

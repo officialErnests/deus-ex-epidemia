@@ -147,8 +147,15 @@ func process_stack():
 		var affected_cards=[]
 		
 		if processed_effect["Target"][0]=="#": #Trying to access a global variable
-			if processed_effect["Target"] in GlobalVariables:
-				affected_cards=ilina(GlobalVariables[processed_effect["Target"]])
+			if processed_effect["Operation"]=="+":
+				variable[processed_effect["Variable Name"]]+=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="-":
+				variable[processed_effect["Variable Name"]]-=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="*":
+				variable[processed_effect["Variable Name"]]*=get_value(processed_effect["Value"])
+			if processed_effect["Operation"]=="/":
+				variable[processed_effect["Variable Name"]]/=get_value(processed_effect["Value"])
+			
 		if processed_effect["Target"]=="self": #Trying to access a local variable
 			affected_cards=ilina(processed_effect["Card Parent"])
 		for affected_card in affected_cards:
@@ -521,7 +528,7 @@ var UI={
 
 func finish_targeting():
 	if UI["Global"]:
-		GlobalVariables[UI["Assigning To Variable"]]=UI["Targeted Card"]
+		variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	else:
 		UI["Card Parent"].variable[UI["Assigning To Variable"]]=UI["Targeted Card"]
 	UI["Focusing On Card"].scale=Vector2(1.,1.)
