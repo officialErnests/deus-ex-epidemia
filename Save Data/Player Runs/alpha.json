@@ -1,108 +1,890 @@
 {
-    "Battles":[
-        [
-            {
-                "1":{
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":3,
-                        "Health":3,
-                        "Cost":3,
-                        "Name":"Devil",
-                        "Description":""
-                    }
-            }
-        ],
-        [
-            {
-                "1":
-                    {
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":5,
-                        "Health":2,
-                        "Cost":2,
-                        "Name":"Romeo",
-                        "Description":"Lover Of Juliet"
-                    },
-                "2":
-                    {
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":2,
-                        "Health":5,
-                        "Cost":2,
-                        "Name":"Juli Eta",
-                        "Description":"Lover of Romeo"
-                    }
-            }
-        ],
-         [
-            {
-                "1":{
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":4,
-                        "Health":1,
-                        "Buffer":3,
-                        "Cost":2,
-                        "Name":"True Achiles",
-                        "Description":"Can't Be Killed (Easily)"
-                    }
-            }
-        ],
-         [
-            {
-                "1":{
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":10,
-                        "Health":10,
-                        "Cost":2,
-                        "Name":"Zeus",
-                        "Description":""
-                }
-            }
-        ],
-         [
-            {
-                "1":{
-                        "Effects":[{
-                            "Trigger":"Attacking",
-                            "Effect List":[
-                                {
-                                    "Type":"Get Neighbours",
-                                    "Target":"@Defender",
-                                    "Variable Name":"Thor Neighbours"
-                                },
-                                {
-                                    "Type":"Deal Damage",
-                                    "Target":"Thor Neighbours",
-                                    "Value":"!Attack"
-                                }
-                            ]
-                        }],
-                        "Type":1,
-                        "Attack":5,
-                        "Health":4,
-                        "Buffer":1,
-                        "Cost":4,
-                        "Name":"Thor",
-                        "Description":""
-                },
-                "2":{
-                        "Effects":[],
-                        "Type":1,
-                        "Attack":2,
-                        "Health":20,
-                        "Taunt":1,
-                        "Cost":4,
-                        "Name":"Loki",
-                        "Description":""
-                }
-            }
-
-        ]
-    ]
-    
+	"Battles": [
+		[
+			{
+				"1": {
+					"Attack": 3.0,
+					"Cost": 3.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Devil",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 5.0,
+					"Cost": 2.0,
+					"Description": "Lover Of Juliet",
+					"Effects": [],
+					"Health": 2.0,
+					"Name": "Romeo",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Cost": 2.0,
+					"Description": "Lover of Romeo",
+					"Effects": [],
+					"Health": 5.0,
+					"Name": "Juli Eta",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 4.0,
+					"Buffer": 3.0,
+					"Cost": 2.0,
+					"Description": "Can't Be Killed (Easily)",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "True Achiles",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 1.0,
+					"Buffer": 1.0,
+					"Cost": 3.0,
+					"Description": "Comes in with a second creature",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Card Parent": "<Freed Object>",
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Cerberus Head",
+										"Pool": "I",
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Trigger Key": 781224777,
+									"Type": "Summon Creature"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Cerberus Head",
+										"Pool": "I",
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Trigger Key": 781224777,
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 1.0,
+					"Name": "Cerberus",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Creature",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 1.0,
+					"Buffer": 2.0,
+					"Cost": 4.0,
+					"Description": "Ignores the first 2 times it would take damage",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Achilles",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 1.0,
+					"Cost": 3.0,
+					"Description": "Comes in with a second creature",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Card Parent": "<Freed Object>",
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Cerberus Head",
+										"Pool": "I",
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Trigger Key": 4278344124,
+									"Type": "Summon Creature"
+								},
+								{
+									"Card Parent": "<Freed Object>",
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Cerberus Head",
+										"Pool": "I",
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Trigger Key": 4278344124,
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "ETB"
+						}
+					],
+					"Health": 1.0,
+					"Name": "Cerberus",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Creature",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Cost": 4.0,
+					"Description": "Avenge(1): give all friendly minions +1/+0",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": {
+										"Team": "Friendly"
+									},
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "Avenge"
+						}
+					],
+					"Health": 5.0,
+					"Name": "Ashlaka",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 10.0,
+					"Cost": 2.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 10.0,
+					"Name": "Zeus",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Cost": 4.0,
+					"Description": "Avenge(1): give all friendly minions +1/+0",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": {
+										"Team": "Friendly"
+									},
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "Avenge"
+						}
+					],
+					"Health": 5.0,
+					"Name": "Ashlaka",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 5.0,
+					"Buffer": 1.0,
+					"Cost": 4.0,
+					"Description": "",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Target": "@Defender",
+									"Type": "Get Neighbours",
+									"Variable Name": "Thor Neighbours"
+								},
+								{
+									"Target": "Thor Neighbours",
+									"Type": "Deal Damage",
+									"Value": "!Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Thor",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 2.0,
+					"Cost": 4.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 20.0,
+					"Name": "Loki",
+					"Taunt": 1.0,
+					"Type": 1.0
+				}
+			}
+		],
+		[
+			{
+				"1": {
+					"Attack": 1.0,
+					"Cost": 1.0,
+					"Description": "",
+					"Effects": [],
+					"Health": 1.0,
+					"Name": "Cerberus Head",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 2.0,
+					"AvengeCounter": 0.0,
+					"Cost": 4.0,
+					"Description": "Avenge(3): summon a 1/3 guard with Taunt I",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 3.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Creature Data": {
+										"Attack": 1.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 3.0,
+										"Name": "Guard",
+										"Pool": "I",
+										"Taunt": 1.0,
+										"Tribe": "Hero",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Asalon",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"6": {
+					"Attack": 1.0,
+					"Cost": 4.0,
+					"Description": "Avenge(1): give all friendly minions +1/+0",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": {
+										"Team": "Friendly"
+									},
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "Avenge"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Ashlaka",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"7": {
+					"Attack": 2.0,
+					"Cost": 4.0,
+					"Description": "Avenge(1): give all friendly minions +1/+0",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": {
+										"Team": "Friendly"
+									},
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "Attack"
+								}
+							],
+							"Trigger": "Avenge"
+						}
+					],
+					"Health": 5.0,
+					"Name": "Ashlaka",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				}
+			}
+		]
+	]
 }
