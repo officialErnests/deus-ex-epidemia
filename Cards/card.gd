@@ -16,7 +16,7 @@ var team=0 #used only in battles
 func setup(data:Dictionary):
 	variable=data.duplicate(true)
 	card_type=variable["Type"]
-	
+	print(data)
 	#Makes sure all the required variables exist, (returning to default if they don't)
 	for iter_req_variable in Game.card_types[card_type]["Required Variables"]:
 		if not iter_req_variable in variable:
@@ -180,9 +180,14 @@ func _input(event):
 						if not "Food I" in Game.shop_pools:
 							Game.shop_add_pool("Food I")
 					return
+				#print(1)
+				#print(selected," ",Game.selected_card==null," ",Game.closest_card==self)
+				#if Game.closest_card!=null:
+			#		print(Game.closest_card.variable["Name"])
 				if not selected:
 					if Game.selected_card==null: #Only if the player isn't selecting another card already
 						if Game.closest_card==self:
+							print(2)
 							selected=true #Then and only then this card is selected
 							Game.selected_card=self
 							animations.append({
@@ -200,7 +205,6 @@ func _input(event):
 									iter_card_holder.original_position=iter_card_holder.global_position+Vector2(50-100*int(passed),0)
 				else:				
 					deselect()
-							
 func deselect():
 	if Game.selected_card==self: #Only if the player isn't selecting another card already
 		selected=false #Then and only then this card is selected
@@ -436,3 +440,4 @@ func _process(delta: float) -> void:
 			modulate=Color(1.0-selection_color_fade, 1.0, 1.0, 1.0)
 	elif Game.UI["Type"]!="Battle":
 		modulate=Color(1.,1.,1.,1.)
+	$HitFx.visible=hovered_over

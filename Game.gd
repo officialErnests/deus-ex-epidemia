@@ -401,8 +401,8 @@ func filter_cards(filter_data={}):
 func create_new_card(card_name,is_in_index=true):
 	var new_card=card_scene.instantiate()
 	add_child(new_card)
-	if is_in_index:
-		new_card.setup(card_index[card_name])
+	#if is_in_index:
+	new_card.setup(card_index[card_name])
 	new_card.global_position=Vector2(400,200)
 	existing_cards.append(new_card)
 	return new_card
@@ -473,7 +473,7 @@ func start_new_game():
 	global_card=create_new_card("Global Variable Storer")
 	existing_cards.erase(global_card)
 	#global_card.variable["Max Gold"]+=10
-	global_card.global_position=Vector2(-1000,-1000)
+	global_card.global_position=Vector2(-100000,-100000)
 	#variable=default_variable.duplicate()
 	process_on_hold=false
 	effect_stack=[]

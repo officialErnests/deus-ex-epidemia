@@ -36,12 +36,20 @@ editor_draw_limits = true
 
 [node name="display_current" parent="Camera2D" unique_id=683316084 instance=ExtResource("2_hbe7s")]
 layer = 3
+visible = false
 
 [node name="PauseMenu" parent="Camera2D" unique_id=1229467536 instance=ExtResource("2_n0g3p")]
 layer = 2
 
+[node name="CenterContainer" parent="Camera2D/PauseMenu" index="0" unique_id=1686473356]
+visible = false
+
+[node name="Settings" parent="Camera2D/PauseMenu/CenterContainer/Middle/VBoxContainer/Settings" parent_id_path=PackedInt32Array(1229467536, 902498945) index="0" unique_id=860161343]
+visible = false
+
 [node name="BG_black" type="CanvasLayer" parent="Camera2D" unique_id=1402798585]
 layer = -19
+visible = false
 
 [node name="ColorRect2" type="ColorRect" parent="Camera2D/BG_black" unique_id=1731198730]
 z_index = 1
@@ -214,3 +222,5 @@ script = ExtResource("10_8hd61")
 
 [connection signal="button_down" from="Shop/Enter Battle Button" to="Shop" method="_on_enter_battle_button_button_down"]
 [connection signal="button_down" from="Shop/Refresh Shop" to="." method="_on_refresh_shop_button_down"]
+
+[editable path="Camera2D/PauseMenu"]

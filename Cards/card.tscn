@@ -27,7 +27,6 @@ texture = ExtResource("2_7bc8n")
 [node name="Area2D" type="Area2D" parent="." unique_id=372976917]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056395607]
-visible = false
 shape = SubResource("RectangleShape2D_wsk7e")
 
 [node name="HitFx" type="Sprite2D" parent="." unique_id=155173046]
@@ -38,6 +37,7 @@ scale = Vector2(0.197, 0.225)
 texture = ExtResource("3_w0fdq")
 
 [node name="Label" type="Label" parent="HitFx" unique_id=897885044]
+visible = false
 offset_left = -467.00513
 offset_top = -48.8889
 offset_right = 345.1776
