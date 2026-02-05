@@ -577,7 +577,19 @@ func refresh_shop():
 		var new_card=create_new_card(shop_card_pool[randi_range(0,len(shop_card_pool)-1)])
 		new_card.location="Shop"
 		root.shop_slots[i].card_held=new_card
-
+func afterbattle():
+	var removed_friendly=[]
+	for i in battle.friendly_team:
+		if i.variable["Health"]<=0:
+			removed_friendly.append(i)
+	for i in removed_friendly:
+		if i.die_in_battle(): battle.friendly_team.erase(i)
+	var removed_enemy=[]
+	for i in battle.enemy_team:
+		if i.variable["Health"]<=0:
+			removed_enemy.append(i)
+	for i in removed_enemy:
+		if i.die_in_battle(): battle.enemy_team.erase(i)
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
 var WeHaveSelectedACardOnField=false
@@ -708,6 +720,7 @@ func _process(delta: float) -> void:
 							"Type":"Wait",
 							"Time Left":0.25
 						}
+						afterbattle()
 						return 
 					if attacker.variable["Attack"]==0:
 						UI["Action"]={
@@ -715,6 +728,7 @@ func _process(delta: float) -> void:
 							"Time Left":0.25
 						}
 						UI["Team"]=1-UI["Team"]
+						afterbattle()
 						return
 					UI["Action"]={
 						"Type":"Attack",
@@ -758,18 +772,7 @@ func _process(delta: float) -> void:
 					"Type":"Wait",
 					"Time Left":0.25
 				}
-				var removed_friendly=[]
-				for i in battle.friendly_team:
-					if i.variable["Health"]<=0:
-						removed_friendly.append(i)
-				for i in removed_friendly:
-					if i.die_in_battle(): battle.friendly_team.erase(i)
-				var removed_enemy=[]
-				for i in battle.enemy_team:
-					if i.variable["Health"]<=0:
-						removed_enemy.append(i)
-				for i in removed_enemy:
-					if i.die_in_battle(): battle.enemy_team.erase(i)
+				afterbattle()
 					
 				if len(battle.friendly_team)==0 and len(battle.enemy_team)==0:
 					UI["Action"]={

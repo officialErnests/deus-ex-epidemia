@@ -472,6 +472,176 @@
 					"Tribe": "Villain",
 					"Type": 1.0
 				}
+			},
+			{
+				"3": {
+					"Attack": 1.0,
+					"Attackn't": 1.0,
+					"Buffer": 1.0,
+					"Cost": 2.0,
+					"Description": "Pass(2): Deal 3 damage to all enemies",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "GremlinCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Fireball",
+									"Type": "If",
+									"Value 1": "!GremlinCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Attacking"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "GremlinCounter"
+								},
+								{
+									"Target": {
+										"Team": "Enemy"
+									},
+									"Type": "Deal Damage",
+									"Value": 3.0
+								}
+							],
+							"Trigger": "Fireball"
+						}
+					],
+					"GremlinCounter": 0.0,
+					"Health": 3.0,
+					"Name": "Gremlin Wizard",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Monk",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 1.0,
+					"Attackn't": 1.0,
+					"Buffer": 1.0,
+					"Cost": 2.0,
+					"Description": "Pass(2): Deal 3 damage to all enemies",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "GremlinCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Fireball",
+									"Type": "If",
+									"Value 1": "!GremlinCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Attacking"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "GremlinCounter"
+								},
+								{
+									"Target": {
+										"Team": "Enemy"
+									},
+									"Type": "Deal Damage",
+									"Value": 3.0
+								}
+							],
+							"Trigger": "Fireball"
+						}
+					],
+					"GremlinCounter": 0.0,
+					"Health": 3.0,
+					"Name": "Gremlin Wizard",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Tribe": "Monk",
+					"Type": 1.0
+				},
+				"4": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				},
+				"5": {
+					"Attack": 0.0,
+					"Cost": 2.0,
+					"Description": "Reborn I\n Taunt II",
+					"Effects": [],
+					"Health": 3.0,
+					"Name": "Jesus",
+					"Playable": 1.0,
+					"Pool": "II",
+					"Reborn": 1.0,
+					"Taunt": 2.0,
+					"Tribe": "Hero",
+					"Type": 1.0
+				}
 			}
 		],
 		[

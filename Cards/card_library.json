@@ -688,5 +688,58 @@
 				]
 			}
 		]
+	},
+	"Wizard Gremlin": {
+		"Type": 1.0,
+		"Name": "Gremlin Wizard",
+		"Description": "Pass(2): Deal 3 damage to all enemies",
+		"Cost": 2.0,
+		"Attack": 1.0,
+		"Health": 3.0,
+		"GremlinCounter": 0.0,
+		"Pool": "II",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "GremlinCounter",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 1.0
+					},
+					{
+						"Type": "If",
+						"Condition": "Value Comparison",
+						"Comparison": ">=",
+						"Value 1": "!GremlinCounter",
+						"Value 2": 2.0,
+						"Trigger": "Fireball"
+					}
+				]
+			},
+			{
+				"Trigger": "Fireball",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "GremlinCounter",
+						"Operation": "=",
+						"Target": "self",
+						"Value": 0.0
+					},
+					{
+						"Type": "Deal Damage",
+						"Target": {
+							"Team": "Enemy"
+						},
+						"Value": 3.0
+					}
+				]
+			}
+		]
 	}
 }
