@@ -258,7 +258,7 @@
 		"Mana": 0.0,
 		"Pool": "NaN-NULL-351 This is intentionally left stupidly long to not appear in any card pool ever, that's it",
 		"Gold": 0.0,
-		"Max Gold": 2.0,
+		"Max Gold": 200.0,
 		"Max Gold Gain Left": 8.0,
 		"Candles": 3.0,
 		"Shop Card Count": 3.0,
@@ -627,5 +627,66 @@
 			}
 		],
 		"Dev Comment": "haha, lol, funny horse. Also if you have more than a single Caligula on the board, there is a chance you get the stats spread"
+	},
+	"Ari": {
+		"Type": 1.0,
+		"Name": "Ari",
+		"Description": "Pass: Gain +2 health",
+		"Cost": 3.0,
+		"Attack": 2.0,
+		"Health": 3.0,
+		"Pool": "I",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 2.0
+					}
+				]
+			}
+		]
+	},
+	"Den-u-uter": {
+		"Type": 1.0,
+		"Name": "Den-u-uter",
+		"Description": "Pass: Summon a 1/3 spirit to attack instead",
+		"Cost": 3.0,
+		"Attack": 0.0,
+		"Health": 2.0,
+		"Pool": "I",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Spirit",
+							"Description": "",
+							"Cost": 1.0,
+							"Attack": 2.0,
+							"Health": 1.0,
+							"Pool": "Token",
+							"Tribe": "Illusion",
+							"Effects": []
+						}
+					},
+					{
+						"Type": "Force Attack",
+						"Target": "@Created"
+					}
+				]
+			}
+		]
 	}
 }

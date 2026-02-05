@@ -11,6 +11,266 @@
 					"Name": "Devil",
 					"Type": 1.0
 				}
+			},
+			{
+				"4": {
+					"Attack": 2.0,
+					"Attackn't": 1.0,
+					"Cost": 3.0,
+					"Description": "Pass: Gain +2 health",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Health"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 3.0,
+					"Name": "Ari, the monk",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Monk",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 0.0,
+					"Attackn't": 1.0,
+					"Cost": 4.0,
+					"Description": "Pass: Summon two 1/3 spirits to attack instead",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								},
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Den-u-uter",
+					"Playable": 1.0,
+					"Pool": "III",
+					"Tribe": "Monk",
+					"Type": 1.0
+				}
+			},
+			{
+				"3": {
+					"Attack": 0.0,
+					"Attackn't": 1.0,
+					"Cost": 4.0,
+					"Description": "Pass: Summon two 1/3 spirits to attack instead",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								},
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Den-u-uter",
+					"Playable": 1.0,
+					"Pool": "III",
+					"Tribe": "Monk",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 0.0,
+					"Attackn't": 1.0,
+					"Cost": 4.0,
+					"Description": "Pass: Summon two 1/3 spirits to attack instead",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								},
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Den-u-uter",
+					"Playable": 1.0,
+					"Pool": "III",
+					"Tribe": "Monk",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 5.0,
+					"AvengeCounter": 0.0,
+					"Cost": 5.0,
+					"Description": "Avenge(2): gain +3/+2",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 3.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Attack"
+								},
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Geton",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Villain",
+					"Type": 1.0
+				}
 			}
 		],
 		[
@@ -31,6 +291,185 @@
 					"Effects": [],
 					"Health": 5.0,
 					"Name": "Juli Eta",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 0.0,
+					"Attackn't": 1.0,
+					"Cost": 4.0,
+					"Description": "Pass: Summon two 1/3 spirits to attack instead",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								},
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Den-u-uter",
+					"Playable": 1.0,
+					"Pool": "III",
+					"Tribe": "Monk",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 5.0,
+					"AvengeCounter": 0.0,
+					"Cost": 5.0,
+					"Description": "Avenge(2): gain +3/+2",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 3.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Attack"
+								},
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Geton",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 5.0,
+					"AvengeCounter": 0.0,
+					"Cost": 5.0,
+					"Description": "Avenge(2): gain +3/+2",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 3.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Attack"
+								},
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Geton",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Villain",
 					"Type": 1.0
 				}
 			}
@@ -82,7 +521,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 781224777,
+									"Trigger Key": 781224777.0,
 									"Type": "Summon Creature"
 								},
 								{
@@ -98,7 +537,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 781224777,
+									"Trigger Key": 781224777.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -173,7 +612,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 4278344124,
+									"Trigger Key": 4278344124.0,
 									"Type": "Summon Creature"
 								},
 								{
@@ -189,7 +628,7 @@
 										"Tribe": "Hero",
 										"Type": 1.0
 									},
-									"Trigger Key": 4278344124,
+									"Trigger Key": 4278344124.0,
 									"Type": "Summon Creature"
 								}
 							],
@@ -314,6 +753,185 @@
 					"Name": "Ashlaka",
 					"Playable": 1.0,
 					"Pool": "II",
+					"Tribe": "Villain",
+					"Type": 1.0
+				}
+			},
+			{
+				"1": {
+					"Attack": 0.0,
+					"Attackn't": 1.0,
+					"Cost": 4.0,
+					"Description": "Pass: Summon two 1/3 spirits to attack instead",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								},
+								{
+									"Creature Data": {
+										"Attack": 3.0,
+										"Cost": 1.0,
+										"Description": "",
+										"Effects": [],
+										"Health": 1.0,
+										"Name": "Spirit",
+										"Pool": "Token",
+										"Tribe": "Illusion",
+										"Type": 1.0
+									},
+									"Type": "Summon Creature"
+								},
+								{
+									"Target": "@Created",
+									"Type": "Force Attack"
+								}
+							],
+							"Trigger": "Attacking"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Den-u-uter",
+					"Playable": 1.0,
+					"Pool": "III",
+					"Tribe": "Monk",
+					"Type": 1.0
+				},
+				"2": {
+					"Attack": 5.0,
+					"AvengeCounter": 0.0,
+					"Cost": 5.0,
+					"Description": "Avenge(2): gain +3/+2",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 3.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Attack"
+								},
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Geton",
+					"Playable": 1.0,
+					"Pool": "I",
+					"Tribe": "Villain",
+					"Type": 1.0
+				},
+				"3": {
+					"Attack": 5.0,
+					"AvengeCounter": 0.0,
+					"Cost": 5.0,
+					"Description": "Avenge(2): gain +3/+2",
+					"Dev Comment": "https://www.thetoptens.com/people/worst-people-history/",
+					"Effects": [
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 1.0,
+									"Variable Name": "AvengeCounter"
+								},
+								{
+									"Comparison": ">=",
+									"Condition": "Value Comparison",
+									"Trigger": "Avenger",
+									"Type": "If",
+									"Value 1": "!AvengeCounter",
+									"Value 2": 2.0
+								}
+							],
+							"Trigger": "Avenge"
+						},
+						{
+							"Effect List": [
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 3.0,
+									"Variable Name": "Health"
+								},
+								{
+									"Operation": "+",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 2.0,
+									"Variable Name": "Attack"
+								},
+								{
+									"Operation": "=",
+									"Target": "self",
+									"Type": "Modify Variable",
+									"Value": 0.0,
+									"Variable Name": "AvengeCounter"
+								}
+							],
+							"Trigger": "Avenger"
+						}
+					],
+					"Health": 4.0,
+					"Name": "Geton",
+					"Playable": 1.0,
+					"Pool": "I",
 					"Tribe": "Villain",
 					"Type": 1.0
 				}

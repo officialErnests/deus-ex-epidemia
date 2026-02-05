@@ -17,6 +17,7 @@ var default_variable={
 	"Shop Card Count":3, #change to 3 later
 	"Floor":-1,
 }
+var attack_stack=[] #An array of all the cards that should attack right after this one
 
 var variable=default_variable.duplicate()
 var shop_card_pool=[]
@@ -235,6 +236,8 @@ func process_stack():
 			if not placed:
 				chl("Card Not Summoned")
 				remove_card(new_card)
+			else:
+				global_card.variable["@Created"]=new_card
 		elif UI["Type"]=="Shop":
 			var start_pos=0
 			for i in range(len(root.warbrand_slots)):
@@ -317,6 +320,9 @@ func process_stack():
 					condition_success=true
 		if condition_success:
 			processed_effect["Card Parent"].trigger(processed_effect["Trigger"])
+	elif processed_effect["Type"]=="Force Attack":
+		attack_stack.append(get_target(processed_effect["Target"]))
+		print(attack_stack)
 	else:
 		chl("Unknown Effect: "+processed_effect,debug_c.BUG_REPORT)
 	effect_stack.pop_at(0)
@@ -641,44 +647,75 @@ func _process(delta: float) -> void:
 				var Ui=UI["Action"]
 				var defenders=[]
 				var attacker=null
-				if UI["Team"]==0:
-					var attackers=battle.friendly_team
-					defenders=battle.enemy_team
-					for i in range(7):
-						UI["Friendly Index"]+=1
-						if UI["Friendly Index"]>=len(attackers):
-							UI["Friendly Index"]=0
-						if attackers[UI["Friendly Index"]].variable["Attack"]>0:
+				#print(attack_stack)
+				while len(attack_stack)>0 and attacker==null:
+					if is_instance_valid(attack_stack[0]):
+						if attack_stack[0].variable["Health"]>0:
+							attacker=attack_stack[0]
+					attack_stack.remove_at(0)
+				#print("->",attacker==null,attack_stack)
+				if attacker!=null:
+					if attacker.team==0:
+						defenders=battle.enemy_team
+					else:
+						defenders=battle.friendly_team
+				else:
+					if UI["Team"]==0:
+						var attackers=battle.friendly_team
+						defenders=battle.enemy_team
+						for i in range(7):
+							UI["Friendly Index"]+=1
+							if UI["Friendly Index"]>=len(attackers):
+								UI["Friendly Index"]=0
+							#if attackers[UI["Friendly Index"]].variable["Attack"]>0:
 							attacker=attackers[UI["Friendly Index"]]
 							break
-				else:
-					var attackers=battle.enemy_team
-					defenders=battle.friendly_team
-					for i in range(7):
-						UI["Enemy Index"]+=1
-						if UI["Enemy Index"]>=len(attackers):
-							UI["Enemy Index"]=0
-						if attackers[UI["Enemy Index"]].variable["Attack"]>0:
+					else:
+						var attackers=battle.enemy_team
+						defenders=battle.friendly_team
+						for i in range(7):
+							UI["Enemy Index"]+=1
+							if UI["Enemy Index"]>=len(attackers):
+								UI["Enemy Index"]=0
+							#if attackers[UI["Enemy Index"]].variable["Attack"]>0:
 							attacker=attackers[UI["Enemy Index"]]
 							break
+					
+					UI["Team"]=1-UI["Team"]
+					#print("--->",UI["Team"])
 				var possible_defenders=[]
-				var max_taunt=0
+				var max_taunt=-20
 				for iter_defender in defenders:
 					var taunt_level=0
 					if "Taunt" in iter_defender.variable:
-						if iter_defender.variable["Taunt"]>max_taunt:
-							max_taunt=iter_defender.variable["Taunt"]
-							possible_defenders=[]
 						taunt_level=iter_defender.variable["Taunt"]
-					
+					if taunt_level>max_taunt:
+						max_taunt=taunt_level
+						possible_defenders=[]
 					if taunt_level==max_taunt:
 						possible_defenders.append(iter_defender)
 				
 				var defender=possible_defenders.pick_random()
-				UI["Team"]=1-UI["Team"]
+				
 				if attacker!=null:
+					print(attacker.variable["Name"])
+					#print(attacker.team)
 					global_card.variable["@Defender"]=defender
 					global_card.variable["@Attacker"]=attacker
+					if "Attackn't" in attacker.variable:
+						attacker.trigger("Attacking")
+						UI["Action"]={
+							"Type":"Wait",
+							"Time Left":0.25
+						}
+						return 
+					if attacker.variable["Attack"]==0:
+						UI["Action"]={
+							"Type":"Wait",
+							"Time Left":0.25
+						}
+						UI["Team"]=1-UI["Team"]
+						return
 					UI["Action"]={
 						"Type":"Attack",
 						"Time":0,
