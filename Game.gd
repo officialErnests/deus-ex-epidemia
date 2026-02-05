@@ -440,7 +440,10 @@ func new_shop():
 	if global_card.variable["Max Gold Gain Left"]>0:
 		global_card.variable["Max Gold Gain Left"]-=1
 		global_card.variable["Max Gold"]+=1
+	
 	global_card.variable["Gold"]=int(global_card.variable["Max Gold"])
+	global_card.variable["Gold"]+=int(global_card.variable["Extra Gold"])
+	global_card.variable["Extra Gold"]=0
 	global_card.variable["Floor"]+=1
 	if global_card.variable["Floor"]==len(battle_pools):
 		print("GG, game won")
@@ -475,13 +478,14 @@ func start_new_game():
 	process_on_hold=false
 	effect_stack=[]
 	resetUI()
-	new_shop()
+	
 	shop_card_pool=[]
 	shop_pools=[]
 	shop_add_pool("I")
 	mask_setup()
 	shop_add_pool("II")
 	shop_add_pool("III")
+	new_shop()
 	will_start_new_game=false
 func mask_setup():
 	if modifiers.current_mask=="beetle":
@@ -592,6 +596,7 @@ func afterbattle():
 		if i.die_in_battle(): battle.enemy_team.erase(i)
 var card_holder_where_a_card_is_placed=null
 var apex_card_battle_flag=false
+var attacks_skipped=0
 var WeHaveSelectedACardOnField=false
 func _process(delta: float) -> void:
 	if not i_can_turn_off_a_card_is_being_placed_on_a_holder:
@@ -624,7 +629,7 @@ func _process(delta: float) -> void:
 		if UI["Action"]["Type"]=="Wait":
 			UI["Action"]["Time Left"]-=delta
 			if UI["Action"]["Time Left"]<0:
-				
+				afterbattle()
 				if len(battle.friendly_team)==0 and len(battle.enemy_team)==0:
 					UI["Action"]={
 						"Type":"Battle End",
@@ -708,28 +713,31 @@ func _process(delta: float) -> void:
 						possible_defenders.append(iter_defender)
 				
 				var defender=possible_defenders.pick_random()
-				
 				if attacker!=null:
-					print(attacker.variable["Name"])
+					
 					#print(attacker.team)
 					global_card.variable["@Defender"]=defender
 					global_card.variable["@Attacker"]=attacker
 					if "Attackn't" in attacker.variable:
-						attacker.trigger("Attacking")
-						UI["Action"]={
-							"Type":"Wait",
-							"Time Left":0.25
-						}
-						afterbattle()
-						return 
+						if attacker.variable["Attackn't"]>0:
+							attacker.trigger("Attacking")
+							UI["Action"]={
+								"Type":"Wait",
+								"Time Left":0.25
+							}
+							afterbattle()
+							return 
 					if attacker.variable["Attack"]==0:
 						UI["Action"]={
 							"Type":"Wait",
-							"Time Left":0.25
+							"Time Left":0.0
 						}
-						UI["Team"]=1-UI["Team"]
+						if attacks_skipped<7:
+							UI["Team"]=1-UI["Team"]
 						afterbattle()
+						attacks_skipped+=1
 						return
+					attacks_skipped=0
 					UI["Action"]={
 						"Type":"Attack",
 						"Time":0,
@@ -738,6 +746,7 @@ func _process(delta: float) -> void:
 						"Alpha Pos":attacker.holder.global_position,
 						"Beta Pos":defender.holder.global_position,
 					}
+					
 		elif UI["Action"]["Type"]=="Attack":
 			var Ui=UI["Action"]
 			Ui["Time"]+=delta

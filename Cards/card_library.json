@@ -258,13 +258,14 @@
 		"Mana": 0.0,
 		"Pool": "NaN-NULL-351 This is intentionally left stupidly long to not appear in any card pool ever, that's it",
 		"Gold": 0.0,
-		"Max Gold": 200.0,
+		"Max Gold": 2.0,
 		"Max Gold Gain Left": 8.0,
 		"Candles": 3.0,
 		"Shop Card Count": 3.0,
 		"Floor": -1.0,
 		"Playable": 0.0,
-		"Effects": []
+		"Effects": [],
+		"Extra Gold": 0.0
 	},
 	"Beetle Scales": {
 		"Type": 0.0,
@@ -692,7 +693,7 @@
 	"Wizard Gremlin": {
 		"Type": 1.0,
 		"Name": "Gremlin Wizard",
-		"Description": "Pass(2): Deal 3 damage to all enemies",
+		"Description": "Pass(3): Deal 6 damage to all enemies",
 		"Cost": 2.0,
 		"Attack": 1.0,
 		"Health": 3.0,
@@ -716,7 +717,7 @@
 						"Condition": "Value Comparison",
 						"Comparison": ">=",
 						"Value 1": "!GremlinCounter",
-						"Value 2": 2.0,
+						"Value 2": 3.0,
 						"Trigger": "Fireball"
 					}
 				]
@@ -736,7 +737,341 @@
 						"Target": {
 							"Team": "Enemy"
 						},
+						"Value": 6.0
+					}
+				]
+			}
+		]
+	},
+	"Spiked Hair Monk": {
+		"Type": 1.0,
+		"Name": "Spiked Hair Monk",
+		"Description": "Pass(1) and On Attack: gain +2/+2. Pass(5) attack enemies till you die",
+		"Cost": 5.0,
+		"Attack": 6.0,
+		"Health": 5.0,
+		"KiCounter": 0.0,
+		"Pool": "III",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "KiCounter",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 1.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 2.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Target": "self",
+						"Value": 2.0
+					},
+					{
+						"Type": "If",
+						"Condition": "Value Comparison",
+						"Comparison": ">=",
+						"Value 1": "!KiCounter",
+						"Value 2": 5.0,
+						"Trigger": "KAMEHAMEHA"
+					}
+				]
+			},
+			{
+				"Trigger": "KAMEHAMEHA",
+				"Effect List": [
+					{
+						"Type": "Force Attack",
+						"Target": "self"
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attackn't",
+						"Operation": "=",
+						"Target": "self",
+						"Value": 0.0
+					}
+				]
+			}
+		]
+	},
+	"Shadow Monk": {
+		"Type": 1.0,
+		"Name": "Shuka-ar",
+		"Description": "Pass: Gain +3 attack. When this is attacked, parry it and counterattack. Backline",
+		"Cost": 3.0,
+		"Attack": 1.0,
+		"Health": 2.0,
+		"Pool": "II",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Taunt": -1.0,
+		"Buffer": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "If",
+						"Condition": "Value Comparison",
+						"Comparison": "==",
+						"Value 1": "!Attackn't",
+						"Value 2": 1.0,
+						"Trigger": "Sharpen"
+					}
+				]
+			},
+			{
+				"Trigger": "Sharpen",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Attack",
+						"Operation": "+",
 						"Value": 3.0
+					}
+				]
+			},
+			{
+				"Trigger": "Defending",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Attackn't",
+						"Operation": "=",
+						"Value": 0.0
+					},
+					{
+						"Type": "Force Attack",
+						"Target": "self"
+					}
+				]
+			}
+		]
+	},
+	"Global Ari": {
+		"Type": 1.0,
+		"Name": "Ariant",
+		"Description": "Pass: All friendly minions gain +1 health",
+		"Cost": 3.0,
+		"Attack": 1.0,
+		"Health": 3.0,
+		"Pool": "I",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": {
+							"Team": "Friendly"
+						},
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"Paranoid": {
+		"Type": 1.0,
+		"Name": "Gregovich",
+		"Description": "Pass.",
+		"Cost": 3.0,
+		"Attack": 4.0,
+		"Health": 4.0,
+		"Pool": "I",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": []
+	},
+	"Buddha": {
+		"Type": 1.0,
+		"Name": "Buddha",
+		"Description": "Pass: give all friendly creatures +1/+1 for each gold you didn't spend",
+		"Cost": 4.0,
+		"Attack": 0.0,
+		"Health": 5.0,
+		"Pool": "III",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Target": {
+							"Team": "Friendly"
+						},
+						"Value": "#Gold"
+					},
+					{
+						"Type": "Modify Variable",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Target": {
+							"Team": "Friendly"
+						},
+						"Value": "#Gold"
+					}
+				]
+			}
+		]
+	},
+	"Ridicule": {
+		"Type": 0.0,
+		"Name": "Ridicule",
+		"Description": "Choose a creature, give it taunt I",
+		"Cost": 1.0,
+		"Pool": "Food I",
+		"Effects": [
+			{
+				"Trigger": "ETB",
+				"Effect List": [
+					{
+						"Type": "Target",
+						"Assign Variable": "Banana Target",
+						"Target Filter": {
+							"Location": "On Field",
+							"Type": 1.0
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "Banana Target",
+						"Variable Name": "Taunt",
+						"Operation": "+",
+						"Value": 1.0
+					}
+				]
+			}
+		]
+	},
+	"King Midas": {
+		"Type": 1.0,
+		"Name": "King Midas",
+		"Description": "Pass: Gain +2 gold next shop.",
+		"Cost": 3.0,
+		"Attack": 0.0,
+		"Health": 3.0,
+		"Pool": "II",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "global",
+						"Variable Name": "Extra Gold",
+						"Operation": "+",
+						"Value": 2.0
+					}
+				]
+			}
+		]
+	},
+	"Qin Shi Huang": {
+		"Type": 1.0,
+		"Name": "The Stone King",
+		"Description": "Pass: Create a stone warrior with this minions stats.",
+		"Cost": 6.0,
+		"Attack": 4.0,
+		"Health": 5.0,
+		"Pool": "III",
+		"Tribe": "Monk",
+		"Attackn't": 1.0,
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Summon Creature",
+						"Creature Data": {
+							"Type": 1.0,
+							"Name": "Stone Warrior",
+							"Description": "Stone doesn't attack.",
+							"Cost": 2.0,
+							"Attack": 0.0,
+							"Health": 0.0,
+							"Attackn't": 1.0,
+							"Pool": "Token",
+							"Tribe": "Statue",
+							"Effects": []
+						}
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "@Created",
+						"Variable Name": "Health",
+						"Operation": "=",
+						"Value": "!Health"
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "@Created",
+						"Variable Name": "Attack",
+						"Operation": "=",
+						"Value": "!Attack"
+					}
+				]
+			}
+		]
+	},
+	"Leech": {
+		"Type": 1.0,
+		"Name": "Borris",
+		"Description": "On attack: spend 1 gold next turn, gain +4/+4",
+		"Cost": 4.0,
+		"Attack": 4.0,
+		"Health": 4.0,
+		"Pool": "II",
+		"Tribe": "Villain",
+		"Effects": [
+			{
+				"Trigger": "Attacking",
+				"Effect List": [
+					{
+						"Type": "Modify Variable",
+						"Target": "global",
+						"Variable Name": "Extra Gold",
+						"Operation": "-",
+						"Value": 1.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Attack",
+						"Operation": "+",
+						"Value": 4.0
+					},
+					{
+						"Type": "Modify Variable",
+						"Target": "self",
+						"Variable Name": "Health",
+						"Operation": "+",
+						"Value": 4.0
 					}
 				]
 			}

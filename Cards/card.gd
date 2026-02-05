@@ -128,6 +128,7 @@ func take_damage(damage):
 	get_node("HitSfx").play()
 	variable["Health"]-=damage
 	get_hit(damage)
+	update_visually()
 	if variable["Health"]<=0:
 		will_die=true
 func get_hit(damage):

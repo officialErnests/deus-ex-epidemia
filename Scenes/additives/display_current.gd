@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$LitCandle.visible=Game.variable["Candles"]>0
-	$LitCandle2.visible=Game.variable["Candles"]>1
-	$LitCandle3.visible=Game.variable["Candles"]>2
-	
+	$LitCandle.visible=Game.global_card.variable["Candles"]>0
+	$LitCandle2.visible=Game.global_card.variable["Candles"]>1
+	$LitCandle3.visible=Game.global_card.variable["Candles"]>2
+	$LitCandle4.visible=Game.global_card.variable["Candles"]>3
