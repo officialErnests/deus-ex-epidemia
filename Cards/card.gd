@@ -16,7 +16,6 @@ var team=0 #used only in battles
 func setup(data:Dictionary):
 	variable=data.duplicate(true)
 	card_type=variable["Type"]
-	print(data)
 	#Makes sure all the required variables exist, (returning to default if they don't)
 	for iter_req_variable in Game.card_types[card_type]["Required Variables"]:
 		if not iter_req_variable in variable:

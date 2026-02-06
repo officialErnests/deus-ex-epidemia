@@ -110,7 +110,6 @@ settings_bool = true
 click_sfx = ExtResource("12_rm1hn")
 
 [node name="Settings" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer/Settings" unique_id=860161343 instance=ExtResource("13_a2x54")]
-visible = false
 
 [node name="Credits" type="Button" parent="CanvasLayer/HBoxContainer/Middle/VBoxContainer" unique_id=842209944]
 layout_mode = 2
