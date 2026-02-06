@@ -417,11 +417,12 @@ func _process(delta: float) -> void:
 					"Progress":0,
 					"Max Progress":0.34
 				})
-		distance_from_mouse=get_viewport().get_mouse_position().distance_to(global_position)
-		if distance_from_mouse<Game.smallest_distance_to_mouse:
-			Game.smallest_distance_to_mouse=distance_from_mouse
-			Game.csd_card=self
-			original_y=global_position.y
+		if len(variable)>0:
+			distance_from_mouse=get_viewport().get_mouse_position().distance_to(global_position)
+			if distance_from_mouse<Game.smallest_distance_to_mouse:
+				Game.smallest_distance_to_mouse=distance_from_mouse
+				Game.csd_card=self
+				original_y=global_position.y
 		if just_was_selected:
 			just_was_selected=false
 	if Game.closest_card==self or hovered_over:
@@ -440,4 +441,3 @@ func _process(delta: float) -> void:
 			modulate=Color(1.0-selection_color_fade, 1.0, 1.0, 1.0)
 	elif Game.UI["Type"]!="Battle":
 		modulate=Color(1.,1.,1.,1.)
-	$HitFx.visible=hovered_over
